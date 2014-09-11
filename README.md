@@ -1,7 +1,7 @@
 adapt-hotgrid
 ===========
 
-This presentation component takes a set of images and display them in a grid layout. When an image is clicked a modal is shown containing related content.
+This presentation component takes a set of images and displays them in a grid layout. When an image is clicked a modal is shown containing related content.
 
 ###Example JSON
 
