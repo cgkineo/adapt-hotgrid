@@ -33,6 +33,11 @@
 				}
 			}											
 		}
+
+		@media all and (max-width:(@device-width-medium - 1)) {
+			margin: 5px;
+		}
+
 	}
 
 	.hotgrid-content {
@@ -46,7 +51,7 @@
 		opacity:0;
 
 		@media all and (max-width:(@device-width-medium - 1)) {
-		 	margin:20px;
+		 	margin:0;
 		 	height: 100%;
 			overflow-y: scroll;
 		    -webkit-overflow-scrolling: touch;
@@ -94,12 +99,12 @@
 
 	.content-popup-icon-close {
 		float:right;
-		color:#fff;
+		color:@background-color;
 		padding: 10px;
 		font-size: 26px;
 		.no-touch & {
 			&:hover {
-				color:#434343;
+				color:darken(@background-color, 30%);
 			}
 		}
 	}
