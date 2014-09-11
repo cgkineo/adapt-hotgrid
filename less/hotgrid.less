@@ -1,0 +1,158 @@
+.hotgrid-component {
+
+	.hotgrid-widget {
+		position: relative;
+	}
+
+	.hotgrid-grid-item {
+		float:left;
+		text-align: center;
+		width:50%;
+
+		&.visited {
+			.hotgrid-item-states-image {
+				.item-states-image.visited;					
+			}	
+		}
+	}
+
+	.hotgrid-item-image {
+		display:block;
+		margin: 10px;
+
+		img {
+			display: block;
+			transition: all 0.25s;
+		}		
+
+		&.hotgrid-item-states-image {
+			.item-states-image.default;
+			.no-touch & {
+				&:hover {
+					.item-states-image.hover;
+				}
+			}											
+		}
+	}
+
+	.hotgrid-content {
+		position: absolute;
+		top: 0;
+		width: auto;
+		margin: 40px;
+		overflow: hidden;
+		background-color: @secondary-color;
+		display:none;
+		opacity:0;
+
+		@media all and (max-width:(@device-width-medium - 1)) {
+		 	margin:20px;
+		 	height: 100%;
+			overflow-y: scroll;
+		    -webkit-overflow-scrolling: touch;
+		}
+
+	}
+
+	.hotgrid-content-item {
+		display:none;
+	}
+
+	.hotgrid-content-item-inner {
+		padding: 0 20px 20px;
+	}
+
+	.hotgrid-contents {
+		width: 60%;
+		float: left;
+		@media all and (max-width:(@device-width-medium - 1)) {
+		 	width: auto;
+		 	margin-bottom: 20px;
+		}
+	}
+
+	.hotgrid-contents-inner {
+		margin-right: 10px;
+	}
+
+	.hotgrid-item-graphic {
+		width: 40%;
+	    float: right;
+	    text-align: center;
+	    @media all and (max-width:(@device-width-medium - 1)) {
+		 	width: auto;
+		}
+	}
+
+	.hotgrid-content-title {
+		color: @background-color;
+	}
+
+	.hotgrid-content-body {
+		color: @background-color;
+	}
+
+	.content-popup-icon-close {
+		float:right;
+		color:#fff;
+		padding: 10px;
+		font-size: 26px;
+		.no-touch & {
+			&:hover {
+				color:#434343;
+			}
+		}
+	}
+
+	.hotgrid-item-title {
+		color: white;
+	}
+
+}
+
+.item-states-image {
+
+	.default {
+		img.hotgrid-item-image-hover {
+			display: none;
+		}			
+		img.hotgrid-item-image-visited {
+			display:none;
+		}		
+	}
+
+	.hover {
+		> img {
+			display:none;
+		}
+		img.hotgrid-item-image-hover {
+			display: block;
+		}			
+		img.hotgrid-item-image-visited {
+			display:none;
+		}
+	}
+
+	.visited {
+		> img {
+			display:none;
+		}
+		img.hotgrid-item-image-hover {
+			display: none !important;
+		}			
+		img.hotgrid-item-image-visited {
+			display:block !important;
+		}
+	}
+
+}
+
+
+
+
+
+
+
+
+
+

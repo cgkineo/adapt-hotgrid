@@ -1,0 +1,15 @@
+{
+  "name": "adapt-hotgrid",
+  "version": "0.0.1",
+  "homepage": "https://github.com/cgkineo/adapt-hotgrid",
+  "authors": [
+    "Salamat Ali <Mohammed.SalamatAli@kineo.com>"
+  ],
+  "description": "A component that displays clickable images in a grid format.",
+  "main": "/js/adapt-hotgrid.js",
+  "keywords": [
+    "adapt-plugin",
+    "adapt-component"
+  ],
+  "license": "GPLv3"
+}
