@@ -91,6 +91,10 @@ define(function(require) {
 
         showGridItemContent: function(event) {
             if (event) event.preventDefault();
+            // trigger popupManager - this sets all tabindex elements to -1
+            Adapt.trigger('popup:opened');
+            // set close button to 0 - this prevents the user from tabbing outside of the popup whilst open
+            this.$('.content-popup-icon-close').attr('tabindex', 0);
             var $item = $(event.currentTarget).parent();
             var index = $item.index();
             $item.addClass("visited");
@@ -98,6 +102,8 @@ define(function(require) {
             var currentItem = this.getCurrentItem(index);
             currentItem.visited = true;
             this.evaluateCompletion();
+            // give focus to close button 
+            $(".content-popup-icon-close").focus();
         },
 
         showContentWithItemIndex: function(index) {
@@ -139,6 +145,8 @@ define(function(require) {
             },{
                 display: "none"
             });;
+            // trigger popup closed to reset the tab index back to 0
+            Adapt.trigger('popup:closed');
         }
         
     });
