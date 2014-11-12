@@ -113,9 +113,19 @@ define(function(require) {
             this.$(".hotgrid-content-item").eq(index).css({
                 display:"block"
             });
-            this.$(".hotgrid-content").velocity({
+
+            var $content = this.$(".hotgrid-content");
+            $content.css({ 
+                marginTop: -($content.height() / 2) + "px"
+            }).velocity({
                 opacity: 1,
                 translateY: 0
+            },{
+                display: "block"
+            });
+
+            this.$(".hotgrid-shadow").velocity({
+                opacity: 1
             },{
                 display: "block"
             });
@@ -144,9 +154,15 @@ define(function(require) {
                 translateY: "-50px"
             },{
                 display: "none"
-            });;
+            });
             // trigger popup closed to reset the tab index back to 0
             Adapt.trigger('popup:closed');
+
+            this.$(".hotgrid-shadow").velocity({
+                opacity: 0
+            },{
+                display: "none"
+            });
         }
         
     });
