@@ -40,23 +40,42 @@
 
 	}
 
-	.hotgrid-content {
-		position: absolute;
+	.hotgrid-shadow {
+		display: none;
+		opacity: 0;
+		position: fixed;
+		z-index: 998;
+		width: 100%;
+		height: 100%;
 		top: 0;
-		width: auto;
-		margin: 40px;
+		left: 0;
+		background-color: @transparency;
+	}
+
+	.hotgrid-content {
+		position: fixed;
+		top: 50%;
+		left: 0;
+		width: 100%;
 		overflow: hidden;
 		background-color: @secondary-color;
 		display:none;
 		opacity:0;
+		z-index: 999;
 
-		@media all and (max-width:(@device-width-medium - 1)) {
-		 	margin:0;
+		@media all and (max-width:(@device-width-small - 1)) {
+		 	margin:0!important;
+		 	top: 0;
 		 	height: 100%;
 			overflow-y: scroll;
 		    -webkit-overflow-scrolling: touch;
 		}
 
+	}
+
+	.hotgrid-content-inner {
+		max-width: @device-width-large;
+		margin: auto;
 	}
 
 	.hotgrid-content-item {
@@ -77,7 +96,7 @@
 	}
 
 	.hotgrid-contents-inner {
-		margin-right: 10px;
+		margin-right: 20px;
 	}
 
 	.hotgrid-item-graphic {
