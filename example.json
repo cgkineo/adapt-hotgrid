@@ -14,6 +14,7 @@
         {
             "title": "Grid Item 1",
             "body": "This is display text 1. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
+            "itemAria": "Item 1. Select here to open.",
             "_graphic": {
                 "src": "course/en/images/gqcq-2-small.gif",
                 "srcHover":"course/en/images/gqcq-1-small.gif",
@@ -29,6 +30,7 @@
         {
             "title": "Grid Item 2",
             "body": "This is display text 1. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
+            "itemAria": "Item 2. Select here to open.",
             "_graphic": {
                 "src": "course/en/images/gqcq-2-small.gif",
                 "srcHover":"course/en/images/gqcq-1-small.gif",
@@ -44,6 +46,7 @@
         {
             "title": "Grid Item 3",
             "body": "This is display text 1. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
+            "itemAria": "Item 3. Select here to open.",
             "_graphic": {
                 "src": "course/en/images/gqcq-2-small.gif",
                 "srcHover":"course/en/images/gqcq-1-small.gif",
@@ -59,6 +62,7 @@
         {
             "title": "Grid Item 4",
             "body": "This is display text 1. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
+            "itemAria": "Item 4. Select here to open.",
             "_graphic": {
                 "src": "course/en/images/gqcq-2-small.gif",
                 "srcHover":"course/en/images/gqcq-1-small.gif",
@@ -74,6 +78,7 @@
         {
             "title": "Grid Item 5",
             "body": "This is display text 1. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
+            "itemAria": "Item 5. Select here to open.",
             "_graphic": {
                 "src": "course/en/images/gqcq-2-small.gif",
                 "srcHover":"course/en/images/gqcq-1-small.gif",
@@ -89,6 +94,7 @@
         {
             "title": "Grid Item 6",
             "body": "This is display text 1. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
+            "itemAria": "Item 6. Select here to open.",
             "_graphic": {
                 "src": "course/en/images/gqcq-2-small.gif",
                 "srcHover":"course/en/images/gqcq-1-small.gif",
