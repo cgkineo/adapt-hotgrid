@@ -1,64 +1,64 @@
 <div class="component-inner hotgrid-inner" role="region" aria-label="{{_accessibility._ariaRegions.hotGrid}}">
-    {{> component this}}
-    <div class="component-widget hotgrid-widget">
+	{{> component this}}
+	<div class="component-widget hotgrid-widget">
 
-        <div class="hotgrid-grid">
-            <div class="hotgrid-grid-inner clearfix">
-                {{#each _items}}
-                <div class="hotgrid-grid-item" aria="{{itemAria}}">
-                    {{#if _graphic.hasImageStates}} 
-                        <a href="#" class="hotgrid-item-image hotgrid-item-states-image">                                                 
-                            <img src="{{_graphic.src}}" alt="{{_graphic.alt}}" title="{{_graphic.title}}"/>
-                            <img src="{{_graphic.srcHover}}" class="hotgrid-item-image-hover" alt="{{_graphic.alt}}" title="{{_graphic.title}}" >
-                            <img src="{{_graphic.srcVisited}}" class="hotgrid-item-image-visited" alt="{{_graphic.alt}}" title="{{_graphic.title}}" >                                          
-                        </a>
-                        <div class="hotgrid-item-title">{{_graphic.title}}</div>   
-                    {{else}}
-                        <a href="#" class="hotgrid-item-image hotgrid-item-states-css">
-                             <img src="{{_graphic.src}}" class="" alt="{{_graphic.alt}}" title="{{_graphic.title}}"/>
-                        </a>
-                        <div class="hotgrid-item-title">{{_graphic.title}}</div>
-                    {{/if}}                                        
-                </div>
-                {{/each}}
-            </div>
-        </div>
+		<div class="hotgrid-grid">
+			<div class="hotgrid-grid-inner clearfix">
+				{{#each _items}}
+				<div class="hotgrid-grid-item" aria="{{itemAria}}">
+					{{#if _graphic.hasImageStates}} 
+						<a href="#" class="hotgrid-item-image hotgrid-item-states-image">
+							<img src="{{_graphic.src}}" alt="{{_graphic.alt}}" title="{{_graphic.title}}"/>
+							<img src="{{_graphic.srcHover}}" class="hotgrid-item-image-hover" alt="{{_graphic.alt}}" title="{{_graphic.title}}" >
+							<img src="{{_graphic.srcVisited}}" class="hotgrid-item-image-visited" alt="{{_graphic.alt}}" title="{{_graphic.title}}" >
+						</a>
+						<div class="hotgrid-item-title">{{_graphic.title}}</div>   
+					{{else}}
+						<a href="#" class="hotgrid-item-image hotgrid-item-states-css">
+							 <img src="{{_graphic.src}}" class="" alt="{{_graphic.alt}}" title="{{_graphic.title}}"/>
+						</a>
+						<div class="hotgrid-item-title">{{_graphic.title}}</div>
+					{{/if}}
+				</div>
+				{{/each}}
+			</div>
+		</div>
 
-        <div class="hotgrid-shadow"></div>
+		<div class="hotgrid-shadow"></div>
 
-        <div class="hotgrid-content">
-            <div class="content-popup-done clearfix">
-                <a href="#" class="content-popup-icon-close icon icon-cross" aria="{{_accessibility._ariaLabels.hotgridPopUp}}"></a>
-            </div>
-            <div class="hotgrid-content-inner">
-                {{#each _items}}
-                <div class="hotgrid-content-item component-item">
-                    <div class="hotgrid-content-item-inner component-item-inner clearfix">
+		<div class="hotgrid-content">
+			<div class="content-popup-done clearfix">
+				<a href="#" class="content-popup-icon-close icon icon-cross" aria="{{_accessibility._ariaLabels.hotgridPopUp}}"></a>
+			</div>
+			<div class="hotgrid-content-inner">
+				{{#each _items}}
+				<div class="hotgrid-content-item component-item">
+					<div class="hotgrid-content-item-inner component-item-inner clearfix">
 
-                        <div class="hotgrid-contents">
-                            <div class="hotgrid-contents-inner">
-                                {{#if title}}
-                                    <h5 class="hotgrid-content-title">
-                                        {{{title}}}
-                                    </h5>
-                                {{/if}}
-                                {{#if body}}
-                                    <div class="hotgrid-content-body">
-                                        {{{body}}}
-                                    </div>
-                                {{/if}}
-                            </div>
-                        </div>
+						<div class="hotgrid-contents">
+							<div class="hotgrid-contents-inner">
+								{{#if title}}
+									<h5 class="hotgrid-content-title">
+										{{{title}}}
+									</h5>
+								{{/if}}
+								{{#if body}}
+									<div class="hotgrid-content-body">
+										{{{body}}}
+									</div>
+								{{/if}}
+							</div>
+						</div>
 
-                        <div class="hotgrid-item-graphic">
-                            <img src="{{_itemGraphic.src}}" alt="{{_itemGraphic.alt}}"/>
-                        </div>
+						<div class="hotgrid-item-graphic">
+							<img src="{{_itemGraphic.src}}" alt="{{_itemGraphic.alt}}"/>
+						</div>
 
-                    </div>
-                </div>
-                {{/each}}
-            </div>
-        </div>
+					</div>
+				</div>
+				{{/each}}
+			</div>
+		</div>
 
-    </div>
+	</div>
 </div>
