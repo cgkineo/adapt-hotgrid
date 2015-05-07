@@ -1,23 +1,22 @@
 .hotgrid-component {
-
 	.hotgrid-widget {
 		position: relative;
 	}
 
 	.hotgrid-grid-item {
-		float:left;
+		float: left;
 		text-align: center;
-		width:50%;
+		width: 50%;
 
 		&.visited {
 			.hotgrid-item-states-image {
-				.item-states-image.visited;					
+				.item-states-image.visited;
 			}	
 		}
 	}
 
 	.hotgrid-item-image {
-		display:block;
+		display: block;
 		margin: 10px;
 
 		img {
@@ -27,59 +26,58 @@
 
 		&.hotgrid-item-states-image {
 			.item-states-image.default;
+
 			.no-touch & {
 				&:hover {
 					.item-states-image.hover;
 				}
-			}											
+			}
 		}
 
 		@media all and (max-width:(@device-width-medium - 1)) {
 			margin: 5px;
 		}
-
 	}
 
 	.hotgrid-shadow {
+		background-color: @transparency;
 		display: none;
+		height: 100%;
+		left: 0;
 		opacity: 0;
 		position: fixed;
-		z-index: 998;
-		width: 100%;
-		height: 100%;
 		top: 0;
-		left: 0;
-		background-color: @transparency;
+		width: 100%;
+		z-index: 998;
 	}
 
 	.hotgrid-content {
+		background-color: @secondary-color;
+		display: none;
+		left: 0;
+		opacity: 0;
+		overflow: hidden;
 		position: fixed;
 		top: 50%;
-		left: 0;
 		width: 100%;
-		overflow: hidden;
-		background-color: @secondary-color;
-		display:none;
-		opacity:0;
 		z-index: 999;
 
 		@media all and (max-width:(@device-width-small - 1)) {
-		 	margin:0!important;
-		 	top: 0;
-		 	height: 100%;
+			height: 100%;
+			margin: 0!important;
 			overflow-y: scroll;
-		    -webkit-overflow-scrolling: touch;
+			top: 0;
+			-webkit-overflow-scrolling: touch;
 		}
-
 	}
 
 	.hotgrid-content-inner {
-		max-width: @device-width-large;
 		margin: auto;
+		max-width: @device-width-large;
 	}
 
 	.hotgrid-content-item {
-		display:none;
+		display: none;
 	}
 
 	.hotgrid-content-item-inner {
@@ -87,11 +85,12 @@
 	}
 
 	.hotgrid-contents {
-		width: 60%;
 		float: left;
+		width: 60%;
+
 		@media all and (max-width:(@device-width-medium - 1)) {
-		 	width: auto;
-		 	margin-bottom: 20px;
+			margin-bottom: 20px;
+			width: auto;
 		}
 	}
 
@@ -100,11 +99,12 @@
 	}
 
 	.hotgrid-item-graphic {
+		float: right;
+		text-align: center;
 		width: 40%;
-	    float: right;
-	    text-align: center;
-	    @media all and (max-width:(@device-width-medium - 1)) {
-		 	width: auto;
+
+		@media all and (max-width:(@device-width-medium - 1)) {
+			width: auto;
 		}
 	}
 
@@ -117,13 +117,14 @@
 	}
 
 	.content-popup-icon-close {
-		float:right;
-		color:@background-color;
-		padding: 10px;
+		color: @background-color;
+		float: right;
 		font-size: 26px;
+		padding: 10px;
+
 		.no-touch & {
 			&:hover {
-				color:darken(@background-color, 30%);
+				color: darken(@background-color, 30%);
 			}
 		}
 	}
@@ -131,52 +132,44 @@
 	.hotgrid-item-title {
 		color: white;
 	}
-
 }
 
 .item-states-image {
-
 	.default {
 		img.hotgrid-item-image-hover {
 			display: none;
-		}			
+		}
+
 		img.hotgrid-item-image-visited {
-			display:none;
-		}		
+			display: none;
+		}
 	}
 
 	.hover {
 		> img {
-			display:none;
+			display: none;
 		}
+
 		img.hotgrid-item-image-hover {
 			display: block;
-		}			
+		}
+
 		img.hotgrid-item-image-visited {
-			display:none;
+			display: none;
 		}
 	}
 
 	.visited {
 		> img {
-			display:none;
+			display: none;
 		}
+
 		img.hotgrid-item-image-hover {
 			display: none !important;
-		}			
+		}
+
 		img.hotgrid-item-image-visited {
-			display:block !important;
+			display: block !important;
 		}
 	}
-
 }
-
-
-
-
-
-
-
-
-
-

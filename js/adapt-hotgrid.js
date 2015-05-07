@@ -5,7 +5,7 @@ define(function(require) {
 	var Adapt = require("coreJS/adapt");
 
 	var Hotgrid = ComponentView.extend({
- 
+
 		events: {
 			"click .hotgrid-item-image":"showGridItemContent",
 			"click .content-popup-icon-close":"closeContent"
