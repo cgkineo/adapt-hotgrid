@@ -24,41 +24,5 @@
             </div>
         </div>
 
-        <div class="hotgrid-shadow"></div>
-
-        <div class="hotgrid-content">
-            <div class="content-popup-done clearfix">
-                <a href="#" class="content-popup-icon-close icon icon-cross" aria="{{_accessibility._ariaLabels.hotgridPopUp}}"></a>
-            </div>
-            <div class="hotgrid-content-inner">
-                {{#each _items}}
-                <div class="hotgrid-content-item component-item">
-                    <div class="hotgrid-content-item-inner component-item-inner clearfix">
-
-                        <div class="hotgrid-contents">
-                            <div class="hotgrid-contents-inner">
-                                {{#if title}}
-                                    <h5 class="hotgrid-content-title">
-                                        {{{title}}}
-                                    </h5>
-                                {{/if}}
-                                {{#if body}}
-                                    <div class="hotgrid-content-body">
-                                        {{{body}}}
-                                    </div>
-                                {{/if}}
-                            </div>
-                        </div>
-
-                        <div class="hotgrid-item-graphic">
-                            <img src="{{_itemGraphic.src}}" alt="{{_itemGraphic.alt}}"/>
-                        </div>
-
-                    </div>
-                </div>
-                {{/each}}
-            </div>
-        </div>
-
     </div>
 </div>

@@ -7,9 +7,7 @@ define(function(require) {
     var Hotgrid = ComponentView.extend({
  
         events: {
-            "click .hotgrid-item-image":"showGridItemContent",
-            "click .content-popup-icon-close":"closeContent"
-
+            "click .hotgrid-item-image":"showGridItemContent"
         },
         
         preRender: function () {
@@ -31,17 +29,16 @@ define(function(require) {
                 this.$el.addClass('mobile').removeClass('desktop');
                 this.model.set('_isDesktop', false)
             }
-            this.render();
         },
 
         postRender: function() {
             this.setupGrid();
             this.setReadyStatus();
-            this.closeContent();
         },
 
         resizeControl: function() {
             this.setDeviceSize();
+            this.render();
         },
 
         setupGrid: function() {
@@ -91,44 +88,21 @@ define(function(require) {
 
         showGridItemContent: function(event) {
             if (event) event.preventDefault();
-            // trigger popupManager - this sets all tabindex elements to -1
-            Adapt.trigger('popup:opened');
-            // set close button to 0 - this prevents the user from tabbing outside of the popup whilst open
-            this.$('.content-popup-icon-close').attr('tabindex', 0);
+
             var $item = $(event.currentTarget).parent();
-            var index = $item.index();
+            var currentItem = this.getCurrentItem($item.index());
+            var popupObject = {
+                title: currentItem.title,
+                body: "<div class='hotgrid-notify-body'>" + currentItem.body +
+                    "</div><img class='hotgrid-notify-graphic' src='" +
+                    currentItem._itemGraphic.src + "' alt='" +
+                    currentItem._itemGraphic.alt + "'/>"
+            };
+
+            Adapt.trigger("notify:popup", popupObject);
             $item.addClass("visited");
-            this.showContentWithItemIndex(index);
-            var currentItem = this.getCurrentItem(index);
             currentItem.visited = true;
             this.evaluateCompletion();
-            // give focus to close button 
-            $(".content-popup-icon-close").focus();
-        },
-
-        showContentWithItemIndex: function(index) {
-            this.$(".hotgrid-content-item").css({
-                display:"none"
-            });
-            this.$(".hotgrid-content-item").eq(index).css({
-                display:"block"
-            });
-
-            var $content = this.$(".hotgrid-content");
-            $content.css({ 
-                marginTop: -($content.height() / 2) + "px"
-            }).velocity({
-                opacity: 1,
-                translateY: 0
-            },{
-                display: "block"
-            });
-
-            this.$(".hotgrid-shadow").velocity({
-                opacity: 1
-            },{
-                display: "block"
-            });
         },
 
         getCurrentItem: function(index) {
@@ -145,24 +119,6 @@ define(function(require) {
             if (this.getVisitedItems().length == this.model.get('_items').length) {
                 this.setCompletionStatus();
             }
-        },
-
-        closeContent: function(event) {
-            if (event) event.preventDefault();
-            this.$(".hotgrid-content").velocity({
-                opacity: 0,
-                translateY: "-50px"
-            },{
-                display: "none"
-            });
-            // trigger popup closed to reset the tab index back to 0
-            Adapt.trigger('popup:closed');
-
-            this.$(".hotgrid-shadow").velocity({
-                opacity: 0
-            },{
-                display: "none"
-            });
         }
         
     });
