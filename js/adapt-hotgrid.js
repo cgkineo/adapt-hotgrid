@@ -16,7 +16,7 @@ define(function(require) {
             var items = this.model.get('_items');
             _.each(items, function(item) {
                 if (item._graphic.srcHover && item._graphic.srcVisited) {
-                    item._graphic.hasImageStates = false;
+                    item._graphic.hasImageStates = true;
                 }
             }, this);
             this.listenTo(Adapt, 'device:changed', this.resizeControl);
