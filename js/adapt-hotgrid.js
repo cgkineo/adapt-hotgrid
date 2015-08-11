@@ -78,11 +78,11 @@ define(function(require) {
         },
 
         alignItem: function(item, itemsToAlign) {
-            var totalItemWidth = item.width() * itemsToAlign;
-            var gridWidth = this.$(".hotgrid-grid").width();
-            var marginLeft = (gridWidth - totalItemWidth) / 2;
+            var columns = this.model.get("_columns");
+            var itemWidth = 100 / columns;
+            var marginLeft = itemWidth / 2;
             item.css({
-                marginLeft: marginLeft + "px"
+                marginLeft: marginLeft + "%"
             });
         },
 
