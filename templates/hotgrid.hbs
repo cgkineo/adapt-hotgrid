@@ -1,21 +1,21 @@
-<div class="component-inner hotgrid-inner" role="region" aria-label="{{_accessibility._ariaRegions.hotGrid}}">
+<div class="component-inner hotgrid-inner" role="region" aria-label="{{_globals._components._hotgrid.ariaRegion}}" {{#if _globals._components._hotgrid.ariaRegion}}tabindex="0"{{/if}}>
     {{> component this}}
     <div class="component-widget hotgrid-widget">
 
         <div class="hotgrid-grid">
             <div class="hotgrid-grid-inner clearfix">
                 {{#each _items}}
-                <div class="hotgrid-grid-item" aria="{{itemAria}}">
+                <div class="hotgrid-grid-item">
                     {{#if _graphic.hasImageStates}} 
-                        <a href="#" class="hotgrid-item-image hotgrid-item-states-image">                                                 
-                            <img src="{{_graphic.src}}" alt="{{_graphic.alt}}" title="{{_graphic.title}}"/>
-                            <img src="{{_graphic.srcHover}}" class="hotgrid-item-image-hover" alt="{{_graphic.alt}}" title="{{_graphic.title}}" >
-                            <img src="{{_graphic.srcVisited}}" class="hotgrid-item-image-visited" alt="{{_graphic.alt}}" title="{{_graphic.title}}" >                                          
+                        <a href="#" class="hotgrid-item-image hotgrid-item-states-image" role="button" aria-label="{{_graphic.title}}. {{_graphic.alt}}">                                                                                      
+                            <img src="{{_graphic.src}}"/>
+                            <img src="{{_graphic.srcHover}}" class="hotgrid-item-image-hover"/>
+                            <img src="{{_graphic.srcVisited}}" class="hotgrid-item-image-visited"/>                                          
                         </a>
                         <div class="hotgrid-item-title">{{_graphic.title}}</div>   
                     {{else}}
-                        <a href="#" class="hotgrid-item-image hotgrid-item-states-css">
-                             <img src="{{_graphic.src}}" class="" alt="{{_graphic.alt}}" title="{{_graphic.title}}"/>
+                        <a href="#" class="hotgrid-item-image hotgrid-item-states-css" role="button" aria-label="{{_graphic.title}}. {{_graphic.alt}}">
+                             <img src="{{_graphic.src}}"/>
                         </a>
                         <div class="hotgrid-item-title">{{_graphic.title}}</div>
                     {{/if}}                                        
