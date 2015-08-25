@@ -80,10 +80,18 @@ define(function(require) {
         alignItem: function(item, itemsToAlign) {
             var columns = this.model.get("_columns");
             var itemWidth = 100 / columns;
-            var marginLeft = itemWidth / 2;
-            item.css({
-                marginLeft: marginLeft + "%"
-            });
+
+            if (Adapt.config.get('_defaultDirection') == 'rtl') {
+                var marginRight = itemWidth / 2;
+                item.css({
+                    marginRight: marginRight + "%"
+                });
+            } else {
+                var marginLeft = itemWidth / 2;
+                item.css({
+                    marginLeft: marginLeft + "%"
+                });
+            }
         },
 
         showGridItemContent: function(event) {

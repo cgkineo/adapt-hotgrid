@@ -1,113 +1,96 @@
-{
-    "_id":"c-15",
-    "_parentId":"b-15",
-    "_type":"component",
-    "_component":"hotgrid",
-    "_classes":"",
-    "_layout":"full",
-    "title":"Adapt Hotgrid",
-    "displayTitle":"Adapt Hotgrid",
-    "body":"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis.",
-    "instruction":"",
-    "_columns":3,
-    "_items": [
-        {
-            "title": "Grid Item 1",
-            "body": "This is display text 1. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
-            "itemAria": "Item 1. Select here to open.",
-            "_graphic": {
-                "src": "course/en/images/gqcq-2-small.gif",
-                "srcHover":"course/en/images/gqcq-1-small.gif",
-                "srcVisited":"course/en/images/gqcq-1-small.gif",
-                "alt": "",
-                "title": ""
+    {
+        "_id":"c-05",
+        "_parentId":"b-05",
+        "_type":"component",
+        "_component":"hotgrid",
+        "_classes":"",
+        "_layout":"full",
+        "title":"Adapt Hotgrid",
+        "displayTitle":"Adapt Hotgrid",
+        "body":"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis.",
+        "instruction":"",
+        "_columns":3,
+        "_items": [
+            {
+                "title": "Grid Item 1",
+                "body": "This is display text 1. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
+                "_graphic": {
+                    "src": "course/en/images/c-15.png",
+                    "srcHover":"course/en/images/c-15-hover.png",
+                    "srcVisited":"course/en/images/c-15-visited.png",
+                    "alt": "alt text here test",
+                    "title": "Item Title 1"
+                },
+                 "_itemGraphic": {
+                    "src": "course/en/images/c-15.png",
+                    "alt": "alt text"
+                }
             },
-             "_itemGraphic": {
-                "src": "course/en/images/gqcq-2-small.gif",
-                "alt": "alt text"
-            }
-        },
-        {
-            "title": "Grid Item 2",
-            "body": "This is display text 1. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
-            "itemAria": "Item 2. Select here to open.",
-            "_graphic": {
-                "src": "course/en/images/gqcq-2-small.gif",
-                "srcHover":"course/en/images/gqcq-1-small.gif",
-                "srcVisited":"course/en/images/gqcq-1-small.gif",
-                "alt": "",
-                "title": ""
+            {
+                "title": "Grid Item 2",
+                "body": "This is display text 1. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
+                "_graphic": {
+                    "src": "course/en/images/c-15.png",
+                    "srcHover":"course/en/images/c-15-hover.png",
+                    "srcVisited":"course/en/images/c-15-visited.png",
+                    "alt": "",
+                    "title": "Item Title 2"
+                },
+                 "_itemGraphic": {
+                    "src": "course/en/images/c-15.png",
+                    "alt": "alt text"
+                }
             },
-             "_itemGraphic": {
-                "src": "course/en/images/gqcq-1-small.gif",
-                "alt": "alt text"
-            }
-        },
-        {
-            "title": "Grid Item 3",
-            "body": "This is display text 1. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
-            "itemAria": "Item 3. Select here to open.",
-            "_graphic": {
-                "src": "course/en/images/gqcq-2-small.gif",
-                "srcHover":"course/en/images/gqcq-1-small.gif",
-                "srcVisited":"course/en/images/gqcq-1-small.gif",
-                "alt": "",
-                "title": ""
+            {
+                "title": "Grid Item 3",
+                "body": "This is display text 1. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
+                "_graphic": {
+                    "src": "course/en/images/c-15.png",
+                    "srcHover":"course/en/images/c-15-hover.png",
+                    "srcVisited":"course/en/images/c-15-visited.png",
+                    "alt": "",
+                    "title": "Item Title 3"
+                },
+                 "_itemGraphic": {
+                    "src": "course/en/images/c-15.png",
+                    "alt": "alt text"
+                }
             },
-             "_itemGraphic": {
-                "src": "course/en/images/gqcq-2-small.gif",
-                "alt": "alt text"
-            }
-        },
-        {
-            "title": "Grid Item 4",
-            "body": "This is display text 1. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
-            "itemAria": "Item 4. Select here to open.",
-            "_graphic": {
-                "src": "course/en/images/gqcq-2-small.gif",
-                "srcHover":"course/en/images/gqcq-1-small.gif",
-                "srcVisited":"course/en/images/gqcq-1-small.gif",
-                "alt": "",
-                "title": ""
+            {
+                "title": "Grid Item 4",
+                "body": "This is display text 1. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
+                "_graphic": {
+                    "src": "course/en/images/c-15.png",
+                    "srcHover":"course/en/images/c-15-hover.png",
+                    "srcVisited":"course/en/images/c-15-visited.png",
+                    "alt": "",
+                    "title": "Item Title 4"
+                },
+                 "_itemGraphic": {
+                    "src": "course/en/images/c-15.png",
+                    "alt": "alt text"
+                }
             },
-             "_itemGraphic": {
-                "src": "course/en/images/gqcq-1-small.gif",
-                "alt": "alt text"
+            {
+                "title": "Grid Item 5",
+                "body": "This is display text 1. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
+                "_graphic": {
+                    "src": "course/en/images/c-15.png",
+                    "srcHover":"course/en/images/c-15-hover.png",
+                    "srcVisited":"course/en/images/c-15-visited.png",
+                    "alt": "",
+                    "title": "Item Title 5"
+                },
+                 "_itemGraphic": {
+                    "src": "course/en/images/c-15.png",
+                    "alt": "alt text"
+                }
             }
-        },
-        {
-            "title": "Grid Item 5",
-            "body": "This is display text 1. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
-            "itemAria": "Item 5. Select here to open.",
-            "_graphic": {
-                "src": "course/en/images/gqcq-2-small.gif",
-                "srcHover":"course/en/images/gqcq-1-small.gif",
-                "srcVisited":"course/en/images/gqcq-1-small.gif",
-                "alt": "",
-                "title": ""
-            },
-             "_itemGraphic": {
-                "src": "course/en/images/gqcq-1-small.gif",
-                "alt": "alt text"
-            }
-        },
-        {
-            "title": "Grid Item 6",
-            "body": "This is display text 1. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
-            "itemAria": "Item 6. Select here to open.",
-            "_graphic": {
-                "src": "course/en/images/gqcq-2-small.gif",
-                "srcHover":"course/en/images/gqcq-1-small.gif",
-                "srcVisited":"course/en/images/gqcq-1-small.gif",
-                "alt": "",
-                "title": ""
-            },
-             "_itemGraphic": {
-                "src": "course/en/images/gqcq-1-small.gif",
-                "srcHover":"",
-                "srcVisited":"",
-                "alt": "alt text"
-            }
-        }
-    ]
-}
+        ]
+    }
+
+    // Accessibility supported courses require ARIA instruction - apply to _globals in course.json
+
+    "_hotgrid": {
+        "ariaRegion": "This component contains selectable grid items. Select an item to trigger a popup that includes an image with display text. Select the close button to close the popup."
+    }
