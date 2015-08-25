@@ -1,117 +1,57 @@
-adapt-hotgrid
-===========
+# adapt-hotgrid
 
-This presentation component takes a set of images and displays them in a grid layout. When an image is clicked a modal is shown containing related content.
+**Hotgrid** is a *presentation component* which displays a set of images in a grid layout. 
 
-###Example JSON
+When a learner selects an image, a pop-up is displayed that consists of text with an image.
 
-Configuration options are explained below.
+## Settings Overview
 
-```
-{
-    "_id":"c-15",
-    "_parentId":"b-15",
-    "_type":"component",
-    "_component":"hotgrid",
-    "_classes":"",
-    "_layout":"full",
-    "title":"Adapt Hotgrid",
-    "displayTitle":"Adapt Hotgrid",
-    "body":"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis.",
-    "instruction":"",
-    "_columns":3,
-    "_items": [
-        {
-            "title": "Grid Item 1",
-            "body": "This is display text 1. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
-            "itemAria": "Item 1. Select here to open.",
-            "_graphic": {
-                "src": "course/en/images/gqcq-2-small.gif",
-                "srcHover":"course/en/images/gqcq-1-small.gif",
-                "srcVisited":"course/en/images/gqcq-1-small.gif",
-                "alt": "",
-                "title": ""
-            },
-             "_itemGraphic": {
-                "src": "course/en/images/gqcq-2-small.gif",
-                "alt": "alt text"
-            }
-        },
-        {
-            "title": "Grid Item 2",
-            "body": "This is display text 1. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
-            "itemAria": "Item 2. Select here to open.",
-            "_graphic": {
-                "src": "course/en/images/gqcq-2-small.gif",
-                "srcHover":"course/en/images/gqcq-1-small.gif",
-                "srcVisited":"course/en/images/gqcq-1-small.gif",
-                "alt": "",
-                "title": ""
-            },
-             "_itemGraphic": {
-                "src": "course/en/images/gqcq-1-small.gif",
-                "alt": "alt text"
-            }
-        },
-        {
-            "title": "Grid Item 3",
-            "body": "This is display text 1. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
-            "itemAria": "Item 3. Select here to open.",
-            "_graphic": {
-                "src": "course/en/images/gqcq-2-small.gif",
-                "srcHover":"course/en/images/gqcq-1-small.gif",
-                "srcVisited":"course/en/images/gqcq-1-small.gif",
-                "alt": "",
-                "title": ""
-            },
-             "_itemGraphic": {
-                "src": "course/en/images/gqcq-2-small.gif",
-                "alt": "alt text"
-            }
-        }
-    ]
-}
-```
+The attributes listed below are used in *components.json* to configure **Hotgrid**, and are properly formatted as JSON in [*example.json*](https://github.com/cgkineo/adapt-hotgrid/blob/master/example.json). 
 
-###Config options
+### Attributes
 
-#####Columns
+[**core model attributes**](https://github.com/adaptlearning/adapt_framework/wiki/Core-model-attributes): These are inherited by every Adapt component. [Read more](https://github.com/adaptlearning/adapt_framework/wiki/Core-model-attributes).
 
-```
-"_columns":3,
-```
+**_component** (string): This value must be: `hotgrid`. (One word.)
 
-Any number of columns can be set on the grid. Be careful with setting a high number here since the more columns there are the smaller the items will be.
+**_classes** (string): CSS class name to be applied to **Hotgrid**’s containing `div`. The class must be predefined in one of the Less files. Separate multiple classes with a space.
 
-Hotgrid has a dynamic layout system. If you have 5 items but set the columns to 3, hotgrid will put 3 items in the first row and 2 on the second. The second row then will be automatically centred. This works with any amount of items and columns - ie that last row will always be centred for you. 
+**_layout** (string): This defines the horizontal position of the component in the block. Acceptable values are `full`, `left` or `right`.  
 
-Hotgrid automatically switches to 2 columns in mobile mode for the best user experience. This can be overridden in the css.
+**instruction** (string): This optional text appears above the component. It is frequently used to guide the learner’s interaction with the component.  
 
-####Items
+**_columns** (number): This value determines the number of columns within the grid. Any number of columns can be set however keep in mind the more columns there are the smaller the items will be.
 
-```
-{
-    "title": "Grid Item 1",
-    "body": "This is display text 1",
-    "itemAria": "Item 1. Select here to open.",
-    "_graphic": {
-        "src": "course/en/images/gqcq-2-small.gif",
-        "srcHover":"course/en/images/gqcq-1-small.gif",
-        "srcVisited":"course/en/images/gqcq-1-small.gif",
-        "alt": "",
-        "title": ""
-    },
-     "_itemGraphic": {
-        "src": "course/en/images/gqcq-2-small.gif",
-        "alt": "alt text"
-    }
-}
-```
+Hotgrid has a dynamic layout system. If you have 5 items but set the columns to 3, hotgrid will put 3 items in the first row and 2 on the second. The second row then will be automatically centred. This works with any amount of items and columns - ie that last row will always be centred for you.
 
-An item is setup using the above JSON.
+**_items** (string): Multiple items may be created. Each item represents one grid item for this component and contains values for **title**, **body**, **_graphic** and **_itemGraphic**. 
 
-The graphic requires 3 images for each state - default, hover and visited.
+>**title** (string): This is the title text for a grid item pop-up.
 
-Item Aria is a unique label set on each item to include an item description or instruction.
+>**body** (string): This is the main text for a grid item pop-up.
 
-The title, body and item graphic appear in the modal pop up when the graphic is clicked.
+>**_graphic** (string): This is the image that displays for each grid item. This graphic requires three state **src** values, with additional values **alt** and **title**.
+
+>>**src** (string): File name (including path) of the image. Path should be relative to the *src* folder (e.g., *course/en/images/c-15.png*). Three src values are set to display default, hover and visitred states - **src** (default), **srcHover** and **srcVisited**.
+
+>>**alt** (string): This text becomes the image’s `alt` attribute.
+
+>>**title** (string): This is optional text which is displayed under the grid item image.
+
+>**_itemGraphic** (string): This is the image for a grid item pop-up. This also contains values **src** and **alt**. 
+
+### Accessibility
+**Hotgrid** has a label assigned using the [aria-label](https://github.com/adaptlearning/adapt_framework/wiki/Aria-Labels) attribute: **ariaRegion**. These labels are not visible elements. They are utilized by assistive technology such as screen readers. This label is included within the *example.json* and will need adding to the _globals in *course.json*.
+
+## Limitations
+ 
+Hotgrid automatically switches to 2 columns in mobile mode for the best user experience however this can be overridden in the css. 
+
+
+----------------------------
+**Version number:**  2.0
+**Framework versions:**  2.0     
+**Author / maintainer:**   
+**Accessibility support:** WAI AA   
+**RTL support:** yes  
+**Cross-platform coverage:** Chrome, Chrome for Android, Firefox (ESR + latest version), IE 11, IE10, IE9, IE8, IE Mobile 11, Safari for iPhone (iOS 7+8), Safari for iPad (iOS 7+8), Safari 8, Opera  
