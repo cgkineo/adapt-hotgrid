@@ -14,6 +14,10 @@
 				.item-states-image.visited;					
 			}	
 		}
+
+		.dir-rtl & {
+			float: right;
+		}
 	}
 
 	.hotgrid-item-image {
@@ -40,98 +44,29 @@
 
 	}
 
-	.hotgrid-shadow {
-		display: none;
-		opacity: 0;
-		position: fixed;
-		z-index: 998;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		left: 0;
-		background-color: @transparency;
+}
+
+.hotgrid-notify-body {
+	float: left;
+	.dir-rtl & {
+		float: right;
 	}
-
-	.hotgrid-content {
-		position: fixed;
-		top: 50%;
-		left: 0;
-		width: 100%;
-		overflow: hidden;
-		background-color: @secondary-color;
-		display:none;
-		opacity:0;
-		z-index: 999;
-
-		@media all and (max-width:(@device-width-small - 1)) {
-		 	margin:0!important;
-		 	top: 0;
-		 	height: 100%;
-			overflow-y: scroll;
-		    -webkit-overflow-scrolling: touch;
-		}
-
-	}
-
-	.hotgrid-content-inner {
-		max-width: @device-width-large;
-		margin: auto;
-	}
-
-	.hotgrid-content-item {
-		display:none;
-	}
-
-	.hotgrid-content-item-inner {
-		padding: 0 20px 20px;
-	}
-
-	.hotgrid-contents {
+	@media (min-width: (@device-width-medium + 1)) {
 		width: 60%;
+		padding-bottom: @notify-padding-bottom;
+	}
+}
+
+.hotgrid-notify-graphic {
+	float: right;
+	.dir-rtl & {
 		float: left;
-		@media all and (max-width:(@device-width-medium - 1)) {
-		 	width: auto;
-		 	margin-bottom: 20px;
-		}
 	}
-
-	.hotgrid-contents-inner {
-		margin-right: 20px;
-	}
-
-	.hotgrid-item-graphic {
+	@media (min-width: (@device-width-medium + 1)) {
 		width: 40%;
-	    float: right;
-	    text-align: center;
-	    @media all and (max-width:(@device-width-medium - 1)) {
-		 	width: auto;
-		}
+		margin-top: -@notify-title-padding-bottom;
+		padding-bottom: @notify-padding-bottom;
 	}
-
-	.hotgrid-content-title {
-		color: @background-color;
-	}
-
-	.hotgrid-content-body {
-		color: @background-color;
-	}
-
-	.content-popup-icon-close {
-		float:right;
-		color:@background-color;
-		padding: 10px;
-		font-size: 26px;
-		.no-touch & {
-			&:hover {
-				color:darken(@background-color, 30%);
-			}
-		}
-	}
-
-	.hotgrid-item-title {
-		color: white;
-	}
-
 }
 
 .item-states-image {
