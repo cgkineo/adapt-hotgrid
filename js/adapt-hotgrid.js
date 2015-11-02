@@ -33,7 +33,9 @@ define(function(require) {
 
         postRender: function() {
             this.setupGrid();
-            this.setReadyStatus();
+            this.$('.hotgrid-widget').imageready(_.bind(function() {
+                this.setReadyStatus();
+            }, this));
         },
 
         resizeControl: function() {
