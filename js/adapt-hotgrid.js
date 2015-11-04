@@ -10,6 +10,8 @@ define(function(require) {
             "click .hotgrid-item-image":"showGridItemContent"
         },
         
+        isPopupOpen: false,
+        
         preRender: function () {
             var items = this.model.get('_items');
             _.each(items, function(item) {
@@ -17,7 +19,9 @@ define(function(require) {
                     item._graphic.hasImageStates = true;
                 }
             }, this);
+            
             this.listenTo(Adapt, 'device:changed', this.resizeControl);
+            
             this.setDeviceSize();
         },
 
@@ -99,6 +103,8 @@ define(function(require) {
         showGridItemContent: function(event) {
             if (event) event.preventDefault();
 
+            if(this.isPopupOpen) return;
+
             var $item = $(event.currentTarget).parent();
             var currentItem = this.getCurrentItem($item.index());
             var popupObject = {
@@ -109,9 +115,16 @@ define(function(require) {
                     currentItem._itemGraphic.alt + "'/>"
             };
 
-            Adapt.trigger("notify:popup", popupObject);
             $item.addClass("visited");
             currentItem.visited = true;
+
+            // ensure multiple clicks don't open multiple notify popups
+            this.isPopupOpen = true;
+            Adapt.once("notify:closed", _.bind(function() {
+                this.isPopupOpen = false;
+            }, this));
+            Adapt.trigger("notify:popup", popupObject);
+
             this.evaluateCompletion();
         },
 
