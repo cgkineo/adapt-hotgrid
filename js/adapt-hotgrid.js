@@ -103,17 +103,10 @@ define(function(require) {
         showGridItemContent: function(event) {
             if (event) event.preventDefault();
 
-            if(this.isPopupOpen) return;
+            if(this.isPopupOpen) return;// ensure multiple clicks don't open multiple notify popups
 
             var $item = $(event.currentTarget).parent();
             var currentItem = this.getCurrentItem($item.index());
-            var popupObject = {
-                title: currentItem.title,
-                body: "<div class='hotgrid-notify-body'>" + currentItem.body +
-                    "</div><img class='hotgrid-notify-graphic' src='" +
-                    currentItem._itemGraphic.src + "' alt='" +
-                    currentItem._itemGraphic.alt + "'/>"
-            };
 
             if(!currentItem.visited) {
                 $item.addClass("visited");
@@ -121,12 +114,18 @@ define(function(require) {
                 currentItem.visited = true;
             }
 
-            // ensure multiple clicks don't open multiple notify popups
+            Adapt.trigger("notify:popup", {
+                title: currentItem.title,
+                body: "<div class='hotgrid-notify-body'>" + currentItem.body +
+                    "</div><img class='hotgrid-notify-graphic' src='" +
+                    currentItem._itemGraphic.src + "' alt='" +
+                    currentItem._itemGraphic.alt + "'/>"
+            });
+
             this.isPopupOpen = true;
             Adapt.once("notify:closed", _.bind(function() {
                 this.isPopupOpen = false;
             }, this));
-            Adapt.trigger("notify:popup", popupObject);
 
             this.evaluateCompletion();
         },
