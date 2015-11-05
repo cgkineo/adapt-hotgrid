@@ -7,14 +7,14 @@
                 {{#each _items}}
                 <div class="hotgrid-grid-item">
                     {{#if _graphic.hasImageStates}} 
-                        <a href="#" class="hotgrid-item-image hotgrid-item-states-image" role="button" aria-label="{{_graphic.title}}. {{_graphic.alt}}">                                                                                      
+                        <a href="#" class="hotgrid-item-image hotgrid-item-states-image" role="button" aria-label="{{_graphic.title}}{{#if _graphic.title}}. {{/if}}{{_graphic.alt}}">                                                                                      
                             <img src="{{_graphic.src}}"/>
                             <img src="{{_graphic.srcHover}}" class="hotgrid-item-image-hover"/>
                             <img src="{{_graphic.srcVisited}}" class="hotgrid-item-image-visited"/>                                          
                         </a>
                         <div class="hotgrid-item-title">{{_graphic.title}}</div>   
                     {{else}}
-                        <a href="#" class="hotgrid-item-image hotgrid-item-states-css" role="button" aria-label="{{_graphic.title}}. {{_graphic.alt}}">
+                        <a href="#" class="hotgrid-item-image hotgrid-item-states-css" role="button" aria-label="{{_graphic.title}}{{#if _graphic.title}}. {{/if}}{{_graphic.alt}}">
                              <img src="{{_graphic.src}}"/>
                         </a>
                         <div class="hotgrid-item-title">{{_graphic.title}}</div>
