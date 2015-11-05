@@ -115,8 +115,11 @@ define(function(require) {
                     currentItem._itemGraphic.alt + "'/>"
             };
 
-            $item.addClass("visited");
-            currentItem.visited = true;
+            if(!currentItem.visited) {
+                $item.addClass("visited");
+                $(event.currentTarget).attr('aria-label', $(event.currentTarget).attr('aria-label') + ". " + this.model.get('_globals')._accessibility._ariaLabels.visited + ".");
+                currentItem.visited = true;
+            }
 
             // ensure multiple clicks don't open multiple notify popups
             this.isPopupOpen = true;
