@@ -1,18 +1,17 @@
 .hotgrid-component {
-
 	.hotgrid-widget {
 		position: relative;
 	}
 
 	.hotgrid-grid-item {
-		float:left;
+		float: left;
 		text-align: center;
-		width:50%;
+		width: 50%;
 
 		&.visited {
 			.hotgrid-item-states-image {
-				.item-states-image.visited;					
-			}	
+				.item-states-image.visited;
+			}
 		}
 
 		.dir-rtl & {
@@ -21,62 +20,74 @@
 	}
 
 	.hotgrid-item-image {
-		display:block;
+		display: block;
 		margin: 10px;
 
 		img {
 			display: block;
 			transition: all 0.25s;
-		}		
+		}
 
 		&.hotgrid-item-states-image {
 			.item-states-image.default;
-			.no-touch & {
-				&:hover {
-					.item-states-image.hover;
-				}
-			}											
+
+			.no-touch &:hover {
+				.item-states-image.hover;
+			}
 		}
 
 		@media all and (max-width:(@device-width-medium - 1)) {
 			margin: 5px;
 		}
-
 	}
+}
 
+.hotgrid-notify-container {
+	text-align: center;
 }
 
 .hotgrid-notify-body {
 	float: left;
+	padding-bottom: @notify-padding-bottom;
+	text-align: left;
+	width: 58%;
+
 	.dir-rtl & {
 		float: right;
 	}
-	@media (min-width: (@device-width-medium + 1)) {
-		width: 60%;
-		padding-bottom: @notify-padding-bottom;
+
+	@media (max-width: @device-width-medium) {
+		padding-bottom: (@notify-padding-bottom / 3);
+		width: 100%;
 	}
 }
 
 .hotgrid-notify-graphic {
 	float: right;
+	margin-top: -@notify-title-padding-bottom;
+	padding-bottom: @notify-padding-bottom;
+	width: 40%;
+
 	.dir-rtl & {
 		float: left;
 	}
-	@media (min-width: (@device-width-medium + 1)) {
-		width: 40%;
-		margin-top: -@notify-title-padding-bottom;
-		padding-bottom: @notify-padding-bottom;
+
+	@media (max-width: @device-width-medium) {
+		float: none;
+		margin-top: 0;
+		padding-bottom: 0;
+		width: 75%;
 	}
 }
 
 .item-states-image {
-
 	.default {
 		img.hotgrid-item-image-hover {
 			display: none;
-		}			
+		}		
+
 		img.hotgrid-item-image-visited {
-			display:none;
+			display: none;
 		}		
 	}
 
@@ -88,30 +99,19 @@
 			display: block;
 		}			
 		img.hotgrid-item-image-visited {
-			display:none;
+			display: none;
 		}
 	}
 
 	.visited {
 		> img {
-			display:none;
+			display: none;
 		}
 		img.hotgrid-item-image-hover {
 			display: none !important;
 		}			
 		img.hotgrid-item-image-visited {
-			display:block !important;
+			display: block !important;
 		}
 	}
-
 }
-
-
-
-
-
-
-
-
-
-
