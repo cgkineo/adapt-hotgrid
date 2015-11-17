@@ -157,16 +157,3 @@ define(function(require) {
     return Hotgrid;
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
