@@ -7,7 +7,7 @@ define(function(require) {
     var Hotgrid = ComponentView.extend({
  
         events: {
-            "click .hotgrid-item-image":"showGridItemContent"
+            "click .hotgrid-item-image":"onItemClicked"
         },
         
         isPopupOpen: false,
@@ -100,38 +100,42 @@ define(function(require) {
             }
         },
 
-        showGridItemContent: function(event) {
+        onItemClicked: function(event) {
             if (event) event.preventDefault();
 
-            if(this.isPopupOpen) return;// ensure multiple clicks don't open multiple notify popups
+            var $link = $(event.currentTarget);
+            var $item = $link.parent();
+            var itemModel = this.model.get('_items')[$item.index()];
 
-            var $item = $(event.currentTarget).parent();
-            var currentItem = this.getCurrentItem($item.index());
-
-            if(!currentItem.visited) {
+            if(!itemModel.visited) {
                 $item.addClass("visited");
-                $(event.currentTarget).attr('aria-label', $(event.currentTarget).attr('aria-label') + ". " + this.model.get('_globals')._accessibility._ariaLabels.visited + ".");
-                currentItem.visited = true;
+                itemModel.visited = true;
+                // append the word 'visited.' to the link's aria-label
+                var visitedLabel = this.model.get('_globals')._accessibility._ariaLabels.visited + ".";
+                $link.attr('aria-label', function(index,val) {return val + " " + visitedLabel});
             }
 
-            Adapt.trigger("notify:popup", {
-                title: currentItem.title,
-                body: "<div class='hotgrid-notify-container'><div class='hotgrid-notify-body'>" + currentItem.body +
-                    "</div><img class='hotgrid-notify-graphic' src='" +
-                    currentItem._itemGraphic.src + "' alt='" +
-                    currentItem._itemGraphic.alt + "'/></div>"
-            });
-
-            this.isPopupOpen = true;
-            Adapt.once("notify:closed", _.bind(function() {
-                this.isPopupOpen = false;
-            }, this));
+            this.showItemContent(itemModel);
 
             this.evaluateCompletion();
         },
 
-        getCurrentItem: function(index) {
-            return this.model.get('_items')[index];
+        showItemContent: function(itemModel) {
+			if(this.isPopupOpen) return;// ensure multiple clicks don't open multiple notify popups
+
+            Adapt.trigger("notify:popup", {
+                title: itemModel.title,
+                body: "<div class='hotgrid-notify-body'>" + itemModel.body +
+                    "</div><img class='hotgrid-notify-graphic' src='" +
+                    itemModel._itemGraphic.src + "' alt='" +
+                    itemModel._itemGraphic.alt + "'/>"
+            });
+
+            this.isPopupOpen = true;
+
+            Adapt.once("notify:closed", _.bind(function() {
+                this.isPopupOpen = false;
+            }, this));
         },
         
         getVisitedItems: function() {
