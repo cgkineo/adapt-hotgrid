@@ -148,10 +148,10 @@ define(function(require) {
             if (this.getVisitedItems().length == this.model.get('_items').length) {
                 this.setCompletionStatus();
             }
-        },{
-            template: "hotgrid";
         }
         
+    },{
+        template: "hotgrid";
     });
     
     Adapt.register("hotgrid", Hotgrid);
