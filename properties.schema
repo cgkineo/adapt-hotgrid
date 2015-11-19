@@ -15,7 +15,7 @@
   "properties":{
     "_columns": {
       "type":"number",
-      "required":false,
+      "required":true,
       "title": "Columns",
       "inputType": "Number",
       "default": 3,
@@ -63,18 +63,18 @@
               },
               "srcHover": {
                 "type":"string",
-                "required":true,
+                "required":false,
                 "default": "",
                 "inputType": "Asset:image",
-                "validators": ["required"],
+                "validators": [],
                 "help": "The item image (hover state)."
               },
               "srcVisited": {
                 "type":"string",
-                "required":true,
+                "required":false,
                 "default": "",
                 "inputType": "Asset:image",
-                "validators": ["required"],
+                "validators": [],
                 "help": "The item image (visited state)."
               },
               "alt": {
