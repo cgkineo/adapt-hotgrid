@@ -151,7 +151,7 @@ define(function(require) {
         }
         
     },{
-        template: "hotgrid";
+        template: "hotgrid"
     });
     
     Adapt.register("hotgrid", Hotgrid);
