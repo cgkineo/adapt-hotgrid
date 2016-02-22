@@ -5,15 +5,6 @@
   "homepage": "https://github.com/cgkineo/adapt-hotgrid",
   "displayName": "Hotgrid",
   "component": "hotgrid",
-  "assetFields": [
-    "_items[]._graphic.src",
-    "_items[]._graphic.srcHover",
-    "_items[]._graphic.srcVisited",
-    "_items[]._itemGraphic.src"
-  ],
-  "authors": [
-    "Salamat Ali <Mohammed.SalamatAli@kineo.com>"
-  ],
   "description": "A component that displays selectable images in a grid format.",
   "main": "/js/adapt-hotgrid.js",
   "keywords": [
