@@ -4,7 +4,7 @@
     "framework": "^2.0.0",
     "version": "2.0.0",
     "homepage": "https://github.com/cgkineo/adapt-hotgrid",
-    "issues": "https://github.com/cgkineo/adapt-hotgrid/issues/"
+    "issues": "https://github.com/cgkineo/adapt-hotgrid/issues/",
     "displayName": "Hotgrid",
     "component": "hotgrid",
     "description": "A component that displays selectable images in a grid format.",
