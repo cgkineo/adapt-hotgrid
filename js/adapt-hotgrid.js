@@ -117,7 +117,6 @@ define(function(require) {
 
             this.showItemContent(itemModel);
 
-            this.evaluateCompletion();
         },
 
         showItemContent: function(itemModel) {
@@ -135,6 +134,7 @@ define(function(require) {
 
             Adapt.once("notify:closed", _.bind(function() {
                 this.isPopupOpen = false;
+                this.evaluateCompletion();
             }, this));
         },
         
