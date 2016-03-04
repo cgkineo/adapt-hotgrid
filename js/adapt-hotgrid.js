@@ -50,9 +50,7 @@ define(function(require) {
         setUpColumns: function() {
             var columns = this.model.get('_columns');
 
-            if (!columns) return;
-
-            if (Adapt.device.screenSize === 'large') {
+           if (columns && Adapt.device.screenSize === 'large') {
                 this.$('.hotgrid-grid-item').css('width', (100 / columns) + '%');
             }
         },
