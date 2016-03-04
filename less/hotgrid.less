@@ -1,21 +1,20 @@
 .hotgrid-component {
 	.hotgrid-widget {
+		font-size: 0;
 		position: relative;
+		text-align: center;
 	}
 
 	.hotgrid-grid-item {
-		float: left;
+		display: inline-block;
 		text-align: center;
+		vertical-align: top;
 		width: 50%;
 
 		&.visited {
 			.hotgrid-item-states-image {
 				.item-states-image.visited;
 			}
-		}
-
-		.dir-rtl & {
-			float: right;
 		}
 	}
 
@@ -39,6 +38,10 @@
 		@media all and (max-width:(@device-width-medium - 1)) {
 			margin: 5px;
 		}
+	}
+	
+	.hotgrid-item-title {
+		font-size: @body-text-font-size;
 	}
 }
 
