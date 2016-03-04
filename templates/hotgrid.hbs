@@ -4,18 +4,24 @@
 
         <div class="hotgrid-grid">
             <div class="hotgrid-grid-inner clearfix">
+                
                 {{#each _items}}
                 <div class="hotgrid-grid-item {{#if visited}}visited{{/if}}">
-                    <a href="#" class="hotgrid-item-image hotgrid-item-states-{{#if _graphic.hasImageStates}}image{{else}}css{{/if}}" role="button" aria-label="{{#if _graphic.title}}{{_graphic.title}}.{{/if}}{{#if _graphic.alt}} {{_graphic.alt}}.{{/if}}{{#if visited}} {{../../_globals._accessibility._ariaLabels.visited}}.{{/if}}">
+                    <button class="base hotgrid-item-image hotgrid-item-states-{{#if _graphic.hasImageStates}}image{{else}}css{{/if}}" role="button" aria-label="{{#if _graphic.title}}{{_graphic.title}}.{{/if}}{{#if _graphic.alt}} {{_graphic.alt}}.{{/if}}{{#if visited}} {{../../_globals._accessibility._ariaLabels.visited}}.{{/if}}">
                         <img src="{{_graphic.src}}"/>
-                    {{#if _graphic.hasImageStates}} 
-                            <img src="{{_graphic.srcHover}}" class="hotgrid-item-image-hover"/>
-                            <img src="{{_graphic.srcVisited}}" class="hotgrid-item-image-visited"/>                                          
+                        
+                        {{#if _graphic.hasImageStates}} 
+                        <img src="{{_graphic.srcHover}}" class="hotgrid-item-image-hover"/>
+                        <img src="{{_graphic.srcVisited}}" class="hotgrid-item-image-visited"/>                                          
                         {{/if}}
-                        </a>
-                        <div class="hotgrid-item-title">{{_graphic.title}}</div>   
+                        
+                    </button>
+                    
+                    <div class="hotgrid-item-title">{{_graphic.title}}</div>   
+                    
                 </div>
                 {{/each}}
+                
             </div>
         </div>
 
