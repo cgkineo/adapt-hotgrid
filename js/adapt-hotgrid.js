@@ -36,7 +36,7 @@ define(function(require) {
         },
 
         postRender: function() {
-            this.setupGrid();
+            this.setUpColumns();
             this.$('.hotgrid-widget').imageready(_.bind(function() {
                 this.setReadyStatus();
             }, this));
@@ -47,56 +47,11 @@ define(function(require) {
             this.render();
         },
 
-        setupGrid: function() {
-            if (this.model.get("_isDesktop")) {
-                var columns = this.model.get("_columns");
-                var itemWidth = 100 / columns;
-                this.$(".hotgrid-grid-item").css({
-                    width: itemWidth + "%"
-                });
-                this.setItemlayout()
-            }
-        },
+        setUpColumns: function() {
+            var columns = this.model.get('_columns');
 
-        setItemlayout: function() {
-            var columns = this.model.get("_columns");
-            var itemLength = this.model.get("_items").length;
-            var $items = this.$(".hotgrid-grid-item");
-            var itemRemainder = itemLength % columns;
-            if (itemRemainder !== 0) {
-                if (itemRemainder === 1) {
-                    var index = itemLength - 1;
-                    var $item = $items.eq(index);
-                    this.centerItem($item);
-                } else {
-                    var itemToAlignIndex = itemLength - itemRemainder;
-                    var $item = $items.eq(itemToAlignIndex);
-                    this.alignItem($item, itemRemainder);
-                }
-            }
-        },
-
-        centerItem: function(item) {
-            item.css({
-                float: "none",
-                margin: "auto"
-            });
-        },
-
-        alignItem: function(item, itemsToAlign) {
-            var columns = this.model.get("_columns");
-            var itemWidth = 100 / columns;
-
-            if (Adapt.config.get('_defaultDirection') == 'rtl') {
-                var marginRight = itemWidth / 2;
-                item.css({
-                    marginRight: marginRight + "%"
-                });
-            } else {
-                var marginLeft = itemWidth / 2;
-                item.css({
-                    marginLeft: marginLeft + "%"
-                });
+           if (columns && Adapt.device.screenSize === 'large') {
+                this.$('.hotgrid-grid-item').css('width', (100 / columns) + '%');
             }
         },
 

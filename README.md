@@ -46,10 +46,10 @@ Hotgrid has a dynamic layout system. If you have 5 items but set the columns to 
 ## Limitations
  
 Hotgrid automatically switches to 2 columns in mobile mode for the best user experience however this can be overridden in the css. 
-
+Version 2.1.0 contains two changes that could potentially break if users update from previous versions. The first, the introduction of `font-size: 0;` on the item container div, may cause item titles not to appear. Applying a font size to the titles will resolve this issue. The second, changing clickable elements from `<a>` to `<button>`, may cause display errors if the `<a>` tag has been directly targeted in the JS or LESS files. To resolve, target the `<button>` tag instead.
 
 ----------------------------
-**Version number:**  2.0
+**Version number:**  2.1.0
 **Framework versions:**  2.0     
 **Author / maintainer:**   
 **Accessibility support:** WAI AA   
