@@ -50,7 +50,7 @@ define(function(require) {
         setUpColumns: function() {
             var columns = this.model.get('_columns');
 
-           if (columns && Adapt.device.screenSize === 'large') {
+            if (columns && Adapt.device.screenSize === 'large') {
                 this.$('.hotgrid-grid-item').css('width', (100 / columns) + '%');
             }
         },
@@ -75,7 +75,7 @@ define(function(require) {
         },
 
         showItemContent: function(itemModel) {
-			if(this.isPopupOpen) return;// ensure multiple clicks don't open multiple notify popups
+            if(this.isPopupOpen) return;// ensure multiple clicks don't open multiple notify popups
 
             Adapt.trigger("notify:popup", {
                 title: itemModel.title,
