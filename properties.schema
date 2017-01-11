@@ -13,6 +13,15 @@
     }
   },
   "properties":{
+    "instruction": {
+      "type": "string",
+      "required": false,
+      "default": "",
+      "inputType": "Text",
+      "validators": [],
+      "help": "This is the instruction text",
+      "translatable": true
+    },
     "_columns": {
       "type":"number",
       "required":true,
