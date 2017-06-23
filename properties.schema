@@ -60,7 +60,7 @@
             "required":false,
             "default": "",
             "title": "Item Popup Body",
-            "inputType": "Text",
+            "inputType": "TextArea",
             "validators": [],
             "help": "This is the body text for a grid item pop-up."
           },
