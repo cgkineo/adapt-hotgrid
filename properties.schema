@@ -12,7 +12,14 @@
       "validators": []
     }
   },
-  "properties":{
+  "properties": {
+    "_supportedLayout": {
+      "type": "string",
+      "required": true,
+      "enum": ["full-width", "half-width", "both"],
+      "default": "half-width",
+      "editorOnly": true
+    },
     "instruction": {
       "type": "string",
       "required": false,
@@ -53,7 +60,7 @@
             "required":false,
             "default": "",
             "title": "Item Popup Body",
-            "inputType": "Text",
+            "inputType": "TextArea",
             "validators": [],
             "help": "This is the body text for a grid item pop-up."
           },
