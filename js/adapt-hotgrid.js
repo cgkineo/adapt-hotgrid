@@ -23,6 +23,8 @@ define(function(require) {
             this.listenTo(Adapt, 'device:changed', this.resizeControl);
             
             this.setDeviceSize();
+
+            this.checkIfResetOnRevisit();
         },
 
         setDeviceSize: function() {
@@ -32,6 +34,19 @@ define(function(require) {
             } else {
                 this.$el.addClass('mobile').removeClass('desktop');
                 this.model.set('_isDesktop', false)
+            }
+        },
+
+        checkIfResetOnRevisit: function() {
+            var isResetOnRevisit = this.model.get('_isResetOnRevisit');
+
+            // If reset is enabled set defaults
+            if (isResetOnRevisit) {
+                this.model.reset(isResetOnRevisit);
+
+                _.each(this.model.get('_items'), function(item) {
+                    item._isVisited = false;
+                });
             }
         },
 
