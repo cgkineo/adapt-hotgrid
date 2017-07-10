@@ -77,9 +77,9 @@ define(function(require) {
             var $item = $link.parent();
             var itemModel = this.model.get('_items')[$item.index()];
 
-            if(!itemModel.visited) {
+            if(!itemModel._isVisited) {
                 $item.addClass("visited");
-                itemModel.visited = true;
+                itemModel._isVisited = true;
                 // append the word 'visited.' to the link's aria-label
                 var visitedLabel = this.model.get('_globals')._accessibility._ariaLabels.visited + ".";
                 $link.attr('aria-label', function(index,val) {return val + " " + visitedLabel});
@@ -110,7 +110,7 @@ define(function(require) {
         
         getVisitedItems: function() {
             return _.filter(this.model.get('_items'), function(item) {
-                return item.visited;
+                return item._isVisited;
             });
         },
 
