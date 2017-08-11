@@ -11,18 +11,12 @@
 		text-align: center;
 		vertical-align: top;
 		width: 50%;
-
-		&.visited {
-			.hotgrid-item-states-image {
-				.item-states-image.visited;
-			}
-		}
 	}
 
 	.hotgrid-item-image {
 		display: block;
-		margin: 10px;
-		width: 100%;
+		margin: 2.5%;
+		width: 95%;
 
 		img {
 			display: block;
@@ -31,6 +25,10 @@
 
 		&.hotgrid-item-states-image {
 			.item-states-image.default;
+
+			&.visited {
+				.item-states-image.visited;
+			}
 
 			.no-touch &:hover {
 				.item-states-image.hover;
@@ -47,62 +45,28 @@
 	}
 }
 
-.hotgrid-notify-container {
-	text-align: center;
-}
-
-.hotgrid-notify-body {
-	float: left;
-	padding-bottom: @notify-padding-bottom;
-	text-align: left;
-	width: 58%;
-
-	.dir-rtl & {
-		float: right;
-	}
-
-	@media (max-width: @device-width-medium) {
-		padding-bottom: (@notify-padding-bottom / 3);
-		width: 100%;
-	}
-}
-
-.hotgrid-notify-graphic {
-	float: right;
-	margin-top: -@notify-title-padding-bottom;
-	padding-bottom: @notify-padding-bottom;
-	width: 40%;
-
-	.dir-rtl & {
-		float: left;
-	}
-
-	@media (max-width: @device-width-medium) {
-		float: none;
-		margin-top: 0;
-		padding-bottom: 0;
-		width: 75%;
-	}
-}
-
-.item-states-image {
+// Hotgrid item states - images
+// ==============================
+.item-states-image { 
 	.default {
 		img.hotgrid-item-image-hover {
 			display: none;
-		}		
+		}
 
 		img.hotgrid-item-image-visited {
 			display: none;
-		}		
+		}
 	}
 
 	.hover {
 		> img {
-			display:none;
+			display: none;
 		}
+
 		img.hotgrid-item-image-hover {
 			display: block;
-		}			
+		}
+
 		img.hotgrid-item-image-visited {
 			display: none;
 		}
@@ -112,11 +76,87 @@
 		> img {
 			display: none;
 		}
+
 		img.hotgrid-item-image-hover {
 			display: none !important;
-		}			
+		}
+
 		img.hotgrid-item-image-visited {
 			display: block !important;
 		}
 	}
 }
+
+// Hotgrid item states - css
+// ==============================
+.hotgrid-component {
+	.hotgrid-item-states-css {
+		border: 3px solid transparent;
+		/* uncomment if circular items */
+		// border-radius: 50%;  
+
+		.no-touch &:hover {
+			border: 3px solid @item-color;
+		}
+
+		&.visited {
+			position: relative;
+
+			&:after {
+				content: " ";
+				display: block;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				background-color: fade(@item-color-disabled, 50%);
+				/* uncomment if circular items */
+				//border-radius: 50%; 
+			}
+		}
+	}
+}
+
+// Hotgrid notify content layout
+// ==============================
+.hotgrid-notify-container {
+	font-size: 0;
+
+	.hotgrid-notify-body {
+		display: inline-block;
+		font-size: @body-text-font-size;
+		margin-right: 2%;
+		vertical-align: top;
+		width: 58%;
+
+		.dir-rtl & {
+			margin-right: inherit;
+			margin-left: 2%;
+		}
+
+		@media (max-width: @device-width-medium) {
+			margin-right: 0;
+			width: 100%;
+
+			.dir-rtl & {
+				margin-right: inherit;
+				margin-left: 0;
+			}
+		}
+
+	}
+
+	.hotgrid-notify-graphic {
+		display: inline-block;
+		vertical-align: top;
+		width: 40%;
+
+		@media (max-width: @device-width-medium) {
+			display: block;
+			margin: 20px auto 0;
+			width: 75%;
+		}
+	}
+}
+
