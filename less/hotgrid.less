@@ -43,6 +43,11 @@
 	.hotgrid-item-title {
 		font-size: @body-text-font-size;
 	}
+
+    //removes tap highlighting on webkit-based browsers found in some mobile devices
+    button.base.hotgrid-item-image {
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+    }
 }
 
 // Hotgrid item states - images
