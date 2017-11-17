@@ -1,5 +1,5 @@
 {
-  "type":"object",
+  "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "id": "http://jsonschema.net",
   "$ref": "http://localhost/plugins/content/component/model.schema",
@@ -30,8 +30,8 @@
       "translatable": true
     },
     "_columns": {
-      "type":"number",
-      "required":true,
+      "type": "number",
+      "required": true,
       "title": "Columns",
       "inputType": "Number",
       "default": 3,
@@ -39,16 +39,16 @@
       "help": "This value determines the number of columns within the grid. Any number of columns can be set however keep in mind the more columns there are the smaller the items will be."
     },
     "_items": {
-      "type":"array",
-      "required":true,
+      "type": "array",
+      "required": true,
       "title": "Items",
       "items": {
-        "type":"object",
-        "required":true,
-        "properties":{
+        "type": "object",
+        "required": true,
+        "properties": {
           "title": {
-            "type":"string",
-            "required":false,
+            "type": "string",
+            "required": false,
             "default": "",
             "title": "Item Popup Title",
             "inputType": "Text",
@@ -56,8 +56,8 @@
             "help": "This is the title text for a grid item pop-up."
           },
           "body": {
-            "type":"string",
-            "required":false,
+            "type": "string",
+            "required": false,
             "default": "",
             "title": "Item Popup Body",
             "inputType": "TextArea",
@@ -65,37 +65,37 @@
             "help": "This is the body text for a grid item pop-up."
           },
           "_graphic": {
-            "type":"object",
-            "required":true,
+            "type": "object",
+            "required": true,
             "title": "Button Graphic",
-            "properties":{
+            "properties": {
               "src": {
-                "type":"string",
-                "required":true,
+                "type": "string",
+                "required": true,
                 "default": "",
                 "inputType": "Asset:image",
                 "validators": ["required"],
                 "help": "The item image (default state)."
               },
               "srcHover": {
-                "type":"string",
-                "required":false,
+                "type": "string",
+                "required": false,
                 "default": "",
                 "inputType": "Asset:image",
                 "validators": [],
                 "help": "The item image (hover state)."
               },
               "srcVisited": {
-                "type":"string",
-                "required":false,
+                "type": "string",
+                "required": false,
                 "default": "",
                 "inputType": "Asset:image",
                 "validators": [],
                 "help": "The item image (visited state)."
               },
               "alt": {
-                "type":"string",
-                "required":false,
+                "type": "string",
+                "required": false,
                 "default": "",
                 "title": "Item alt text",
                 "inputType": "Text",
@@ -103,8 +103,8 @@
                 "help": "This text becomes the image’s alt attribute."
               },
               "title": {
-                "type":"string",
-                "required":false,
+                "type": "string",
+                "required": false,
                 "default": "",
                 "title": "Item Title",
                 "inputType": "Text",
@@ -114,27 +114,27 @@
             }
           },
           "_itemGraphic": {
-            "type":"object",
-            "required":true,
+            "type": "object",
+            "required": true,
             "title": "Popup Graphic",
-            "properties":{
+            "help": "This is the image for a grid item pop-up.",
+            "properties": {
               "src": {
-                "type":"string",
-                "required":true,
+                "type": "string",
+                "required": true,
                 "default": "",
                 "inputType": "Asset:image",
                 "validators": ["required"]
               },
               "alt": {
-                "type":"string",
-                "required":false,
+                "type": "string",
+                "required": false,
                 "default": "",
                 "title": "Item alt text",
                 "inputType": "Text",
                 "validators": []
               }
-            },
-            "help": "This is the image for a grid item pop-up."
+            }
           }
         }
       }
