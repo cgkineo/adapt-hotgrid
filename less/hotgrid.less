@@ -35,6 +35,10 @@
 			}
 		}
 
+		&.has-rounded-corners {
+			border-radius: 50%;
+		}
+
 		@media all and (max-width:(@device-width-medium - 1)) {
 			margin: 5px;
 		}
@@ -97,6 +101,7 @@
 .hotgrid-component {
 	.hotgrid-item-states-css {
 		border: 3px solid transparent;
+
 		/* uncomment if circular items */
 		// border-radius: 50%;  
 
@@ -117,7 +122,7 @@
 				width: 100%;
 				background-color: fade(@item-color-disabled, 50%);
 				/* uncomment if circular items */
-				//border-radius: 50%; 
+				border-radius: 50%; 
 			}
 		}
 	}
