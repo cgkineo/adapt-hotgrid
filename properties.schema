@@ -53,7 +53,8 @@
             "title": "Item Popup Title",
             "inputType": "Text",
             "validators": [],
-            "help": "This is the title text for a grid item pop-up."
+            "help": "This is the title text for a grid item pop-up.",
+            "translatable": true
           },
           "body": {
             "type": "string",
@@ -62,7 +63,8 @@
             "title": "Item Popup Body",
             "inputType": "TextArea",
             "validators": [],
-            "help": "This is the body text for a grid item pop-up."
+            "help": "This is the body text for a grid item pop-up.",
+            "translatable": true
           },
           "_graphic": {
             "type": "object",
@@ -100,7 +102,7 @@
                 "title": "Item alt text",
                 "inputType": "Text",
                 "validators": [],
-                "help": "This text becomes the image’s alt attribute."
+                "translatable": true
               },
               "title": {
                 "type": "string",
@@ -109,7 +111,8 @@
                 "title": "Item Title",
                 "inputType": "Text",
                 "validators": [],
-                "help": "This is optional text which is displayed under the grid item image."
+                "help": "This is optional text which is displayed under the grid item image.",
+                "translatable": true
               }
             }
           },
@@ -132,7 +135,8 @@
                 "default": "",
                 "title": "Item alt text",
                 "inputType": "Text",
-                "validators": []
+                "validators": [],
+                "translatable": true
               }
             }
           }
