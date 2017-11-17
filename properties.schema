@@ -38,6 +38,14 @@
       "validators": ["number"],
       "help": "This value determines the number of columns within the grid. Any number of columns can be set however keep in mind the more columns there are the smaller the items will be."
     },
+    "_hasRoundedCorners": {
+      "type":"boolean",
+      "required":false,
+      "inputType": "Boolean",
+      "default": false,
+      "validators": [],
+      "help": "This value determines whether the hotgrid button items are circular."
+    },
     "_items": {
       "type":"array",
       "required":true,
