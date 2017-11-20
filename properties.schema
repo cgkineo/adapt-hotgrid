@@ -152,7 +152,7 @@
             "inputType": "Text",
             "validators": [],
             "help": "This field is for additional classes - typically for layout - to be added to the notify popup."
-          },
+          }
         }
       }
     }
