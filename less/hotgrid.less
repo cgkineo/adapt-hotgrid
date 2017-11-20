@@ -1,3 +1,15 @@
+.hotgrid-notify-columns(@left, @right, @margin: 1%) {
+	.hotgrid-notify-body {
+		width: @left - @margin;
+		margin-right: @margin;
+	}
+
+	.hotgrid-notify-graphic {
+		width: @right - @margin;
+		margin-left: @margin;
+	}
+}
+
 .hotgrid-component {
 	.hotgrid-widget {
 		// Font size set to 0 so there's no gap between items
@@ -100,7 +112,7 @@
 // ==============================
 .hotgrid-component {
 	.hotgrid-item-states-css {
-		border: 3px solid transparent; 
+		border: 3px solid transparent;
 
 		.no-touch &:hover {
 			border: 3px solid @item-color;
@@ -165,7 +177,7 @@
 			width: 75%;
 		}
 	}
-	
+
 	// Options for column layout in the Notify popoup
 	// use on item by item basis
 	// ==============================================
