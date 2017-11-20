@@ -143,7 +143,16 @@
               }
             },
             "help": "This is the image for a grid item pop-up."
-          }
+          },
+          "_classes": {
+            "type":"string",
+            "required":false,
+            "default": "",
+            "title": "Item Popup Classes",
+            "inputType": "Text",
+            "validators": [],
+            "help": "This field is for additional classes - typically for layout - to be added to the notify popup."
+          },
         }
       }
     }
