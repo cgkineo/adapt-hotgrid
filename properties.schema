@@ -41,7 +41,7 @@
     "_hasRoundedCorners": {
       "type":"boolean",
       "required":false,
-      "inputType": "Boolean",
+      "inputType": "Checkbox",
       "default": false,
       "validators": [],
       "help": "This value determines whether the hotgrid button items are circular."
