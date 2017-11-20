@@ -102,7 +102,8 @@ define(function(require) {
                 _graphic: itemModel._graphic,
                 _itemGraphicSrc: itemModel._itemGraphic.src,
                 _itemGraphicAlt: itemModel._itemGraphic.alt,
-                _isVisited: itemModel._isVisited
+                _isVisited: itemModel._isVisited,
+                _classes: itemModel._classes
             });
 
             this.isPopupOpen = true;
