@@ -86,7 +86,10 @@
                     "alt": "alt text"
                 }
             }
-        ]
+        ],
+        "_pageLevelProgress": {
+            "_isEnabled": true
+        }
     }
 
     // Accessibility supported courses require ARIA instruction - apply to _globals in course.json
