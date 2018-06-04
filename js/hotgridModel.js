@@ -1,7 +1,6 @@
 define([
-    'core/js/models/componentModel',
     'core/js/models/itemsComponentModel'
-], function(ComponentModel, ItemsComponentModel) {
+], function(ItemsComponentModel) {
 
     var HotgridModel = ItemsComponentModel.extend({});
 
