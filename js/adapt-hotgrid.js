@@ -1,11 +1,11 @@
 define([
     'core/js/adapt',
-    './hotgridModel',
+    'core/js/models/itemsComponentModel',
     './hotgridView'
-], function(Adapt, HotgridModel, HotgridView) {
+], function(Adapt, ItemsComponentModel, HotgridView) {
 
     return Adapt.register('hotgrid', {
-        model: HotgridModel,
+        model: ItemsComponentModel,
         view: HotgridView
     });
 
