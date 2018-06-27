@@ -7,7 +7,7 @@
                 
                 {{#each _items}}
                 <div class="hotgrid-grid-item" data-index={{@index}}>
-                    <button class="base hotgrid-item-image hotgrid-item-states-{{#if _graphic.hasImageStates}}image{{else}}css{{/if}} {{#if _isVisited}}visited{{/if}} {{#if ../_hasRoundedImages}}border-radius{{/if}}" role="button" aria-label="{{#if _graphic.title}}{{_graphic.title}}.{{/if}}{{#if _graphic.alt}} {{_graphic.alt}}.{{/if}}{{#if _isVisited}} {{../../_globals._accessibility._ariaLabels.visited}}.{{/if}}" data-index={{@index}}>
+                    <button class="base hotgrid-item-image hotgrid-item-states-{{#if _graphic.hasImageStates}}image{{else}}css{{/if}} {{#if _isVisited}}visited{{/if}} {{#if ../_hasRoundedImages}}border-radius{{/if}}" aria-haspopup="dialog" aria-label="{{#if _graphic.title}}{{_graphic.title}}.{{/if}}{{#if _graphic.alt}} {{_graphic.alt}}.{{/if}}{{#if _isVisited}} {{../_globals._accessibility._ariaLabels.visited}}.{{/if}}" data-index={{@index}}>
                         <img src="{{_graphic.src}}"/>
                         
                         {{#if _graphic.hasImageStates}}

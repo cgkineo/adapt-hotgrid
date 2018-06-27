@@ -13,7 +13,7 @@ define([
         },
 
         initialize: function() {
-            this.listenToOnce(Adapt, "notify:opened", this.onOpened);
+            this.listenToOnce(Adapt, 'notify:opened', this.onOpened);
             this.listenTo(this.model.get('_children'), {
                 'change:_isActive': this.onItemsActiveChange,
                 'change:_isVisited': this.onItemsVisitedChange
