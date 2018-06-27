@@ -1,32 +1,42 @@
 define([
     'core/js/adapt',
-    'core/js/views/componentView'
-], function(Adapt, ComponentView) {
+    'core/js/views/componentView',
+    './hotgridPopupView'
+], function(Adapt, ComponentView, HotgridPopupView) {
 
     var HotgridView = ComponentView.extend({
 
         events: {
-            "click .hotgrid-item-image":"onItemClicked"
+            'click .hotgrid-item-image': 'onItemClicked'
         },
 
-        isPopupOpen: false,
+        initialize: function() {
+            ComponentView.prototype.initialize.call(this);
+            this.setDeviceSize();
+            this.setUpViewData();
+            this.setUpModelData();
+            this.setUpEventListeners();
+            this.checkIfResetOnRevisit();
+        },
 
-        preRender: function () {
-            var items = this.model.get('_items');
-            _.each(items, function(item) {
-                if (item._graphic.srcHover && item._graphic.srcVisited) {
-                    item._graphic.hasImageStates = true;
-                }
-            }, this);
+        setUpViewData: function() {
+            this.popupView = null;
+            this._isPopupOpen = false;
+        },
 
+        setUpModelData: function() {
+            if (this.model.get('_canCycleThroughPagination') === undefined) {
+                this.model.set('_canCycleThroughPagination', false);
+            }
+        },
+
+        setUpEventListeners: function() {
             this.listenTo(Adapt, 'device:changed', this.resizeControl);
 
-            this.setDeviceSize();
-
-            this.checkIfResetOnRevisit();
-
-            this.model.resetActiveItems();
-
+            this.listenTo(this.model.get('_children'), {
+                'change:_isActive': this.onItemsActiveChange,
+                'change:_isVisited': this.onItemsVisitedChange
+            });
         },
 
         setDeviceSize: function() {
@@ -43,13 +53,7 @@ define([
             var isResetOnRevisit = this.model.get('_isResetOnRevisit');
 
             // If reset is enabled set defaults
-            if (isResetOnRevisit) {
-                this.model.reset(isResetOnRevisit);
-
-                _.each(this.model.get('_items'), function(item) {
-                    item._isVisited = false;
-                });
-            }
+            if (isResetOnRevisit) this.model.reset(isResetOnRevisit);
         },
 
         postRender: function() {
@@ -72,41 +76,63 @@ define([
             }
         },
 
+        onItemsActiveChange: function(model, _isActive) {
+            this.getItemElement(model).toggleClass('active', _isActive);
+        },
+
+        getItemElement: function(model) {
+            var index = model.get('_index');
+            return this.$('.hotgrid-grid-item').filter('[data-index="' + index + '"]');
+        },
+
+        onItemsVisitedChange: function(model, _isVisited) {
+            if (!_isVisited) return;
+            var $item = this.getItemElement(model);
+
+            // Append the word 'visited' to the item's aria-label
+            var visitedLabel = this.model.get('_globals')._accessibility._ariaLabels.visited + ".";
+            $item.attr('aria-label', function(index, val) {
+                return val + " " + visitedLabel;
+            });
+
+            $item.addClass('visited');
+        },
+
         onItemClicked: function(event) {
             if (event) event.preventDefault();
 
-            var $link = $(event.currentTarget);
-            var $item = $link.parent();
-            var itemModel = this.model.get('_items')[$item.index()];
+            var item = this.model.getItem($(event.currentTarget).data('index'));
+            item.toggleActive(true);
+            item.toggleVisited(true);
 
-            if(!itemModel._isVisited) {
-                $link.addClass("visited");
-                itemModel._isVisited = true;
-                // append the word 'visited.' to the link's aria-label
-                var visitedLabel = this.model.get('_globals')._accessibility._ariaLabels.visited + ".";
-                $link.attr('aria-label', function(index,val) {return val + " " + visitedLabel});
-            }
+            this.openPopup();
+        },
 
-            this.showItemContent(itemModel);
+        openPopup: function() {
+            if (this._isPopupOpen) return;
+            this._isPopupOpen = true;
+
+            this.popupView = new HotgridPopupView({
+                model: this.model
+            });
+
+            Adapt.trigger('notify:popup', {
+                _view: this.popupView,
+                _isCancellable: true,
+                _showCloseButton: false,
+                _closeOnBackdrop: true,
+                _classes: 'hotgrid'
+            })
+
+            this.listenToOnce(Adapt, {
+                'popup:closed': this.onPopupClosed
+            })
 
         },
 
-        showItemContent: function(itemModel) {
-            if(this.isPopupOpen) return;// ensure multiple clicks don't open multiple notify popups
-
-            Adapt.trigger("notify:popup", {
-                title: itemModel.title,
-                body: "<div class='hotgrid-notify-container'><div class='hotgrid-notify-body'>" + itemModel.body + "</div>" +
-                "<img class='hotgrid-notify-graphic' src='" +
-                itemModel._itemGraphic.src + "' alt='" +
-                itemModel._itemGraphic.alt + "'/></div>"
-            });
-
-            this.isPopupOpen = true;
-
-            Adapt.once("notify:closed", _.bind(function() {
-                this.isPopupOpen = false;
-            }, this));
+        onPopupClosed: function() {
+            this.model.getActiveItem().toggleActive();
+            this._isPopupOpen = false;
         }
     });
 
