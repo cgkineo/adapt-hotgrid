@@ -1,15 +1,3 @@
-.hotgrid-notify-columns(@left, @right, @margin: 1%) {
-	.hotgrid-notify-body {
-		width: @left - @margin;
-		margin-right: @margin;
-	}
-
-	.hotgrid-notify-graphic {
-		width: @right - @margin;
-		margin-left: @margin;
-	}
-}
-
 .hotgrid-component {
 	.hotgrid-widget {
 		// Font size set to 0 so there's no gap between items
@@ -45,10 +33,6 @@
 			.no-touch &:hover {
 				.item-states-image.hover;
 			}
-		}
-
-		&.has-rounded-corners {
-			border-radius: 50%;
 		}
 
 		@media all and (max-width:(@device-width-medium - 1)) {
@@ -113,6 +97,8 @@
 .hotgrid-component {
 	.hotgrid-item-states-css {
 		border: 3px solid transparent;
+		/* uncomment if circular items */
+		// border-radius: 50%;  
 
 		.no-touch &:hover {
 			border: 3px solid @item-color;
@@ -131,7 +117,7 @@
 				width: 100%;
 				background-color: fade(@item-color-disabled, 50%);
 				/* uncomment if circular items */
-				border-radius: 50%; 
+				//border-radius: 50%; 
 			}
 		}
 	}
@@ -175,27 +161,6 @@
 			display: block;
 			margin: 20px auto 0;
 			width: 75%;
-		}
-	}
-
-	// Options for column layout in the Notify popoup
-	// use on item by item basis
-	// ==============================================
-	.layout-70-30 & {
-		@media (min-width: @device-width-medium) {
-			.hotgrid-notify-columns(70%, 30%);
-		}
-	}
-	
-	.layout-50-50 & {
-		@media (min-width: @device-width-medium) {
-			.hotgrid-notify-columns(50%, 50%);
-		}
-	}
-	
-	.layout-30-70 & {
-		@media (min-width: @device-width-medium) {
-			.hotgrid-notify-columns(30%, 70%);
 		}
 	}
 }
