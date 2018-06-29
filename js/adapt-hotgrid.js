@@ -5,22 +5,22 @@ define([
 ], function(Adapt, ComponentView) {
 
     var Hotgrid = ComponentView.extend({
- 
+
         events: {
             'click .hotgrid-item-image': 'onItemClicked'
         },
-        
+
         isPopupOpen: false,
-        
+
         preRender: function () {
             _.each(this.model.get('_items'), function(item) {
                 if (item._graphic.srcHover && item._graphic.srcVisited) {
                     item._graphic.hasImageStates = true;
                 }
             });
-            
+
             this.listenTo(Adapt, 'device:changed', this.resizeControl);
-            
+
             this.setDeviceSize();
 
             this.checkIfResetOnRevisit();
@@ -105,7 +105,7 @@ define([
                 this.evaluateCompletion();
             }.bind(this));
         },
-        
+
         getVisitedItems: function() {
             return _.filter(this.model.get('_items'), function(item) {
                 return item._isVisited;
@@ -117,10 +117,10 @@ define([
                 this.setCompletionStatus();
             }
         }
-        
+
     },{
         template: "hotgrid"
     });
-    
+
     return Adapt.register("hotgrid", Hotgrid);
 });
