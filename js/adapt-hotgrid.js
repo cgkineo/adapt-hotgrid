@@ -14,9 +14,13 @@ define(function(require) {
         
         preRender: function () {
             var items = this.model.get('_items');
+            var _hasRoundedCorners = this.model.get('_hasRoundedCorners');
             _.each(items, function(item) {
                 if (item._graphic.srcHover && item._graphic.srcVisited) {
                     item._graphic.hasImageStates = true;
+                }
+                if (_hasRoundedCorners) {
+                    item._hasRoundedCorners = true;
                 }
             }, this);
             
@@ -94,10 +98,12 @@ define(function(require) {
 
             Adapt.trigger("notify:popup", {
                 title: itemModel.title,
-                body: "<div class='hotgrid-notify-container'><div class='hotgrid-notify-body'>" + itemModel.body + "</div>" +
-					"<img class='hotgrid-notify-graphic' src='" +
-                    itemModel._itemGraphic.src + "' alt='" +
-                    itemModel._itemGraphic.alt + "'/></div>"
+                body: itemModel.body,
+                _graphic: itemModel._graphic,
+                _itemGraphicSrc: itemModel._itemGraphic.src,
+                _itemGraphicAlt: itemModel._itemGraphic.alt,
+                _isVisited: itemModel._isVisited,
+                _classes: itemModel._classes
             });
 
             this.isPopupOpen = true;
