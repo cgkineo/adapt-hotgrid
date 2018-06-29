@@ -1,24 +1,23 @@
 
-define(function(require) {
-
-    var ComponentView = require("coreViews/componentView");
-    var Adapt = require("coreJS/adapt");
+define([
+    'core/js/adapt',
+    'core/js/views/componentView'
+], function(Adapt, ComponentView) {
 
     var Hotgrid = ComponentView.extend({
  
         events: {
-            "click .hotgrid-item-image":"onItemClicked"
+            'click .hotgrid-item-image': 'onItemClicked'
         },
         
         isPopupOpen: false,
         
         preRender: function () {
-            var items = this.model.get('_items');
-            _.each(items, function(item) {
+            _.each(this.model.get('_items'), function(item) {
                 if (item._graphic.srcHover && item._graphic.srcVisited) {
                     item._graphic.hasImageStates = true;
                 }
-            }, this);
+            });
             
             this.listenTo(Adapt, 'device:changed', this.resizeControl);
             
@@ -33,7 +32,7 @@ define(function(require) {
                 this.model.set('_isDesktop', true);
             } else {
                 this.$el.addClass('mobile').removeClass('desktop');
-                this.model.set('_isDesktop', false)
+                this.model.set('_isDesktop', false);
             }
         },
 
@@ -52,9 +51,7 @@ define(function(require) {
 
         postRender: function() {
             this.setUpColumns();
-            this.$('.hotgrid-widget').imageready(_.bind(function() {
-                this.setReadyStatus();
-            }, this));
+            this.$('.hotgrid-widget').imageready(this.setReadyStatus.bind(this));
         },
 
         resizeControl: function() {
@@ -78,21 +75,22 @@ define(function(require) {
             var itemModel = this.model.get('_items')[$item.index()];
 
             if(!itemModel._isVisited) {
-                $link.addClass("visited");
+                $link.addClass('visited');
                 itemModel._isVisited = true;
                 // append the word 'visited.' to the link's aria-label
                 var visitedLabel = this.model.get('_globals')._accessibility._ariaLabels.visited + ".";
-                $link.attr('aria-label', function(index,val) {return val + " " + visitedLabel});
+                $link.attr('aria-label', function(index, val) {
+                    return val + " " + visitedLabel;
+                });
             }
 
             this.showItemContent(itemModel);
-
         },
 
         showItemContent: function(itemModel) {
             if(this.isPopupOpen) return;// ensure multiple clicks don't open multiple notify popups
 
-            Adapt.trigger("notify:popup", {
+            Adapt.trigger('notify:popup', {
                 title: itemModel.title,
                 body: "<div class='hotgrid-notify-container'><div class='hotgrid-notify-body'>" + itemModel.body + "</div>" +
 					"<img class='hotgrid-notify-graphic' src='" +
@@ -102,10 +100,10 @@ define(function(require) {
 
             this.isPopupOpen = true;
 
-            Adapt.once("notify:closed", _.bind(function() {
+            Adapt.once('notify:closed', function() {
                 this.isPopupOpen = false;
                 this.evaluateCompletion();
-            }, this));
+            }.bind(this));
         },
         
         getVisitedItems: function() {
@@ -115,7 +113,7 @@ define(function(require) {
         },
 
         evaluateCompletion: function() {
-            if (this.getVisitedItems().length == this.model.get('_items').length) {
+            if (this.getVisitedItems().length === this.model.get('_items').length) {
                 this.setCompletionStatus();
             }
         }
@@ -124,8 +122,5 @@ define(function(require) {
         template: "hotgrid"
     });
     
-    Adapt.register("hotgrid", Hotgrid);
-    
-    return Hotgrid;
-
+    return Adapt.register("hotgrid", Hotgrid);
 });
