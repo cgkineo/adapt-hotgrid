@@ -54,7 +54,7 @@
       "title": "Cycle through item pagination",
       "inputType": "Checkbox",
       "validators": [],
-      "help": "If enabled, the items in the open popup will be allowed to cycle through continiously"
+      "help": "If enabled, the items in the open popup will be allowed to cycle through continuously"
     },
     "_columns": {
       "type": "number",
