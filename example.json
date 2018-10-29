@@ -97,6 +97,6 @@
     // Accessibility supported courses require ARIA instruction - apply to _globals in course.json
 
     "_hotgrid": {
-        "ariaRegion": "This component contains selectable grid items. Select an item to trigger a popup that includes an image with display text. Select the close button to close the popup.",
+        "ariaRegion": "Selectable image component. Select each item to show more information.",
         "popupPagination": "{{itemNumber}} / {{totalItems}}"
     }
