@@ -3,20 +3,20 @@
     <div class="hotgrid-item component-item clearfix {{#if _isVisited}}visited{{/if}} {{#if _isActive}}active{{/if}} {{_classes}}" data-index={{@index}}>
         <div class="hotgrid-item-content">
             <div class="hotgrid-item-content-inner">
-            <div class="hotgrid-content-title" role="heading" aria-level="5" tabindex="0">
+            <div class="hotgrid-content-title" {{a11y_attrs_heading 'componentItem'}}>
                 {{{title}}}
             </div>
             <div class="hotgrid-content-body">
-                {{{a11y_text body}}}
+                {{{compile body}}}
             </div>
             </div>
         </div>
         <div class="hotgrid-item-graphic">
             <div class="hotgrid-item-graphic-inner">
-            <img src="{{_graphic.src}}" aria-label="{{_graphic.alt}}" tabindex="0"/>
+            <img src="{{_graphic.src}}" aria-label="{{_graphic.alt}}"/>
             </div>
             {{#if _graphic.attribution}}
-            <div class="graphic-attribution">{{{a11y_text _graphic.attribution}}}</div>
+            <div class="graphic-attribution">{{{_graphic.attribution}}}</div>
             {{/if}}
         </div>
     </div>
@@ -28,7 +28,7 @@
         <button class="base hotgrid-popup-controls back" aria-label="{{_globals._accessibility._ariaLabels.previous}}" role="button">
             <div class="hotgrid-popup-arrow-l component-item-text-color icon icon-controls-small-left"></div>
         </button>
-        <div class="hotgrid-popup-count component-item-text-color" tabindex="0">
+        <div class="hotgrid-popup-count component-item-text-color">
         </div>
         <button class="base hotgrid-popup-controls next" aria-label="{{_globals._accessibility._ariaLabels.next}}" role="button">
             <div class="hotgrid-popup-arrow-r component-item-text-color icon icon-controls-small-right"></div>

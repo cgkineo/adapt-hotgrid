@@ -7,7 +7,7 @@
     "ariaRegion": {
       "type": "string",
       "required": true,
-      "default": "This component contains selectable grid items. Select an item to trigger a popup that includes an image with display text. Select the close button to close the popup.",
+      "default": "Selectable image component. Select each item to show more information.",
       "inputType": "Text",
       "validators": []
     },
@@ -35,7 +35,6 @@
       "default": "",
       "inputType": "Text",
       "validators": [],
-      "help": "This is the instruction text",
       "translatable": true
     },
     "_hidePagination": {
@@ -54,7 +53,7 @@
       "title": "Cycle through item pagination",
       "inputType": "Checkbox",
       "validators": [],
-      "help": "If enabled, the items in the open popup will be allowed to cycle through continuously"
+      "help": "If enabled, the popup navigation buttons will cycle continuously through the popup items (i.e. clicking next on the last item will cause the first item to be shown)."
     },
     "_columns": {
       "type": "number",
@@ -80,7 +79,6 @@
             "title": "Item Popup Title",
             "inputType": "Text",
             "validators": [],
-            "help": "This is the title text for a grid item pop-up.",
             "translatable": true
           },
           "body": {
@@ -90,13 +88,12 @@
             "title": "Item Popup Body",
             "inputType": "TextArea",
             "validators": [],
-            "help": "This is the body text for a grid item pop-up.",
             "translatable": true
           },
           "_graphic": {
             "type": "object",
             "required": true,
-            "title": "Button Graphic",
+            "title": "Item Graphic",
             "properties": {
               "src": {
                 "type": "string",
@@ -138,7 +135,7 @@
                 "title": "Item Title",
                 "inputType": "Text",
                 "validators": [],
-                "help": "This is optional text which is displayed under the grid item image.",
+                "help": "Optional image title,  displayed under the grid item image.",
                 "translatable": true
               }
             }
@@ -147,7 +144,6 @@
             "type": "object",
             "required": true,
             "title": "Popup Graphic",
-            "help": "This is the image for a grid item pop-up.",
             "properties": {
               "src": {
                 "type": "string",
