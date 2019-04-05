@@ -7,7 +7,7 @@ define([
     var HotgridView = ComponentView.extend({
 
         events: {
-            'click .hotgrid-item-image': 'onItemClicked'
+            'click .hotgrid-grid-item': 'onItemClicked'
         },
 
         initialize: function() {
