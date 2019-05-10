@@ -58,9 +58,7 @@ define([
 
         postRender: function() {
             this.setUpColumns();
-            this.$('.hotgrid-widget').imageready(_.bind(function() {
-                this.setReadyStatus();
-            }, this));
+            this.$('.hotgrid-widget').imageready(this.setReadyStatus.bind(this));
         },
 
         resizeControl: function() {
@@ -90,9 +88,9 @@ define([
             var $item = this.getItemElement(model);
 
             // Append the word 'visited' to the item's aria-label
-            var visitedLabel = this.model.get('_globals')._accessibility._ariaLabels.visited + ".";
+            var visitedLabel = this.model.get('_globals')._accessibility._ariaLabels.visited + '.';
             $item.attr('aria-label', function(index, val) {
-                return val + " " + visitedLabel;
+                return val + ' ' + visitedLabel;
             });
 
             $item.addClass('visited');
@@ -110,6 +108,7 @@ define([
 
         openPopup: function() {
             if (this._isPopupOpen) return;
+
             this._isPopupOpen = true;
 
             this.popupView = new HotgridPopupView({
@@ -126,8 +125,7 @@ define([
 
             this.listenToOnce(Adapt, {
                 'popup:closed': this.onPopupClosed
-            })
-
+            });
         },
 
         onPopupClosed: function() {
