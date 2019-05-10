@@ -9,4 +9,5 @@ define([
         view: HotgridView
     });
 
+    return Adapt.register("hotgrid", Hotgrid);
 });
