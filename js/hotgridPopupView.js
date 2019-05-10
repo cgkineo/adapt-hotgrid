@@ -102,9 +102,9 @@ define([
             var direction = $(event.currentTarget).hasClass('back') ? 'back' : 'next';
             var index = this.getNextIndex(direction);
 
-            if (index !== -1) {
-                this.setItemState(index);
-            }
+            if (index === -1) return;
+
+            this.setItemState(index);
         },
 
         getNextIndex: function(direction) {
