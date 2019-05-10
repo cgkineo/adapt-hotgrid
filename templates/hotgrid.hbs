@@ -4,7 +4,7 @@
         <div role="list" class="hotgrid-grid">
             <div class="hotgrid-grid-inner clearfix">
                 {{#each _items}}
-                <button class="base hotgrid-grid-item" data-index={{@index}} role="listitem" aria-haspopup="dialog" aria-label="{{#if _graphic.title}}{{_graphic.title}}{{else}}{{../_globals._accessibility._ariaLabels.item}} {{numbers @index}}{{/if}}.{{#if _graphic.alt}} {{_graphic.alt}}.{{/if}}{{#if _isVisited}} {{../_globals._accessibility._ariaLabels.visited}}.{{/if}}" data-index={{@index}}>
+                <button class="base hotgrid-grid-item" data-index={{@index}} role="listitem" aria-label="{{#if _graphic.title}}{{_graphic.title}}{{else}}{{../_globals._accessibility._ariaLabels.item}} {{numbers @index}}{{/if}}.{{#if _graphic.alt}} {{_graphic.alt}}.{{/if}}{{#if _isVisited}} {{../_globals._accessibility._ariaLabels.visited}}.{{/if}}" data-index={{@index}}>
                     <div class="hotgrid-item-image hotgrid-item-states-{{#if _graphic.hasImageStates}}image{{else}}css{{/if}} {{#if _isVisited}}visited{{/if}} {{#if ../_hasRoundedImages}}border-radius{{/if}}">
                         <img src="{{_graphic.src}}"/>
                         {{#if _graphic.hasImageStates}}
