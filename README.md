@@ -20,6 +20,10 @@ The attributes listed below are used in *components.json* to configure **Hotgrid
 
 **instruction** (string): This optional text appears above the component. It is frequently used to guide the learner’s interaction with the component.  
 
+**_canCycleThroughPagination** (boolean): Enables the pop-ups to be cycled through endlessly using either the previous or next icon. When set to `true`, clicking "next" on the final stage will display the very first stage. When set to `false`, the final stage will display only a "previous" icon. The default is `false`.  
+
+**_hidePagination** (boolean): When set to `true`, hides the "previous" and "next" icons and progress indicator (e.g., "1/5") on the pop-up's toolbar. The default is `false`.  
+
 **\_columns** (number): This value determines the number of columns within the grid. Any number of columns can be set however keep in mind the more columns there are the smaller the items will be.
 
 Hotgrid has a dynamic layout system. If you have 5 items but set the columns to 3, hotgrid will put 3 items in the first row and 2 on the second. The second row then will be automatically centred. This works with any amount of items and columns - ie that last row will always be centred for you.
@@ -46,12 +50,11 @@ Hotgrid has a dynamic layout system. If you have 5 items but set the columns to 
 ## Limitations
  
 Hotgrid automatically switches to 2 columns in mobile mode for the best user experience however this can be overridden in the css. 
-Version 2.1.0 contains two changes that could potentially break if users update from previous versions. The first, the introduction of `font-size: 0;` on the item container div, may cause item titles not to appear. Applying a font size to the titles will resolve this issue. The second, changing clickable elements from `<a>` to `<button>`, may cause display errors if the `<a>` tag has been directly targeted in the JS or LESS files. To resolve, target the `<button>` tag instead.
 
 ----------------------------
-**Version number:**  2.1.3  
-**Framework versions:**  2.0  
+**Version number:**  3.0.0  
+**Framework versions:**  3.2+     
 **Author / maintainer:**  Kineo  
 **Accessibility support:** WAI AA  
 **RTL support:** yes  
-**Cross-platform coverage:** Chrome, Chrome for Android, Firefox (ESR + latest version), Edge, IE11, IE Mobile 11, Safari 10+11 for macOS+iOS, Opera 
+**Cross-platform coverage:** Chrome, Chrome for Android, Firefox (ESR + latest version), Edge, IE11, Safari 11+12 for macOS+iOS, Opera 

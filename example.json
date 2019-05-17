@@ -8,6 +8,8 @@
         "title": "Adapt Hotgrid",
         "displayTitle": "Adapt Hotgrid",
         "body": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis.",
+        "_canCycleThroughPagination": false,
+        "_hidePagination": false,
         "instruction": "",
         "_columns": 3,
         "_items": [
@@ -95,5 +97,6 @@
     // Accessibility supported courses require ARIA instruction - apply to _globals in course.json
 
     "_hotgrid": {
-        "ariaRegion": "This component contains selectable grid items. Select an item to trigger a popup that includes an image with display text. Select the close button to close the popup."
+        "ariaRegion": "Selectable image component. Select each item to show more information.",
+        "popupPagination": "{{itemNumber}} / {{totalItems}}"
     }

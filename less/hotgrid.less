@@ -1,48 +1,49 @@
 .hotgrid-component {
-	.hotgrid-widget {
-		// Font size set to 0 so there's no gap between items
-		font-size: 0;
-		position: relative;
-		text-align: center;
-	}
 
-	.hotgrid-grid-item {
-		display: inline-block;
-		text-align: center;
-		vertical-align: top;
-		width: 50%;
-	}
+    .hotgrid-widget {
+        // Font size set to 0 so there's no gap between items
+        font-size: 0;
+        position: relative;
+        text-align: center;
+    }
 
-	.hotgrid-item-image {
-		display: block;
-		margin: 2.5%;
-		width: 95%;
+    .hotgrid-grid-item {
+        display: inline-block;
+        text-align: center;
+        vertical-align: top;
+        width: 50%;
+    }
 
-		img {
-			display: block;
-			transition: all 0.25s;
-		}
+    .hotgrid-item-image {
+        display: block;
+        margin: 2.5%;
+        width: 95%;
 
-		&.hotgrid-item-states-image {
-			.item-states-image.default;
+        img {
+            display: block;
+            transition: all 0.25s;
+        }
 
-			&.visited {
-				.item-states-image.visited;
-			}
+        &.hotgrid-item-states-image {
+            .item-states-image.default;
 
-			.no-touch &:hover {
-				.item-states-image.hover;
-			}
-		}
+            &.visited {
+                .item-states-image.visited;
+            }
 
-		@media all and (max-width:(@device-width-medium - 1)) {
-			margin: 5px;
-		}
-	}
+            .no-touch &:hover {
+                .item-states-image.hover;
+            }
+        }
 
-	.hotgrid-item-title {
-		font-size: @body-text-font-size;
-	}
+        @media all and (max-width:(@device-width-medium - 1)) {
+            margin: 5px;
+        }
+    }
+    
+    .hotgrid-item-title {
+        font-size: @body-text-font-size;
+    }
 
     //removes tap highlighting on webkit-based browsers found in some mobile devices
     button.base.hotgrid-item-image {
@@ -52,116 +53,211 @@
 
 // Hotgrid item states - images
 // ==============================
-.item-states-image {
-	.default {
-		img.hotgrid-item-image-hover {
-			display: none;
-		}
+.item-states-image { 
+    .default {
+        img.hotgrid-item-image-hover {
+            display: none;
+        }
 
-		img.hotgrid-item-image-visited {
-			display: none;
-		}
-	}
+        img.hotgrid-item-image-visited {
+            display: none;
+        }
+    }
 
-	.hover {
-		> img {
-			display: none;
-		}
+    .hover {
+        > img {
+            display: none;
+        }
 
-		img.hotgrid-item-image-hover {
-			display: block;
-		}
+        img.hotgrid-item-image-hover {
+            display: block;
+        }
 
-		img.hotgrid-item-image-visited {
-			display: none;
-		}
-	}
+        img.hotgrid-item-image-visited {
+            display: none;
+        }
+    }
 
-	.visited {
-		> img {
-			display: none;
-		}
+    .visited {
+        > img {
+            display: none;
+        }
 
-		img.hotgrid-item-image-hover {
-			display: none !important;
-		}
+        img.hotgrid-item-image-hover {
+            display: none !important;
+        }
 
-		img.hotgrid-item-image-visited {
-			display: block !important;
-		}
-	}
+        img.hotgrid-item-image-visited {
+            display: block !important;
+        }
+    }
 }
 
 // Hotgrid item states - css
 // ==============================
 .hotgrid-component {
-	.hotgrid-item-states-css {
-		border: 3px solid transparent;
-		/* uncomment if circular items */
-		// border-radius: 50%;
+    .hotgrid-item-states-css {
+        border: 3px solid transparent;
+        /* uncomment if circular items */
+        // border-radius: 50%;  
 
-		.no-touch &:hover {
-			border: 3px solid @item-color;
-		}
+        .no-touch &:hover {
+            border: 3px solid @item-color;
+        }
 
-		&.visited {
-			position: relative;
+        &.visited {
+            position: relative;
 
-			&:after {
-				content: " ";
-				display: block;
-				height: 100%;
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				background-color: fade(@item-color-disabled, 50%);
-				/* uncomment if circular items */
-				//border-radius: 50%;
-			}
-		}
-	}
+            &:after {
+                content: " ";
+                display: block;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                background-color: fade(@item-color-disabled, 50%);
+                /* uncomment if circular items */
+                //border-radius: 50%; 
+            }
+        }
+    }
 }
 
 // Hotgrid notify content layout
 // ==============================
-.hotgrid-notify-container {
-	font-size: 0;
+.notify.hotgrid {
 
-	.hotgrid-notify-body {
-		display: inline-block;
-		font-size: @body-text-font-size;
-		margin-right: 2%;
-		vertical-align: top;
-		width: 58%;
+    .notify-popup {
+        pointer-events: none;
+        background-color: transparent;
+        color: @font-color;
 
-		.dir-rtl & {
-			margin-right: inherit;
-			margin-left: 2%;
-		}
+        .notify-popup-content {
+            width: auto;
+            pointer-events: auto;
+        }
+    }
 
-		@media (max-width: @device-width-medium) {
-			margin-right: 0;
-			width: 100%;
+    .notify-popup-content-inner {
+        .hotgrid-popup {
+            width: auto;
+            height: auto;
+            margin: 40px;
+            background-color: @background-color;
+            border: @item-border;
+            z-index: 5;
+            position: relative;
+            padding-top: (@item-padding-top + @item-padding-bottom) + @icon-size;
+        }
 
-			.dir-rtl & {
-				margin-right: inherit;
-				margin-left: 0;
-			}
-		}
+        .hotgrid-popup-toolbar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: @item-color;
+            height: (@item-padding-top + @item-padding-bottom) + @icon-size;
+        }
 
-	}
+        .hotgrid-popup-nav {
+            background-color: @item-color;
+        }
 
-	.hotgrid-notify-graphic {
-		display: inline-block;
-		vertical-align: top;
-		width: 40%;
+        .hotgrid-popup-done {
+            position: absolute;
+            top: 0;
+            right: 0;
+            text-decoration: none;
+            .dir-rtl & {
+                right: inherit;
+                left: 0;
+            }
+            .no-touch &:hover {
+                .hotgrid-popup-close {
+                    color: @button-text-color-hover;
+                }
+            }
+        }
 
-		@media (max-width: @device-width-medium) {
-			display: block;
-			margin: 20px auto 0;
-			width: 75%;
-		}
-	}
+        .hotgrid-popup-arrow-l,
+        .hotgrid-popup-arrow-r,
+        .hotgrid-popup-close {
+            padding: @item-padding;
+            color: @button-text-color;
+        }
+
+        .hotgrid-popup-count {
+            padding: @item-padding;
+            vertical-align: baseline;
+            color: @item-text-color;
+            float: left;
+            .dir-rtl & {
+                float: right;
+            }
+            span {
+                display: inline-block;
+            }
+        }
+
+        .hotgrid-popup-controls {
+            float: left;
+            text-decoration: none;
+            .dir-rtl & {
+                float: right;
+            }
+            .no-touch &:hover {
+                .hotgrid-popup-arrow-l,
+                .hotgrid-popup-arrow-r {
+                    color: @button-text-color-hover;
+                }
+            }
+            &.disabled {
+                visibility: hidden;
+            }
+        }
+
+        .hotgrid-popup-inner {
+            padding: @item-padding;
+        }
+
+        .hotgrid-item-graphic {
+            padding-left: @item-padding-left;
+            width: 50%;
+            box-sizing: border-box;
+            float: right;
+            .dir-rtl & {
+                float: left;
+            }
+            text-align: center;
+        }
+
+        .hotgrid-item-graphic-inner{
+            img {
+                display: block;
+            }
+            .dir-rtl & {
+                padding-left: inherit;
+                padding-right: @item-padding-left;
+            }
+        }
+
+        .hotgrid-item-content {
+            width: 50%;
+            float: left;
+            .dir-rtl & {
+                float: right;
+            }
+        }
+
+        .graphic-attribution {
+            font-size: 0.75em;
+            line-height: 1em;
+            padding-top: 0.5em;
+        }
+    }
 }
 
+.hotgrid-item:not(.active) {
+    display: none;
+}

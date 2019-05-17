@@ -1,35 +1,31 @@
-<div class="component-inner hotgrid-inner" role="region" aria-label="{{_globals._components._hotgrid.ariaRegion}}" {{#if _globals._components._hotgrid.ariaRegion}}tabindex="0"{{/if}}>
+<div class="component-inner hotgrid-inner">
     {{> component this}}
     <div class="component-widget hotgrid-widget">
-
-        <div class="hotgrid-grid">
+        <div role="list" class="hotgrid-grid">
             <div class="hotgrid-grid-inner clearfix">
-
                 {{#each _items}}
-                <div class="hotgrid-grid-item">
-                    <button class="base hotgrid-item-image hotgrid-item-states-{{#if _graphic.hasImageStates}}image{{else}}css{{/if}} {{#if _isVisited}}visited{{/if}} {{#if ../_hasRoundedImages}}border-radius{{/if}}" aria-label="{{#if _graphic.title}}{{_graphic.title}}.{{/if}}{{#if _graphic.alt}} {{_graphic.alt}}.{{/if}}{{#if _isVisited}} {{../_globals._accessibility._ariaLabels.visited}}.{{/if}}">
+                <button class="base hotgrid-grid-item" data-index={{@index}} role="listitem" aria-label="{{#if _graphic.title}}{{_graphic.title}}{{else}}{{../_globals._accessibility._ariaLabels.item}} {{numbers @index}}{{/if}}.{{#if _graphic.alt}} {{_graphic.alt}}.{{/if}}{{#if _isVisited}} {{../_globals._accessibility._ariaLabels.visited}}.{{/if}}" data-index={{@index}}>
+                    <div class="hotgrid-item-image hotgrid-item-states-{{#if _graphic.hasImageStates}}image{{else}}css{{/if}} {{#if _isVisited}}visited{{/if}} {{#if ../_hasRoundedImages}}border-radius{{/if}}">
                         <img src="{{_graphic.src}}"/>
-
                         {{#if _graphic.hasImageStates}}
                         <img src="{{_graphic.srcHover}}" class="hotgrid-item-image-hover"/>
                         <img src="{{_graphic.srcVisited}}" class="hotgrid-item-image-visited"/>
                         {{/if}}
-
-                    </button>
-
+                    </div>
                     {{#if _graphic.title}}
                     <div class="hotgrid-item-title">
-                    	<div class="hotgrid-item-title-inner">
-                    		{{{_graphic.title}}}
-                    	</div>
+                        <div class="hotgrid-item-title-inner">
+                            {{{_graphic.title}}}
+                        </div>
+                    </div>
+                    {{else}}{{!-- item has no title - show icon instead --}}
+                    <div class="hotgrid-item-icon">
+                        <span class="icon icon-plus"></span>
                     </div>
                     {{/if}}
-
-                </div>
+                </button>
                 {{/each}}
-
             </div>
         </div>
-
     </div>
 </div>

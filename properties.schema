@@ -7,9 +7,18 @@
     "ariaRegion": {
       "type": "string",
       "required": true,
-      "default": "This component contains selectable grid items. Select an item to trigger a popup that includes an image with display text. Select the close button to close the popup.",
+      "default": "Selectable image component. Select each item to show more information.",
       "inputType": "Text",
       "validators": []
+    },
+    "popupPagination": {
+      "type": "string",
+      "required": true,
+      "default": "{{itemNumber}} / {{totalItems}}",
+      "inputType": "Text",
+      "validators": [],
+      "help": "This is the aria label for each item. Use {{itemNumber}} and {{totalItems}} in your text to tell the user which item they are viewing and how many items there are in total.",
+      "translatable": true
     }
   },
   "properties": {
@@ -26,8 +35,25 @@
       "default": "",
       "inputType": "Text",
       "validators": [],
-      "help": "This is the instruction text",
       "translatable": true
+    },
+    "_hidePagination": {
+      "type": "boolean",
+      "required": true,
+      "default": false,
+      "title": "Hide pagination",
+      "inputType": "Checkbox",
+      "validators": [],
+      "help": "If enabled, the progress indicator and previous and next links will not be shown on the popup toolbar"
+    },
+    "_canCycleThroughPagination": {
+      "type": "boolean",
+      "required": true,
+      "default": false,
+      "title": "Cycle through item pagination",
+      "inputType": "Checkbox",
+      "validators": [],
+      "help": "If enabled, the popup navigation buttons will cycle continuously through the popup items (i.e. clicking next on the last item will cause the first item to be shown)."
     },
     "_columns": {
       "type": "number",
@@ -53,7 +79,6 @@
             "title": "Item Popup Title",
             "inputType": "Text",
             "validators": [],
-            "help": "This is the title text for a grid item pop-up.",
             "translatable": true
           },
           "body": {
@@ -63,13 +88,12 @@
             "title": "Item Popup Body",
             "inputType": "TextArea",
             "validators": [],
-            "help": "This is the body text for a grid item pop-up.",
             "translatable": true
           },
           "_graphic": {
             "type": "object",
             "required": true,
-            "title": "Button Graphic",
+            "title": "Item Graphic",
             "properties": {
               "src": {
                 "type": "string",
@@ -111,7 +135,7 @@
                 "title": "Item Title",
                 "inputType": "Text",
                 "validators": [],
-                "help": "This is optional text which is displayed under the grid item image.",
+                "help": "Optional image title,  displayed under the grid item image.",
                 "translatable": true
               }
             }
@@ -120,7 +144,6 @@
             "type": "object",
             "required": true,
             "title": "Popup Graphic",
-            "help": "This is the image for a grid item pop-up.",
             "properties": {
               "src": {
                 "type": "string",
