@@ -12,7 +12,7 @@ The attributes listed below are used in *components.json* to configure **Hotgrid
 
 [**core model attributes**](https://github.com/adaptlearning/adapt_framework/wiki/Core-model-attributes): These are inherited by every Adapt component. [Read more](https://github.com/adaptlearning/adapt_framework/wiki/Core-model-attributes).
 
-**_component** (string): This value must be: `hotgrid`. (One word.)
+**\_component** (string): This value must be: `hotgrid`. (One word.)
 
 **\_classes** (string): CSS class name to be applied to **Hotgrid**’s containing `div`. The class must be predefined in one of the Less files. Separate multiple classes with a space.
 
@@ -20,7 +20,7 @@ The attributes listed below are used in *components.json* to configure **Hotgrid
 
 **instruction** (string): This optional text appears above the component. It is frequently used to guide the learner’s interaction with the component.  
 
-**_canCycleThroughPagination** (boolean): Enables the pop-ups to be cycled through endlessly using either the previous or next icon. When set to `true`, clicking "next" on the final stage will display the very first stage. When set to `false`, the final stage will display only a "previous" icon. The default is `false`.  
+**\_canCycleThroughPagination** (boolean): Enables the pop-ups to be cycled through endlessly using either the previous or next icon. When set to `true`, clicking "next" on the final stage will display the very first stage. When set to `false`, the final stage will display only a "previous" icon. The default is `false`.  
 
 **_hidePagination** (boolean): When set to `true`, hides the "previous" and "next" icons and progress indicator (e.g., "1/5") on the pop-up's toolbar. The default is `false`.  
 
@@ -42,17 +42,17 @@ Hotgrid has a dynamic layout system. If you have 5 items but set the columns to 
 
 >>**title** (string): This is optional text which is displayed under the grid item image.
 
->**\_itemGraphic** (string): This is the image for a grid item pop-up. This also contains values **src** and **alt**. 
+>**\_itemGraphic** (string): This is the image for a grid item pop-up. This also contains values **src** and **alt**. You only need to set this if you want to display a different image in the popup.
 
 ### Accessibility
-**Hotgrid** has a label assigned using the [aria-label](https://github.com/adaptlearning/adapt_framework/wiki/Aria-Labels) attribute: **ariaRegion**. These labels are not visible elements. They are utilized by assistive technology such as screen readers. This label is included within the *example.json* and will need adding to the _globals in *course.json*.
+**Hotgrid** has a label assigned using the [aria-label](https://github.com/adaptlearning/adapt_framework/wiki/Aria-Labels) attribute: **ariaRegion**. These labels are not visible elements. They are utilized by assistive technology such as screen readers. This label is included within the *example.json* and may need to be added to the _globals in *course.json*.
 
 ## Limitations
  
 Hotgrid automatically switches to 2 columns in mobile mode for the best user experience however this can be overridden in the css. 
 
 ----------------------------
-**Version number:**  3.0.0  
+**Version number:**  3.0.1  
 **Framework versions:**  3.2+     
 **Author / maintainer:**  Kineo  
 **Accessibility support:** WAI AA  

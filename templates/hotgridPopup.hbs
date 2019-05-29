@@ -13,11 +13,12 @@
         </div>
         <div class="hotgrid-item-graphic">
             <div class="hotgrid-item-graphic-inner">
-            <img src="{{_graphic.src}}" aria-label="{{_graphic.alt}}"/>
+                {{#if _itemGraphic.src}}
+                <img src="{{_itemGraphic.src}}" aria-label="{{_itemGraphic.alt}}"/>
+                {{else}}
+                <img src="{{_graphic.src}}" aria-label="{{_graphic.alt}}"/>
+                {{/if}}
             </div>
-            {{#if _graphic.attribution}}
-            <div class="graphic-attribution">{{{_graphic.attribution}}}</div>
-            {{/if}}
         </div>
     </div>
     {{/each}}

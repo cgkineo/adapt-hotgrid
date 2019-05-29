@@ -26,7 +26,7 @@
       "type": "string",
       "required": true,
       "enum": ["full-width", "half-width", "both"],
-      "default": "half-width",
+      "default": "full-width",
       "editorOnly": true
     },
     "instruction": {
@@ -135,7 +135,7 @@
                 "title": "Item Title",
                 "inputType": "Text",
                 "validators": [],
-                "help": "Optional image title,  displayed under the grid item image.",
+                "help": "Optional image title, displayed under the grid item image.",
                 "translatable": true
               }
             }
@@ -147,10 +147,11 @@
             "properties": {
               "src": {
                 "type": "string",
-                "required": true,
+                "required": false,
                 "default": "",
                 "inputType": "Asset:image",
-                "validators": ["required"]
+                "validators": [],
+                "help": "Only needs to be set if you want a different image to be shown. If left blank, the Item Graphic (default state) will be displayed in the popup."
               },
               "alt": {
                 "type": "string",
