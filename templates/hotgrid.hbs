@@ -1,31 +1,31 @@
 <div class="component-inner hotgrid-inner">
-    {{> component this}}
-    <div class="component-widget hotgrid-widget">
-        <div role="list" class="hotgrid-grid">
-            <div class="hotgrid-grid-inner clearfix">
-                {{#each _items}}
-                <button class="base hotgrid-grid-item hotgrid-item-states-{{#all _graphic.srcHover _graphic.srcVisited}}image{{else}}css{{/all}} {{#if _isVisited}}visited{{/if}}" data-index={{@index}} role="listitem" aria-label="{{#if _graphic.title}}{{_graphic.title}}{{else}}{{../_globals._accessibility._ariaLabels.item}} {{numbers @index}}{{/if}}.{{#if _graphic.alt}} {{_graphic.alt}}.{{/if}}{{#if _isVisited}} {{../_globals._accessibility._ariaLabels.visited}}.{{/if}}" data-index={{@index}}>
-                    <div class="hotgrid-item-image {{#if ../_hasRoundedImages}}border-radius{{/if}}">
-                        <img src="{{_graphic.src}}" class="hotgrid-item-image-default"/>
-                        {{#all _graphic.srcHover _graphic.srcVisited}}
-                        <img src="{{_graphic.srcHover}}" class="hotgrid-item-image-hover"/>
-                        <img src="{{_graphic.srcVisited}}" class="hotgrid-item-image-visited"/>
-                        {{/all}}
-                    </div>
-                    {{#if _graphic.title}}
-                    <div class="hotgrid-item-title">
-                        <div class="hotgrid-item-title-inner">
-                            {{{_graphic.title}}}
-                        </div>
-                    </div>
-                    {{else}}{{!-- item has no title - show icon instead --}}
-                    <div class="hotgrid-item-icon">
-                        <span class="icon icon-plus"></span>
-                    </div>
-                    {{/if}}
-                </button>
-                {{/each}}
+  {{> component this}}
+  <div class="component-widget hotgrid-widget">
+    <div role="list" class="hotgrid-grid">
+      <div class="hotgrid-grid-inner clearfix">
+        {{#each _items}}
+        <button class="base hotgrid-grid-item hotgrid-item-states-{{#all _graphic.srcHover _graphic.srcVisited}}image{{else}}css{{/all}} {{#if _isVisited}}visited{{/if}}" data-index={{@index}} role="listitem" aria-label="{{#if _graphic.title}}{{_graphic.title}}{{else}}{{../_globals._accessibility._ariaLabels.item}} {{numbers @index}}{{/if}}.{{#if _graphic.alt}} {{_graphic.alt}}.{{/if}}{{#if _isVisited}} {{../_globals._accessibility._ariaLabels.visited}}.{{/if}}" data-index={{@index}}>
+          <div class="hotgrid-item-image {{#if ../_hasRoundedImages}}border-radius{{/if}}">
+            <img src="{{_graphic.src}}" class="hotgrid-item-image-default"/>
+            {{#all _graphic.srcHover _graphic.srcVisited}}
+            <img src="{{_graphic.srcHover}}" class="hotgrid-item-image-hover"/>
+            <img src="{{_graphic.srcVisited}}" class="hotgrid-item-image-visited"/>
+            {{/all}}
+          </div>
+          {{#if _graphic.title}}
+          <div class="hotgrid-item-title">
+            <div class="hotgrid-item-title-inner">
+              {{{_graphic.title}}}
             </div>
-        </div>
+          </div>
+          {{else}}{{!-- item has no title - show icon instead --}}
+          <div class="hotgrid-item-icon">
+            <span class="icon icon-plus"></span>
+          </div>
+          {{/if}}
+        </button>
+        {{/each}}
+      </div>
     </div>
+  </div>
 </div>
