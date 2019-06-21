@@ -4,8 +4,8 @@
     "type": "git",
     "url": "git://github.com/cgkineo/adapt-hotgrid"
   },
-  "framework": ">=3.2",
   "version": "3.0.1",
+  "framework": ">=3.2",
   "homepage": "https://github.com/cgkineo/adapt-hotgrid",
   "issues": "https://github.com/cgkineo/adapt-hotgrid/issues/",
   "displayName": "Hotgrid",

@@ -1,0 +1,116 @@
+.hotgrid-popup {
+  position: relative;
+
+  // --------------------------------------------------
+  // Pop up toolbar
+  // --------------------------------------------------
+  &__inner.has-toolbar {
+    padding-top: @icon-size + (@icon-padding * 2);
+  }
+
+  &__toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+  }
+
+  &__count {
+    padding: @icon-padding;
+  }
+
+  &__controls.is-disabled {
+    visibility: hidden;
+  }
+  // --------------------------------------------------
+
+  // --------------------------------------------------
+  // Pop up item
+  // --------------------------------------------------
+  &__item {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__item.is-round .hotgrid-popup__item-image {
+    border-radius: 50%;
+  }
+
+  &__item-content,
+  &__item-image-container {
+    width: 100%;
+
+    @media (min-width: @device-width-medium) {
+      width: 50%;
+    }
+  }
+
+  @media (min-width: @device-width-medium) {
+    &__item-image-container {
+      padding-left: @item-padding / 2;
+    }
+  }
+  // --------------------------------------------------
+
+  // --------------------------------------------------
+  // Hotgrid pop up icons
+  // --------------------------------------------------
+  &__controls.back .icon {
+    .icon-controls-small-left;
+  }
+
+  &__controls.next .icon {
+    .icon-controls-small-right;
+  }
+
+  &__close .icon {
+    .icon-cross;
+  }
+  // --------------------------------------------------
+
+  // --------------------------------------------------
+  // Hide the items that are not currently active and being viewed
+  // --------------------------------------------------
+  &__item:not(.is-active) {
+    .u-display-none;
+  }
+  // --------------------------------------------------
+
+  // --------------------------------------------------
+  // Align hotgrid pop up image to the left
+  // --------------------------------------------------
+  &__item.align-image-left {
+    @media (min-width: @device-width-medium) {
+      flex-direction: row-reverse;
+
+      .hotgrid-popup__item-image-container {
+        padding-left: inherit;
+        padding-right: @item-padding / 2;
+      }
+    }
+  }
+  // --------------------------------------------------
+
+  // --------------------------------------------------
+  // Hide hotgrid pop up image in desktop
+  // --------------------------------------------------
+  &__item.hide-desktop-image {
+    .hotgrid-popup__item-content {
+      width: 100%;
+    }
+
+    .hotgrid-popup__item-image-container {
+      display: none;
+    }
+  }
+  // --------------------------------------------------
+}

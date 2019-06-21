@@ -8,8 +8,8 @@ define([
     className: 'hotgrid-popup',
 
     events: {
-      'click .hotgrid-popup-done': 'closePopup',
-      'click .hotgrid-popup-controls': 'onControlClick'
+      'click .js-hotgrid-popup-close': 'closePopup',
+      'click .js-hotgrid-control-click': 'onControlClick'
     },
 
     initialize: function() {
@@ -33,9 +33,9 @@ define([
 
       var shouldEnableBack = index > 0 || canCycleThroughPagination;
       var shouldEnableNext = index < itemCount - 1 || canCycleThroughPagination;
-      var $controls = this.$('.hotgrid-popup-controls');
+      var $controls = this.$('.hotgrid-popup__controls');
 
-      this.$('hotgrid-popup-nav')
+      this.$('hotgrid-popup__nav')
         .toggleClass('first', !shouldEnableBack)
         .toggleClass('last', !shouldEnableNext);
 
@@ -49,12 +49,12 @@ define([
           itemNumber: this.model.getActiveItem().get('_index') + 1,
           totalItems: this.model.get('_items').length
       });
-      this.$('.hotgrid-popup-count').html(labelText);
+      this.$('.hotgrid-popup__count').html(labelText);
     },
 
     handleTabs: function() {
-      this.$('.hotgrid-popup-inner').a11y_on(false);
-      this.$('.hotgrid-popup-inner .active').a11y_on(true);
+      this.$('.hotgrid-popup__inner').a11y_on(false);
+      this.$('.hotgrid-popup__inner .is-active').a11y_on(true);
     },
 
     onItemsActiveChange: function(item, _isActive) {
@@ -69,20 +69,20 @@ define([
     },
 
     applyItemClasses: function(index) {
-      this.$('.hotgrid-item.active').removeClass('active');
-      this.$('.hotgrid-item').filter('[data-index="' + index + '"]').addClass('active');
+      this.$('.hotgrid-popup__item.is-active').removeClass('is-active');
+      this.$('.hotgrid-popup__item').filter('[data-index="' + index + '"]').addClass('is-active');
     },
 
     handleFocus: function() {
-      this.$('.hotgrid-popup-inner .active').a11y_focus();
+      this.$('.hotgrid-popup__inner .is-active').a11y_focus();
     },
 
     onItemsVisitedChange: function(item, _isVisited) {
       if (!_isVisited) return;
 
-      this.$('.hotgrid-item')
+      this.$('.hotgrid-popup__item')
         .filter('[data-index="' + item.get('_index') + '"]')
-        .addClass('visited');
+        .addClass('is-visited');
     },
 
     render: function() {

@@ -12,6 +12,7 @@
         "_hidePagination": false,
         "instruction": "",
         "_columns": 3,
+        "_isRound": false,
         "_items": [
             {
                 "title": "Grid Item 1",
@@ -30,7 +31,7 @@
             },
             {
                 "title": "Grid Item 2",
-                "body": "This is display text 1. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
+                "body": "This is display text 2. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
                 "_graphic": {
                     "src": "course/en/images/c-05-2.png",
                     "srcHover": "",
@@ -45,7 +46,7 @@
             },
             {
                 "title": "Grid Item 3",
-                "body": "This is display text 1. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
+                "body": "This is display text 3. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
                 "_graphic": {
                     "src": "course/en/images/c-05-3.png",
                     "srcHover": "",
@@ -60,7 +61,7 @@
             },
             {
                 "title": "Grid Item 4",
-                "body": "This is display text 1. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
+                "body": "This is display text 4. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
                 "_graphic": {
                     "src": "course/en/images/c-05-4.png",
                     "srcHover": "",
@@ -75,7 +76,7 @@
             },
             {
                 "title": "Grid Item 5",
-                "body": "This is display text 1. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
+                "body": "This is display text 5. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
                 "_graphic": {
                     "src": "course/en/images/c-05-5.png",
                     "srcHover": "",

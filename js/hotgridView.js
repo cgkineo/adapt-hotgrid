@@ -7,7 +7,7 @@ define([
   var HotgridView = ComponentView.extend({
 
     events: {
-      'click .hotgrid-grid-item': 'onItemClicked'
+      'click .js-hotgrid-item-click': 'onItemClicked'
     },
 
     initialize: function() {
@@ -41,10 +41,10 @@ define([
 
     setDeviceSize: function() {
       if (Adapt.device.screenSize === 'large') {
-        this.$el.addClass('desktop').removeClass('mobile');
+        this.$el.addClass('is-desktop').removeClass('is-mobile');
         this.model.set('_isDesktop', true);
       } else {
-        this.$el.addClass('mobile').removeClass('desktop');
+        this.$el.addClass('is-mobile').removeClass('is-desktop');
         this.model.set('_isDesktop', false)
       }
     },
@@ -58,7 +58,7 @@ define([
 
     postRender: function() {
       this.setUpColumns();
-      this.$('.hotgrid-widget').imageready(this.setReadyStatus.bind(this));
+      this.$('.hotgrid__widget').imageready(this.setReadyStatus.bind(this));
     },
 
     resizeControl: function() {
@@ -70,17 +70,17 @@ define([
       var columns = this.model.get('_columns');
 
       if (columns && Adapt.device.screenSize === 'large') {
-        this.$('.hotgrid-grid-item').css('width', (100 / columns) + '%');
+        this.$('.hotgrid__item-btn').css('width', (100 / columns) + '%');
       }
     },
 
     onItemsActiveChange: function(model, _isActive) {
-      this.getItemElement(model).toggleClass('active', _isActive);
+      this.getItemElement(model).toggleClass('is-active', _isActive);
     },
 
     getItemElement: function(model) {
       var index = model.get('_index');
-      return this.$('.hotgrid-grid-item').filter('[data-index="' + index + '"]');
+      return this.$('.hotgrid__item-btn').filter('[data-index="' + index + '"]');
     },
 
     onItemsVisitedChange: function(model, _isVisited) {
@@ -93,7 +93,7 @@ define([
         return val + ' ' + visitedLabel;
       });
 
-      $item.addClass('visited');
+      $item.addClass('is-visited');
     },
 
     onItemClicked: function(event) {

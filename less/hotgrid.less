@@ -1,254 +1,81 @@
-.hotgrid-component {
+.hotgrid {
+  &__grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+  }
 
-    .hotgrid-widget {
-        // Font size set to 0 so there's no gap between items
-        font-size: 0;
-        position: relative;
-        text-align: center;
+  &__item {
+    width: 100%;
+
+    @media (min-width: @device-width-small) {
+      width: 50%;
     }
+  }
 
-    .hotgrid-grid-item {
-        display: inline-block;
-        text-align: center;
-        vertical-align: top;
-        width: 50%;
-        &.hotgrid-item-states-image {
-            .item-states-image.default;
+  &__item-btn {
+    background-color: transparent;
+  }
 
-            &.visited {
-                .item-states-image.visited;
-            }
+  &__item-btn.is-round .hotgrid__item-image {
+    border-radius: 50%;
+  }
 
-            .no-touch &:hover {
-                .item-states-image.hover;
-            }
-        }
+  &__item-icon .icon {
+    .icon-plus;
+  }
+
+  // --------------------------------------------------
+  // Application of item image states
+  // --------------------------------------------------
+  &__item-btn.is-image {
+    .image-state.is-default;
+
+    .no-touch &:hover {
+      .image-state.is-hover;
     }
+  }
 
-    .hotgrid-item-image {
-        display: block;
-        margin: 2.5%;
-        width: 95%;
-
-        img {
-            display: block;
-            transition: all 0.25s;
-        }
-
-
-        @media all and (max-width:(@device-width-medium - 1)) {
-            margin: 5px;
-        }
-    }
-
-    .hotgrid-item-title {
-        font-size: @body-text-font-size;
-    }
-
-    //removes tap highlighting on webkit-based browsers found in some mobile devices
-    button.base.hotgrid-item-image {
-        -webkit-tap-highlight-color: rgba(0,0,0,0);
-    }
+  &__item-btn.is-image.is-visited {
+    .image-state.is-visited;
+  }
+  // --------------------------------------------------
 }
 
-// Hotgrid item states - images
-// ==============================
-.item-states-image {
-    .default {
-        .hotgrid-item-image-hover,
-        .hotgrid-item-image-visited {
-            display: none;
-        }
-    }
+// --------------------------------------------------
+// Hotgrid item image states
+// --------------------------------------------------
+.image-state.is-default {
+  .hotgrid__item-image.is-default {
+    display: block;
+  }
 
-    .hover {
-        .hotgrid-item-image-default,
-        .hotgrid-item-image-visited {
-            display: none;
-        }
-
-        .hotgrid-item-image-hover {
-            display: block;
-        }
-    }
-
-    .visited {
-        .hotgrid-item-image-default,
-        .hotgrid-item-image-hover {
-            display: none;
-        }
-
-        .hotgrid-item-image-visited {
-            display: block;
-        }
-    }
-}
-
-// Hotgrid item states - css
-// ==============================
-.hotgrid-component {
-    .hotgrid-item-states-css {
-        border: 3px solid transparent;
-        /* uncomment if circular items */
-        // border-radius: 50%;
-
-        .no-touch &:hover {
-            border: 3px solid @item-color;
-        }
-
-        &.visited {
-            position: relative;
-
-            &:after {
-                content: " ";
-                display: block;
-                height: 100%;
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                background-color: fade(@item-color-disabled, 50%);
-                /* uncomment if circular items */
-                //border-radius: 50%;
-            }
-        }
-    }
-}
-
-// Hotgrid notify content layout
-// ==============================
-.notify.hotgrid {
-
-    .notify-popup {
-        pointer-events: none;
-        background-color: transparent;
-        color: @font-color;
-
-        .notify-popup-content {
-            width: auto;
-            pointer-events: auto;
-        }
-    }
-
-    .notify-popup-content-inner {
-        .hotgrid-popup {
-            width: auto;
-            height: auto;
-            margin: 40px;
-            background-color: @background-color;
-            border: @item-border;
-            z-index: 5;
-            position: relative;
-            padding-top: (@item-padding-top + @item-padding-bottom) + @icon-size;
-        }
-
-        .hotgrid-popup-toolbar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: @item-color;
-            height: (@item-padding-top + @item-padding-bottom) + @icon-size;
-        }
-
-        .hotgrid-popup-nav {
-            background-color: @item-color;
-        }
-
-        .hotgrid-popup-done {
-            position: absolute;
-            top: 0;
-            right: 0;
-            text-decoration: none;
-            .dir-rtl & {
-                right: inherit;
-                left: 0;
-            }
-            .no-touch &:hover {
-                .hotgrid-popup-close {
-                    color: @button-text-color-hover;
-                }
-            }
-        }
-
-        .hotgrid-popup-arrow-l,
-        .hotgrid-popup-arrow-r,
-        .hotgrid-popup-close {
-            padding: @item-padding;
-            color: @button-text-color;
-        }
-
-        .hotgrid-popup-count {
-            padding: @item-padding;
-            vertical-align: baseline;
-            color: @item-text-color;
-            float: left;
-            .dir-rtl & {
-                float: right;
-            }
-            span {
-                display: inline-block;
-            }
-        }
-
-        .hotgrid-popup-controls {
-            float: left;
-            text-decoration: none;
-            .dir-rtl & {
-                float: right;
-            }
-            .no-touch &:hover {
-                .hotgrid-popup-arrow-l,
-                .hotgrid-popup-arrow-r {
-                    color: @button-text-color-hover;
-                }
-            }
-            &.disabled {
-                visibility: hidden;
-            }
-        }
-
-        .hotgrid-popup-inner {
-            padding: @item-padding;
-        }
-
-        .hotgrid-item-graphic {
-            padding-left: @item-padding-left;
-            width: 50%;
-            box-sizing: border-box;
-            float: right;
-            .dir-rtl & {
-                float: left;
-            }
-            text-align: center;
-        }
-
-        .hotgrid-item-graphic-inner{
-            img {
-                display: block;
-            }
-            .dir-rtl & {
-                padding-left: inherit;
-                padding-right: @item-padding-left;
-            }
-        }
-
-        .hotgrid-item-content {
-            width: 50%;
-            float: left;
-            .dir-rtl & {
-                float: right;
-            }
-        }
-
-        .graphic-attribution {
-            font-size: 0.75em;
-            line-height: 1em;
-            padding-top: 0.5em;
-        }
-    }
-}
-
-.hotgrid-item:not(.active) {
+  .hotgrid__item-image.is-hover,
+  .hotgrid__item-image.is-visited {
     display: none;
+  }
 }
+
+.image-state.is-hover {
+  .hotgrid__item-image.is-hover {
+    display: block;
+  }
+
+  .hotgrid__item-image.is-default,
+  .hotgrid__item-image.is-visited {
+    display: none;
+  }
+}
+
+.image-state.is-visited {
+  .hotgrid__item-image.is-visited {
+    display: block;
+  }
+
+  .hotgrid__item-image.is-default,
+  .hotgrid__item-image.is-hover {
+    display: none;
+  }
+}
+// --------------------------------------------------

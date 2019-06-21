@@ -64,6 +64,15 @@
       "validators": ["number"],
       "help": "This value determines the number of columns within the grid. Any number of columns can be set however keep in mind the more columns there are the smaller the items will be."
     },
+    "_isRound": {
+      "type": "boolean",
+      "required": false,
+      "default": false,
+      "title": "Should item image be round?",
+      "inputType": "Checkbox",
+      "validators": [],
+      "help": "If enabled, a 50% border radius will be applied to the item images including the pop up."
+    },
     "_items": {
       "type": "array",
       "required": true,
