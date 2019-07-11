@@ -7,9 +7,9 @@
     <div class="hotgrid__grid" role="list">
 
         {{#each _items}}
-        <button class="hotgrid__item-btn{{#if _isVisited}} is-visited{{/if}}{{#all _graphic.srcHover _graphic.srcVisited}} is-image{{else}} is-css{{/all}}{{#if ../_isRound}} is-round{{/if}} js-hotgrid-item-click" role="listitem" aria-label="{{#if _graphic.title}}{{_graphic.title}}{{else}}{{../_globals._accessibility._ariaLabels.item}} {{numbers @index}}{{/if}}.{{#if _graphic.alt}} {{_graphic.alt}}.{{/if}}{{#if _isVisited}} {{../_globals._accessibility._ariaLabels.visited}}.{{/if}}" data-index="{{@index}}">
+        <button class="hotgrid__item-btn{{#if _isVisited}} is-visited{{/if}}{{#all _graphic.srcHover _graphic.srcVisited}} is-image{{else}} is-css{{/all}}{{#if ../_isRound}} is-round{{/if}} js-hotgrid-item-click" role="listitem" data-index="{{@index}}">
 
-          {{!-- CREATE HIDDEN ARIA LABEL HERE / MOVE ARIA LABEL BUTTON --}}
+          <span class="aria-label" aria-label="{{#if _graphic.title}}{{_graphic.title}}{{else}}{{../_globals._accessibility._ariaLabels.item}} {{numbers @index}}{{/if}}.{{#if _graphic.alt}} {{_graphic.alt}}.{{/if}}"></span>
 
           <div class="hotgrid__item-btn-inner" aria-hidden="true">
 
