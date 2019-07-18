@@ -13,6 +13,7 @@ define([
     },
 
     initialize: function() {
+      this.onControlClick = _.debounce(this.onControlClick.bind(this), 100);
       this.listenToOnce(Adapt, 'notify:opened', this.onOpened);
       this.listenTo(this.model.get('_children'), {
         'change:_isActive': this.onItemsActiveChange,
