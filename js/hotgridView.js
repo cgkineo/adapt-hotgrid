@@ -70,7 +70,7 @@ define([
       var columns = this.model.get('_columns');
 
       if (columns && Adapt.device.screenSize === 'large') {
-        this.$('.hotgrid__item-btn').css('width', (100 / columns) + '%');
+        this.$('.hotgrid__item').css('width', (100 / columns) + '%');
       }
     },
 
@@ -89,7 +89,7 @@ define([
 
       // Append the word 'visited' to the item's aria-label
       var visitedLabel = this.model.get('_globals')._accessibility._ariaLabels.visited + '.';
-      $item.children('.aria-label').attr('aria-label', function(index, val) {
+      $item.attr('aria-label', function(index, val) {
         return val + ' ' + visitedLabel;
       });
 
