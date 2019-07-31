@@ -89,8 +89,8 @@ define([
 
       // Append the word 'visited' to the item's aria-label
       var visitedLabel = this.model.get('_globals')._accessibility._ariaLabels.visited + '.';
-      $item.attr('aria-label', function(index, val) {
-        return val + ' ' + visitedLabel;
+      $item.find('.aria-label').each(function(index, el) {
+        el.innerHTML += " " + visitedLabel;
       });
 
       $item.addClass('is-visited');

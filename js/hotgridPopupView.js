@@ -44,7 +44,7 @@ define([
     },
 
     updatePageCount: function() {
-      var template = Adapt.course.get('_globals')._components._hotgrid.popupPagination;
+      var template = Adapt.course.get("_globals")._components._hotgrid.popupPagination || '{{itemNumber}} / {{totalItems}}';
       var labelText = Handlebars.compile(template || '')({
           itemNumber: this.model.getActiveItem().get('_index') + 1,
           totalItems: this.model.get('_items').length
@@ -53,8 +53,8 @@ define([
     },
 
     handleTabs: function() {
-      this.$('.hotgrid-popup__inner').a11y_on(false);
-      this.$('.hotgrid-popup__inner .is-active').a11y_on(true);
+      this.$('.hotgrid-popup__item:not(.is-active) *').a11y_on(false);
+      this.$('.hotgrid-popup__item.is-active *').a11y_on(true);
     },
 
     onItemsActiveChange: function(item, _isActive) {
@@ -69,8 +69,10 @@ define([
     },
 
     applyItemClasses: function(index) {
-      this.$('.hotgrid-popup__item.is-active').removeClass('is-active');
-      this.$('.hotgrid-popup__item').filter('[data-index="' + index + '"]').addClass('is-active');
+      this.$('.hotgrid-popup__item[data-index="' + index + '"]').addClass('is-active').removeAttr('aria-hidden');
+      this.$('.hotgrid-popup__item[data-index="' + index + '"] .hotgrid-popup__item-title').attr("id", "notify-heading");
+      this.$('.hotgrid-popup__item:not([data-index="' + index + '"])').removeClass('is-active').attr('aria-hidden', 'true');
+      this.$('.hotgrid-popup__item:not([data-index="' + index + '"]) .hotgrid-popup__item-title').removeAttr("id");
     },
 
     handleFocus: function() {
