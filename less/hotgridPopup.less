@@ -36,28 +36,33 @@
   // --------------------------------------------------
   // Pop up item
   // --------------------------------------------------
-  &__item {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  &__item.is-round .hotgrid-popup__item-image {
-    border-radius: 50%;
-  }
-
-  &__item-content,
   &__item-image-container {
-    width: 100%;
-
-    @media (min-width: @device-width-medium) {
-      width: 50%;
-    }
+    width: 60%;
+    margin: auto;
   }
 
   @media (min-width: @device-width-medium) {
-    &__item-image-container {
-      padding-left: @item-padding / 2;
+    &__item {
+      display: flex;
+      align-items: flex-start;
     }
+
+    &__item-content,
+    &__item-image-container {
+      width: 50%;
+    }
+
+    &__item-image-container {
+      margin-left: @item-padding / 2;
+    }
+  }
+  // --------------------------------------------------
+
+  // --------------------------------------------------
+  // Modifier for pop up item to add rounded border
+  // --------------------------------------------------
+  &__item.is-round .hotgrid-popup__item-image {
+    border-radius: 50%;
   }
   // --------------------------------------------------
 
@@ -93,8 +98,8 @@
       flex-direction: row-reverse;
 
       .hotgrid-popup__item-image-container {
-        padding-left: inherit;
-        padding-right: @item-padding / 2;
+        margin-left: inherit;
+        margin-right: @item-padding / 2;
       }
     }
   }
