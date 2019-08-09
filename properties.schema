@@ -99,6 +99,15 @@
             "validators": [],
             "translatable": true
           },
+          "_classes": {
+            "type": "string",
+            "required": false,
+            "default": "",
+            "title": "Item Popup Classes",
+            "inputType": "Text",
+            "validators": [],
+            "help": "Allows you to specify custom CSS classes to be applied to the popup item"
+          },
           "_graphic": {
             "type": "object",
             "required": true,
