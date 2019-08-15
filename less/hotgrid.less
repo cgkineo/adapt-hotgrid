@@ -7,15 +7,17 @@
         text-align: center;
     }
 
-    .hotgrid-grid-listitem {
-        display: inline;
+    .hotgrid-grid-inner {
+        display: flex;
+        flex-flow: wrap;
+        justify-content: center;
     }
 
     .hotgrid-grid-item {
         display: inline-block;
         text-align: center;
         vertical-align: top;
-        width: 50%;
+        width: 100%;
         &.hotgrid-item-states-image {
             .item-states-image.default;
 
