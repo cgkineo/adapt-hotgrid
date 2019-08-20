@@ -13,6 +13,8 @@ define([
         },
 
         initialize: function() {
+            // Debounce required as a second (bad) click event is dispatched on iOS causing a jump of two items.
+            this.onControlClick = _.debounce(this.onControlClick.bind(this), 100);
             this.listenToOnce(Adapt, 'notify:opened', this.onOpened);
             this.listenTo(this.model.get('_children'), {
                 'change:_isActive': this.onItemsActiveChange,
