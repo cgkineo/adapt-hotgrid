@@ -70,7 +70,7 @@ define([
             var columns = this.model.get('_columns');
 
             if (columns && Adapt.device.screenSize === 'large') {
-                this.$('.hotgrid-grid-item').css('width', (100 / columns) + '%');
+                this.$('.hotgrid-grid-listitem').css('width', (100 / columns) + '%');
             }
         },
 
@@ -89,8 +89,8 @@ define([
 
             // Append the word 'visited' to the item's aria-label
             var visitedLabel = this.model.get('_globals')._accessibility._ariaLabels.visited + '.';
-            $item.attr('aria-label', function(index, val) {
-                return val + ' ' + visitedLabel;
+            $item.find('.aria-label').each(function(index, ariaLabel) {
+                ariaLabel.innerHTML += ' ' + visitedLabel;
             });
 
             $item.addClass('visited');

@@ -3,7 +3,7 @@
     <div class="hotgrid-item component-item clearfix {{#if _isVisited}}visited{{/if}} {{#if _isActive}}active{{/if}} {{_classes}}" data-index={{@index}}>
         <div class="hotgrid-item-content">
             <div class="hotgrid-item-content-inner">
-            <div class="hotgrid-content-title" {{a11y_attrs_heading 'componentItem'}}>
+            <div{{#if _isActive}} id="notify-heading"{{/if}} class="hotgrid-content-title" {{a11y_attrs_heading 'notify'}}>
                 {{{title}}}
             </div>
             <div class="hotgrid-content-body">
@@ -19,6 +19,9 @@
                 <img src="{{_graphic.src}}" aria-label="{{_graphic.alt}}"/>
                 {{/if}}
             </div>
+            {{#if _graphic.attribution}}
+            <div class="graphic-attribution">{{{_graphic.attribution}}}</div>
+            {{/if}}
         </div>
     </div>
     {{/each}}

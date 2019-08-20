@@ -44,7 +44,7 @@ define([
         },
 
         updatePageCount: function() {
-            var template = Adapt.course.get('_globals')._components._hotgrid.popupPagination;
+            var template = Adapt.course.get('_globals')._components._hotgrid.popupPagination || '{{itemNumber}} / {{totalItems}}';
             var labelText = Handlebars.compile(template || '')({
                 itemNumber: this.model.getActiveItem().get('_index') + 1,
                 totalItems: this.model.get('_items').length
@@ -53,28 +53,30 @@ define([
         },
 
         handleTabs: function() {
-            this.$('.hotgrid-popup-inner').a11y_on(false);
-            this.$('.hotgrid-popup-inner .active').a11y_on(true);
+            this.$('.hotgrid-item:not(.active) *').a11y_on(false);
+            this.$('.hotgrid-item.active *').a11y_on(true);
         },
 
         onItemsActiveChange: function(item, _isActive) {
             if (!_isActive) return;
 
             var index = item.get('_index');
-            this.applyNavigationClasses(index);
             this.updatePageCount();
             this.handleTabs();
             this.applyItemClasses(index);
-            this.handleFocus();
+            this.handleFocus(index);
         },
 
         applyItemClasses: function(index) {
-            this.$('.hotgrid-item.active').removeClass('active');
-            this.$('.hotgrid-item').filter('[data-index="' + index + '"]').addClass('active');
+            this.$('.hotgrid-item[data-index="' + index + '"]').addClass('active').removeAttr('aria-hidden');
+            this.$('.hotgrid-item[data-index="' + index + '"] .hotgrid-content-title').attr("id", "notify-heading");
+            this.$('.hotgrid-item:not([data-index="' + index + '"])').removeClass('active').attr('aria-hidden', 'true');
+            this.$('.hotgrid-item:not([data-index="' + index + '"]) .hotgrid-content-title').removeAttr("id");
         },
 
-        handleFocus: function() {
+        handleFocus: function(index) {
             this.$('.hotgrid-popup-inner .active').a11y_focus();
+            this.applyNavigationClasses(index);
         },
 
         onItemsVisitedChange: function(item, _isVisited) {
@@ -102,9 +104,9 @@ define([
             var direction = $(event.currentTarget).hasClass('back') ? 'back' : 'next';
             var index = this.getNextIndex(direction);
 
-            if (index === -1) return;
-
-            this.setItemState(index);
+            if (index !== -1) {
+                this.setItemState(index);
+            }
         },
 
         getNextIndex: function(direction) {

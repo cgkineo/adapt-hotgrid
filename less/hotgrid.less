@@ -7,18 +7,28 @@
         text-align: center;
     }
 
+    .hotgrid-grid-inner {
+        display: flex;
+        flex-flow: wrap;
+        justify-content: center;
+    }
+
+    .hotgrid-grid-listitem {
+        width: 50%;
+    }
+
     .hotgrid-grid-item {
         display: inline-block;
         text-align: center;
         vertical-align: top;
-        width: 50%;
+        width: 100%;
         &.hotgrid-item-states-image {
             .item-states-image.default;
-    
+
             &.visited {
                 .item-states-image.visited;
             }
-    
+
             .no-touch &:hover {
                 .item-states-image.hover;
             }
@@ -40,7 +50,7 @@
             margin: 5px;
         }
     }
-    
+
     .hotgrid-item-title {
         font-size: @body-text-font-size;
     }
@@ -53,7 +63,7 @@
 
 // Hotgrid item states - images
 // ==============================
-.item-states-image { 
+.item-states-image {
     .default {
         .hotgrid-item-image-hover,
         .hotgrid-item-image-visited {
@@ -90,7 +100,7 @@
     .hotgrid-item-states-css {
         border: 3px solid transparent;
         /* uncomment if circular items */
-        // border-radius: 50%;  
+        // border-radius: 50%;
 
         .no-touch &:hover {
             border: 3px solid @item-color;
@@ -109,7 +119,7 @@
                 width: 100%;
                 background-color: fade(@item-color-disabled, 50%);
                 /* uncomment if circular items */
-                //border-radius: 50%; 
+                //border-radius: 50%;
             }
         }
     }
