@@ -179,6 +179,15 @@
                 "inputType": "Text",
                 "validators": [],
                 "translatable": true
+              },
+              "attribution": {
+                "type":"string",
+                "required":false,
+                "default": "",
+                "inputType": "Text",
+                "validators": [],
+                "help": "Text to be displayed as an attribution for the popup image",
+                "translatable": true
               }
             }
           }

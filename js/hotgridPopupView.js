@@ -13,6 +13,8 @@ define([
     },
 
     initialize: function() {
+      // Debounce required as a second (bad) click event is dispatched on iOS causing a jump of two items.
+      this.onControlClick = _.debounce(this.onControlClick.bind(this), 100);
       this.listenToOnce(Adapt, 'notify:opened', this.onOpened);
       this.listenTo(this.model.get('_children'), {
         'change:_isActive': this.onItemsActiveChange,
@@ -44,7 +46,7 @@ define([
     },
 
     updatePageCount: function() {
-      var template = Adapt.course.get("_globals")._components._hotgrid.popupPagination || '{{itemNumber}} / {{totalItems}}';
+      var template = Adapt.course.get('_globals')._components._hotgrid.popupPagination || '{{itemNumber}} / {{totalItems}}';
       var labelText = Handlebars.compile(template || '')({
           itemNumber: this.model.getActiveItem().get('_index') + 1,
           totalItems: this.model.get('_items').length
@@ -61,11 +63,10 @@ define([
       if (!_isActive) return;
 
       var index = item.get('_index');
-      this.applyNavigationClasses(index);
       this.updatePageCount();
       this.handleTabs();
       this.applyItemClasses(index);
-      this.handleFocus();
+      this.handleFocus(index);
     },
 
     applyItemClasses: function(index) {
@@ -75,8 +76,9 @@ define([
       this.$('.hotgrid-popup__item:not([data-index="' + index + '"]) .hotgrid-popup__item-title').removeAttr("id");
     },
 
-    handleFocus: function() {
+    handleFocus: function(index) {
       this.$('.hotgrid-popup__inner .is-active').a11y_focus();
+      this.applyNavigationClasses(index);
     },
 
     onItemsVisitedChange: function(item, _isVisited) {
@@ -104,9 +106,9 @@ define([
       var direction = $(event.currentTarget).hasClass('back') ? 'back' : 'next';
       var index = this.getNextIndex(direction);
 
-      if (index === -1) return;
-
-      this.setItemState(index);
+      if (index !== -1) {
+        this.setItemState(index);
+      }
     },
 
     getNextIndex: function(direction) {

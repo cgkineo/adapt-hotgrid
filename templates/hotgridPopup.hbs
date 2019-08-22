@@ -7,7 +7,7 @@
       <div class="hotgrid-popup__item-content-inner">
 
         {{#if title}}
-        <div{{#if _isActive}} id="notify-heading"{{/if}} class="hotgrid-popup__item-title" {{a11y_attrs_heading 'componentItem'}}>
+        <div{{#if _isActive}} id="notify-heading"{{/if}} class="hotgrid-popup__item-title" {{a11y_attrs_heading 'notify'}}>
           <div class="hotgrid-popup__item-title-inner">
             {{{title}}}
           </div>
@@ -25,12 +25,20 @@
       </div>
     </div>
 
-    <div class="hotgrid-popup__item-image-container">
+    <div class="hotgrid-popup__item-image-container{{#if _itemGraphic.attribution}} has-attribution{{/if}}">
 
       {{#if _itemGraphic.src}}
       <img class="hotgrid-popup__item-image" src="{{_itemGraphic.src}}" {{#if _itemGraphic.alt}}aria-label="{{_itemGraphic.alt}}"{{else}}aria-hidden="true"{{/if}}>
       {{else}}
       <img class="hotgrid-popup__item-image" src="{{_graphic.src}}" {{#if _graphic.alt}}aria-label="{{_graphic.alt}}"{{else}}aria-hidden="true"{{/if}}>
+      {{/if}}
+
+      {{#if _itemGraphic.attribution}}
+      <div class="component__attribution hotgrid-popup__attribution">
+        <div class="component__attribution-inner hotgrid-popup__attribution-inner">
+          {{{_itemGraphic.attribution}}}
+        </div>
+      </div>
       {{/if}}
 
     </div>
