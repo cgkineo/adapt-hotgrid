@@ -106,7 +106,7 @@
             "title": "Item Popup Classes",
             "inputType": "Text",
             "validators": [],
-            "help": "Allows you to specify custom CSS classes to be applied to the popup item"
+            "help": "Allows you to specify custom CSS classes to be applied to the popup item. Supported classes are 'align-image-left' and 'hide-desktop-image' which aligns the item image to the left and hides the pop up image in desktop view respectively."
           },
           "_graphic": {
             "type": "object",
@@ -181,8 +181,8 @@
                 "translatable": true
               },
               "attribution": {
-                "type":"string",
-                "required":false,
+                "type": "string",
+                "required": false,
                 "default": "",
                 "inputType": "Text",
                 "validators": [],

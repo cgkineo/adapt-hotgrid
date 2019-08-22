@@ -5,88 +5,65 @@
         "_component": "hotgrid",
         "_classes": "",
         "_layout": "full",
-        "title": "Adapt Hotgrid",
-        "displayTitle": "Adapt Hotgrid",
-        "body": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis.",
+        "title": "Hotgrid",
+        "displayTitle": "Hotgrid",
+        "body": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.",
+        "instruction": "Select the images to reveal the text.",
         "_canCycleThroughPagination": false,
         "_hidePagination": false,
-        "instruction": "",
         "_columns": 3,
         "_isRound": false,
         "_items": [
             {
                 "title": "Grid Item 1",
                 "body": "This is display text 1. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
+                "_comment": "Supported classes = 'align-image-left' | 'hide-desktop-image'. Additional classes can be used but they must be predefined in one of the Less files",
+                "_classes": "",
                 "_graphic": {
-                    "src": "course/en/images/c-05-1.png",
+                    "src": "course/en/images/example.jpg",
                     "srcHover": "",
                     "srcVisited": "",
-                    "alt": "alt text here test",
+                    "alt": "Placeholder graphic",
                     "title": "Item Title 1"
                 },
                 "_itemGraphic": {
-                    "src": "course/en/images/c-05-1.png",
-                    "alt": "alt text"
+                    "src": "course/en/images/example.jpg",
+                    "alt": "Placeholder graphic",
+                    "attribution": "Copyright © 2019"
                 }
             },
             {
                 "title": "Grid Item 2",
-                "body": "This is display text 2. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
+                "body": "This is display text 2.",
+                "_classes": "",
                 "_graphic": {
-                    "src": "course/en/images/c-05-2.png",
+                    "src": "course/en/images/example.jpg",
                     "srcHover": "",
                     "srcVisited": "",
                     "alt": "",
                     "title": "Item Title 2"
                 },
                 "_itemGraphic": {
-                    "src": "course/en/images/c-05-2.png",
-                    "alt": "alt text"
+                    "src": "course/en/images/example.jpg",
+                    "alt": "",
+                    "attribution": ""
                 }
             },
             {
                 "title": "Grid Item 3",
-                "body": "This is display text 3. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
+                "body": "This is display text 3.",
+                "_classes": "",
                 "_graphic": {
-                    "src": "course/en/images/c-05-3.png",
+                    "src": "course/en/images/example.jpg",
                     "srcHover": "",
                     "srcVisited": "",
                     "alt": "",
                     "title": "Item Title 3"
                 },
                 "_itemGraphic": {
-                    "src": "course/en/images/c-05-3.png",
-                    "alt": "alt text"
-                }
-            },
-            {
-                "title": "Grid Item 4",
-                "body": "This is display text 4. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
-                "_graphic": {
-                    "src": "course/en/images/c-05-4.png",
-                    "srcHover": "",
-                    "srcVisited": "",
+                    "src": "course/en/images/example.jpg",
                     "alt": "",
-                    "title": "Item Title 4"
-                },
-                "_itemGraphic": {
-                    "src": "course/en/images/c-05-4.png",
-                    "alt": "alt text"
-                }
-            },
-            {
-                "title": "Grid Item 5",
-                "body": "This is display text 5. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
-                "_graphic": {
-                    "src": "course/en/images/c-05-5.png",
-                    "srcHover": "",
-                    "srcVisited": "",
-                    "alt": "",
-                    "title": "Item Title 5"
-                },
-                "_itemGraphic": {
-                    "src": "course/en/images/c-05-5.png",
-                    "alt": "alt text"
+                    "attribution": ""
                 }
             }
         ],
@@ -95,8 +72,9 @@
         }
     }
 
-    // Accessibility supported courses require ARIA instruction - apply to _globals in course.json
-
+    // Accessibility supported courses require ARIA instruction
+    // apply to _globals in course.json
+    // --------------------------------------------------
     "_hotgrid": {
         "ariaRegion": "Selectable image component. Select each item to show more information.",
         "popupPagination": "{{itemNumber}} / {{totalItems}}"
