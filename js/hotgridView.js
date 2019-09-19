@@ -64,6 +64,7 @@ define([
     resizeControl: function() {
       this.setDeviceSize();
       this.render();
+      this.updateVisitedState();
     },
 
     setUpColumns: function() {
@@ -83,17 +84,27 @@ define([
       return this.$('.hotgrid__item-btn').filter('[data-index="' + index + '"]');
     },
 
+    updateVisitedState:function(itemModel) {
+      var itemModels = itemModel ? [itemModel] : this.model.getChildren().models;
+
+      _.each(itemModels, function(model) {
+        if (!model.get('_isVisited')) return;
+
+        var $item = this.getItemElement(model);
+
+        // Append the word 'visited' to the item's aria-label
+        var visitedLabel = this.model.get('_globals')._accessibility._ariaLabels.visited + '.';
+        $item.find('.aria-label').each(function(index, ariaLabel) {
+          ariaLabel.innerHTML += ' ' + visitedLabel;
+        });
+
+        $item.addClass('is-visited');
+      }, this);
+    },
+
     onItemsVisitedChange: function(model, _isVisited) {
       if (!_isVisited) return;
-      var $item = this.getItemElement(model);
-
-      // Append the word 'visited' to the item's aria-label
-      var visitedLabel = this.model.get('_globals')._accessibility._ariaLabels.visited + '.';
-      $item.find('.aria-label').each(function(index, ariaLabel) {
-        ariaLabel.innerHTML += ' ' + visitedLabel;
-      });
-
-      $item.addClass('is-visited');
+      this.updateVisitedState(model);
     },
 
     onItemClicked: function(event) {
