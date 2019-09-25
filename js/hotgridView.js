@@ -97,8 +97,6 @@ define([
         },
 
         onItemClicked: function(event) {
-            if (event) event.preventDefault();
-
             var item = this.model.getItem($(event.currentTarget).data('index'));
             item.toggleActive(true);
             item.toggleVisited(true);
