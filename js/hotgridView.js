@@ -59,6 +59,9 @@ define([
         postRender: function() {
             this.setUpColumns();
             this.$('.hotgrid-widget').imageready(this.setReadyStatus.bind(this));
+            if (this.model.get('_setCompletionOn') === 'inview') {
+                this.setupInviewCompletion('.component-widget');
+            }
         },
 
         resizeControl: function() {
