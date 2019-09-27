@@ -20,9 +20,11 @@ The attributes listed below are used in *components.json* to configure **Hotgrid
 
 **instruction** (string): This optional text appears above the component. It is frequently used to guide the learner’s interaction with the component.  
 
+**\_setCompletionOn** (string): This value determines when the component registers as complete. Acceptable values are `"allItems"` and `"inview"`. `"allItems"` requires each pop-up item to be visited. `"inview"` requires the **Hot Grid** component to enter the view port completely.  
+
 **\_canCycleThroughPagination** (boolean): Enables the pop-ups to be cycled through endlessly using either the previous or next icon. When set to `true`, clicking "next" on the final stage will display the very first stage. When set to `false`, the final stage will display only a "previous" icon. The default is `false`.  
 
-**_hidePagination** (boolean): When set to `true`, hides the "previous" and "next" icons and progress indicator (e.g., "1/5") on the pop-up's toolbar. The default is `false`.  
+**\_hidePagination** (boolean): When set to `true`, hides the "previous" and "next" icons and progress indicator (e.g., "1/5") on the pop-up's toolbar. The default is `false`.  
 
 **\_columns** (number): This value determines the number of columns within the grid. Any number of columns can be set however keep in mind the more columns there are the smaller the items will be.
 
@@ -52,9 +54,9 @@ Hotgrid has a dynamic layout system. If you have 5 items but set the columns to 
 Hotgrid automatically switches to 2 columns in mobile mode for the best user experience however this can be overridden in the css. 
 
 ----------------------------
-**Version number:**  3.1.0  
-**Framework versions:**  3.2+     
+**Version number:**  3.2.0  
+**Framework versions:**  3.3+     
 **Author / maintainer:**  Kineo  
 **Accessibility support:** WAI AA  
 **RTL support:** yes  
-**Cross-platform coverage:** Chrome, Chrome for Android, Firefox (ESR + latest version), Edge, IE11, Safari 11+12 for macOS+iOS, Opera 
+**Cross-platform coverage:** Chrome, Chrome for Android, Firefox (ESR + latest version), Edge, IE11, Safari 12+13 for macOS & iOS, Opera 

@@ -11,6 +11,7 @@
         "_canCycleThroughPagination": false,
         "_hidePagination": false,
         "instruction": "",
+        "_setCompletionOn": "allItems",
         "_columns": 3,
         "_items": [
             {
