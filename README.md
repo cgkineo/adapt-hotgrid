@@ -67,4 +67,4 @@ Hotgrid automatically switches to 2 columns in mobile mode for the best user exp
 **Author / maintainer:**  Kineo  
 **Accessibility support:**  WAI AA  
 **RTL support:**  Yes  
-**Cross-platform coverage:** Chrome, Chrome for Android, Firefox (ESR + latest version), Edge, IE11, Safari 12+13 for macOS & iOS, Opera  
+**Cross-platform coverage:** Chrome, Chrome for Android, Firefox (ESR + latest version), Edge, IE11, Safari 12+13 for macOS/iOS/iPadOS, Opera  
