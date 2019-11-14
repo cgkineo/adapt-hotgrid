@@ -1,0 +1,176 @@
+.hotgrid-popup {
+  position: relative;
+
+  // --------------------------------------------------
+  // Pop up toolbar
+  // --------------------------------------------------
+  &__inner.has-toolbar {
+    padding-top: @icon-size + (@icon-padding * 2);
+  }
+
+  &__toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+  }
+
+  &__controls.is-disabled {
+    visibility: hidden;
+  }
+
+  &__count {
+    padding: @icon-padding;
+  }
+  // --------------------------------------------------
+
+  // --------------------------------------------------
+  // Pop up item
+  // --------------------------------------------------
+  &__item-image-container {
+    width: 60%;
+    margin: 0 auto;
+  }
+
+  @media (min-width: @device-width-medium) {
+    &__item {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    &__item-content,
+    &__item-image-container {
+      width: 50%;
+    }
+
+    &__item-image-container {
+      margin-left: @item-padding / 2;
+    }
+  }
+  // --------------------------------------------------
+
+  // --------------------------------------------------
+  // Modifier for pop up item to add rounded border
+  // --------------------------------------------------
+  &__item.is-round .hotgrid-popup__item-image {
+    border-radius: 50%;
+  }
+  // --------------------------------------------------
+
+  // --------------------------------------------------
+  // Hotgrid pop up icons
+  // --------------------------------------------------
+  &__controls.back .icon {
+    .icon-controls-small-left;
+  }
+
+  &__controls.next .icon {
+    .icon-controls-small-right;
+  }
+
+  &__close .icon {
+    .icon-cross;
+  }
+  // --------------------------------------------------
+
+  // --------------------------------------------------
+  // Hide the items that are not currently active and being viewed
+  // --------------------------------------------------
+  &__item:not(.is-active) {
+    .u-display-none;
+  }
+  // --------------------------------------------------
+
+  // --------------------------------------------------
+  // Align hotgrid pop up image to the left
+  // --------------------------------------------------
+  &__item.align-image-left {
+    @media (min-width: @device-width-medium) {
+      flex-direction: row-reverse;
+
+      .hotgrid-popup__item-image-container {
+        margin-left: inherit;
+        margin-right: @item-padding / 2;
+      }
+    }
+  }
+  // --------------------------------------------------
+
+  // --------------------------------------------------
+  // Hide hotgrid pop up image in desktop
+  // --------------------------------------------------
+  &__item.hide-desktop-image {
+    .hotgrid-popup__item-content {
+      width: 100%;
+    }
+
+    .hotgrid-popup__item-image-container {
+      display: none;
+    }
+  }
+  // --------------------------------------------------
+}
+
+// --------------------------------------------------
+// --------------------------------------------------
+// THEME
+// --------------------------------------------------
+// --------------------------------------------------
+
+.hotgrid-popup {
+  // --------------------------------------------------
+  // Increase toolbar padding top so the browser outline of the
+  // item title is not hidden by toolbar
+  // --------------------------------------------------
+  &__inner.has-toolbar {
+    padding-top: (@icon-size + (@icon-padding * 2)) + (@item-padding / 2);
+  }
+  // --------------------------------------------------
+
+  &__controls,
+  &__close {
+    margin: @btn-margin / 2;
+    padding: @btn-padding / 2;
+    background-color: @notify-icon;
+    color: @notify-icon-inverted;
+    border-radius: 50%;
+
+    .no-touch &:hover {
+      background-color: @notify-icon-hover;
+      color: @notify-icon-inverted-hover;
+      .transition(background-color @duration ease-in, color @duration ease-in;);
+    }
+  }
+
+  &__item-title {
+    margin-bottom: @notify-title-margin;
+    .notify-title;
+  }
+
+  &__item-body {
+    margin-bottom: @notify-body-margin;
+  }
+
+  &__item-body a {
+    .link-text;
+    color: @notify-link;
+
+    .no-touch &:hover {
+      color: @notify-link-hover;
+      .transition(color @duration ease-in);
+    }
+  }
+
+  &__item-image-container {
+    .img-zoom();
+  }
+}

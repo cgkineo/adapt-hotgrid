@@ -1,38 +1,54 @@
-<div class="component-inner hotgrid-inner">
-    {{> component this}}
-    <div class="component-widget hotgrid-widget">
-        <div role="list" class="hotgrid-grid">
-            <div class="hotgrid-grid-inner clearfix">
-                {{#each _items}}
-                <div role="listitem" class="hotgrid-grid-listitem">
-                    <button class="base hotgrid-grid-item hotgrid-item-states-{{#all _graphic.srcHover _graphic.srcVisited}}image{{else}}css{{/all}} {{#if _isVisited}}visited{{/if}}" data-index="{{@index}}">
+<div class="component__inner hotgrid__inner">
 
-                        <span class="aria-label">
-                            {{#if _graphic.title}}{{_graphic.title}}{{else}}{{../_globals._accessibility._ariaLabels.item}} {{numbers @index}}{{/if}}.{{#if _graphic.alt}} {{_graphic.alt}}.{{/if}}
-                        </span>
+  {{> component this}}
 
-                        <div class="hotgrid-item-image {{#if ../_hasRoundedImages}}border-radius{{/if}}">
-                            <img src="{{_graphic.src}}" class="hotgrid-item-image-default"/>
-                            {{#all _graphic.srcHover _graphic.srcVisited}}
-                            <img src="{{_graphic.srcHover}}" class="hotgrid-item-image-hover"/>
-                            <img src="{{_graphic.srcVisited}}" class="hotgrid-item-image-visited"/>
-                            {{/all}}
-                        </div>
-                        {{#if _graphic.title}}
-                        <div class="hotgrid-item-title" aria-hidden="true">
-                            <div class="hotgrid-item-title-inner">
-                                {{{_graphic.title}}}
-                            </div>
-                        </div>
-                        {{else}}{{!-- item has no title - show icon instead --}}
-                        <div class="hotgrid-item-icon">
-                            <span class="icon icon-plus"></span>
-                        </div>
-                        {{/if}}
-                    </button>
+  <div class="component__widget hotgrid__widget">
+
+    <div class="hotgrid__grid" role="list">
+
+      {{#each _items}}
+      <div class="hotgrid__item" role="listitem">
+
+        <button class="hotgrid__item-btn{{#all _graphic.srcHover _graphic.srcVisited}} is-image{{else}} is-css{{/all}}{{#if ../_isRound}} is-round{{/if}} item-{{@index}} js-hotgrid-item-click" data-index="{{@index}}">
+
+          <span class="aria-label">
+            {{#if _graphic.title}}{{_graphic.title}}{{else}}{{../_globals._accessibility._ariaLabels.item}} {{numbers @index}}{{/if}}.{{#if _graphic.alt}} {{_graphic.alt}}.{{/if}}
+          </span>
+
+          <div class="hotgrid__item-btn-inner" aria-hidden="true">
+
+              <div class="hotgrid__item-image-container">
+
+                <img class="hotgrid__item-image is-default" src="{{_graphic.src}}">
+                {{#all _graphic.srcHover _graphic.srcVisited}}
+                <img class="hotgrid__item-image is-hover" src="{{_graphic.srcHover}}">
+                <img class="hotgrid__item-image is-visited" src="{{_graphic.srcVisited}}">
+                {{/all}}
+
+              </div>
+
+              {{#if _graphic.title}}
+              <div class="hotgrid__item-title" aria-hidden="true">
+                <div class="hotgrid__item-title-inner">
+                  {{{_graphic.title}}}
                 </div>
-                {{/each}}
-            </div>
-        </div>
+              </div>
+              {{else}}
+              {{!-- item has no title - show icon instead --}}
+              <div class="btn-icon hotgrid__item-icon">
+                <div class="icon"></div>
+              </div>
+              {{/if}}
+
+          </div>
+
+        </button>
+
+      </div>
+      {{/each}}
+
     </div>
+
+  </div>
+
 </div>
