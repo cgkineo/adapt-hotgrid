@@ -134,7 +134,7 @@ define([
         _isCancellable: true,
         _showCloseButton: false,
         _closeOnBackdrop: true,
-        _classes: 'hotgrid'
+        _classes: 'hotgrid ' + this.model.get('_classes')
       })
 
       this.listenToOnce(Adapt, {
