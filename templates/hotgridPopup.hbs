@@ -1,4 +1,4 @@
-<div class="hotgrid-popup__inner{{#unless _hidePagination}} has-toolbar{{/unless}}">
+<div class="hotgrid-popup__inner">
 
   {{#each _items}}
   <div class="hotgrid-popup__item{{#if _classes}} {{_classes}}{{/if}}{{#if _isVisited}} is-visited{{/if}}{{#if _isActive}} is-active{{/if}}{{#if ../_isRound}} is-round{{/if}}" data-index={{@index}}{{#unless _isActive}} aria-hidden="true"{{/unless}}>
@@ -48,7 +48,7 @@
 
 </div>
 
-<div class="hotgrid-popup__toolbar">
+<div class="hotgrid-popup__toolbar{{#if _hidePagination}} hide-pagination{{/if}}">
 
   {{#unless _hidePagination}}
   <div class="hotgrid-popup__nav">
