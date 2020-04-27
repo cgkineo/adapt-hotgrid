@@ -14,9 +14,9 @@
         <div class="hotgrid-item-graphic">
             <div class="hotgrid-item-graphic-inner">
                 {{#if _itemGraphic.src}}
-                <img src="{{_itemGraphic.src}}" aria-label="{{_itemGraphic.alt}}"/>
+                <img src="{{_itemGraphic.src}}" {{#if _itemGraphic.alt}}aria-label="{{_itemGraphic.alt}}"{{else}}aria-hidden="true"{{/if}}/>
                 {{else}}
-                <img src="{{_graphic.src}}" aria-label="{{_graphic.alt}}"/>
+                <img src="{{_graphic.src}}" {{#if _graphic.alt}}aria-label="{{_graphic.alt}}"{{else}}aria-hidden="true"{{/if}}"/>
                 {{/if}}
             </div>
             {{#if _graphic.attribution}}
