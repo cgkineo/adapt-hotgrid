@@ -36,7 +36,7 @@ Hotgrid has a dynamic layout system. If you have 5 items but set the columns to 
 
 >**body** (string): This is the main text for a grid item pop-up.
 
->**\_classes** (string): CSS class name to be applied to the popup item. Supported classes are `"align-image-left"` and `"hide-desktop-image"` which aligns the item image to the left and hides the pop up image in desktop view respectively. The class must be predefined in one of the Less files. Separate multiple classes with a space.
+>**\_classes** (string): CSS class name to be applied to the popup item. Supported classes are `"align-image-left"`, `"hide-desktop-image"`, and `"hide-popup-image"` which aligns the item image to the left, hides the pop up image in desktop view, and hides the pop up image for all screen sizes respectively. The class must be predefined in one of the Less files. Separate multiple classes with a space.
 
 >**\_graphic** (string): This is the image that displays for each grid item. This graphic requires three state **src** values, with additional values **alt** and **title**.
 

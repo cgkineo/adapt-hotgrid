@@ -113,6 +113,22 @@
   // Hide hotgrid pop up image in desktop
   // --------------------------------------------------
   &__item.hide-desktop-image {
+    @media (min-width: @device-width-medium) {
+      .hotgrid-popup__item-content {
+        width: 100%;
+      }
+
+      .hotgrid-popup__item-image-container {
+        display: none;
+      }
+    }
+  }
+  // --------------------------------------------------
+
+  // --------------------------------------------------
+  // Hide hotgrid pop up image for all screen sizes
+  // --------------------------------------------------
+  &__item.hide-popup-image {
     .hotgrid-popup__item-content {
       width: 100%;
     }
