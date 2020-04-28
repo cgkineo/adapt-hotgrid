@@ -92,8 +92,7 @@ define([
         render: function() {
             var data = this.model.toJSON();
             data.view = this;
-            var template = Handlebars.templates['hotgridPopup'];
-            this.$el.html(template(data));
+            this.$el.html(Handlebars.templates.hotgridPopup(data));
         },
 
         closePopup: function(event) {
