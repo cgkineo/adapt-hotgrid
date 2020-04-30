@@ -19,7 +19,7 @@
             {
                 "title": "Grid Item 1",
                 "body": "This is display text 1. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
-                "_comment": "Supported classes = 'align-image-left' | 'hide-desktop-image'. Additional classes can be used but they must be predefined in one of the Less files",
+                "_comment": "Supported classes = 'align-image-left' | 'hide-desktop-image' | 'hide-popup-image'. Additional classes can be used but they must be predefined in one of the Less files",
                 "_classes": "",
                 "_graphic": {
                     "src": "course/en/images/example.jpg",
