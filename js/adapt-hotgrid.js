@@ -5,7 +5,7 @@ define([
 ], function(Adapt, ItemsComponentModel, HotgridView) {
 
   return Adapt.register('hotgrid', {
-    model: ItemsComponentModel,
+    model: ItemsComponentModel.extend({}),
     view: HotgridView
   });
 
