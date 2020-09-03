@@ -1,7 +1,6 @@
 .hotgrid-popup {
   position: relative;
 
-  // --------------------------------------------------
   // Pop up toolbar
   // --------------------------------------------------
   &__inner {
@@ -28,21 +27,19 @@
     align-items: center;
   }
 
+  &__count {
+    padding: @icon-padding;
+  }
+
   &__controls.is-disabled {
     visibility: hidden;
   }
 
-  &__count {
-    padding: @icon-padding;
-  }
-  // --------------------------------------------------
-
-  // --------------------------------------------------
   // Pop up item
   // --------------------------------------------------
   &__item-image-container {
     width: 60%;
-    margin: 0 auto;
+    margin: auto;
   }
 
   @media (min-width: @device-width-medium) {
@@ -60,17 +57,13 @@
       margin-left: @item-padding / 2;
     }
   }
-  // --------------------------------------------------
 
-  // --------------------------------------------------
   // Modifier for pop up item to add rounded border
   // --------------------------------------------------
-  &__item.is-round .hotgrid-popup__item-image {
+  &__item.is-round &__item-image {
     border-radius: 50%;
   }
-  // --------------------------------------------------
 
-  // --------------------------------------------------
   // Hotgrid pop up icons
   // --------------------------------------------------
   &__controls.back .icon {
@@ -84,77 +77,59 @@
   &__close .icon {
     .icon-cross;
   }
-  // --------------------------------------------------
 
-  // --------------------------------------------------
   // Hide the items that are not currently active and being viewed
   // --------------------------------------------------
   &__item:not(.is-active) {
     .u-display-none;
   }
-  // --------------------------------------------------
 
-  // --------------------------------------------------
   // Align hotgrid pop up image to the left
   // --------------------------------------------------
-  &__item.align-image-left {
-    @media (min-width: @device-width-medium) {
+  @media (min-width: @device-width-medium) {
+    &__item.align-image-left {
       flex-direction: row-reverse;
+    }
 
-      .hotgrid-popup__item-image-container {
-        margin-left: inherit;
-        margin-right: @item-padding / 2;
-      }
+    &__item.align-image-left &__item-image-container {
+      margin-left: inherit;
+      margin-right: @item-padding / 2;
     }
   }
-  // --------------------------------------------------
 
-  // --------------------------------------------------
   // Hide hotgrid pop up image in desktop
   // --------------------------------------------------
-  &__item.hide-desktop-image {
-    @media (min-width: @device-width-medium) {
-      .hotgrid-popup__item-content {
-        width: 100%;
-      }
-
-      .hotgrid-popup__item-image-container {
-        display: none;
-      }
-    }
-  }
-  // --------------------------------------------------
-
-  // --------------------------------------------------
-  // Hide hotgrid pop up image for all screen sizes
-  // --------------------------------------------------
-  &__item.hide-popup-image {
-    .hotgrid-popup__item-content {
+  @media (min-width: @device-width-medium) {
+    &__item.hide-desktop-image &__item-content {
       width: 100%;
     }
 
-    .hotgrid-popup__item-image-container {
-      display: none;
+    &__item.hide-desktop-image &__item-image-container {
+      .u-display-none;
     }
   }
+
+  // Hide hotgrid pop up image for all screen sizes
   // --------------------------------------------------
+  &__item.hide-popup-image &__item-content {
+    width: 100%;
+  }
+
+  &__item.hide-popup-image &__item-image-container {
+    .u-display-none;
+  }
 }
 
 // --------------------------------------------------
-// --------------------------------------------------
 // THEME
 // --------------------------------------------------
-// --------------------------------------------------
-
 .hotgrid-popup {
-  // --------------------------------------------------
   // Increase toolbar padding top so the browser outline of the
   // item title is not hidden by toolbar
   // --------------------------------------------------
   &__inner {
     padding-top: (@icon-size + (@icon-padding * 2)) + (@item-padding / 2);
   }
-  // --------------------------------------------------
 
   &__controls,
   &__close {
