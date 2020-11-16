@@ -1,0 +1,40 @@
+{
+  "$anchor": "hotgrid-course",
+  "$schema": "http://json-schema.org/draft/2019-09/schema#",
+  "type": "object",
+  "$merge": {
+    "source": {
+      "$ref": "course"
+    },
+    "with": {
+      "properties": {
+        "_globals": {
+          "type": "object",
+          "default": {},
+          "properties": {
+            "_hotgrid": {
+              "type": "object",
+              "default": {},
+              "properties": {
+                "ariaRegion": {
+                  "type": "string",
+                  "title": "Aria region",
+                  "default": "Selectable image component. Select each item to show more information."
+                },
+                "popupPagination": {
+                  "type": "string",
+                  "title": "Popup pagination",
+                  "description": "This is the aria label for each item. Use {{itemNumber}} and {{totalItems}} in your text to tell the user which item they are viewing and how many items there are in total.",
+                  "default": "{{itemNumber}} / {{totalItems}}",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
