@@ -42,7 +42,7 @@ Hotgrid has a dynamic layout system. If you have 5 items but set the columns to 
 
 >>**src** (string): File name (including path) of the image. Path should be relative to the *src* folder (e.g., *course/en/images/c-15.png*). Three src values are set to display: default, hover and visited states - **src** (default), **srcHover** and **srcVisited** - note that if you are handling the hover and visited states via CSS you don't need to set **srcHover** and **srcVisited**
 
->>**alt** (string): This text becomes the image’s `alt` attribute.
+>>**alt** (string): The alternative text for the item image. Assign [alt text](https://github.com/adaptlearning/adapt_framework/wiki/Providing-good-alt-text) to images that convey course content only. By default, the item is labelled by the **title**, if set, otherwise a generic 'Item 1, 2, 3 etc'. Followed by the alternative text, if set.
 
 >>**title** (string): This is optional text which is displayed under the grid item image.
 
@@ -50,7 +50,7 @@ Hotgrid has a dynamic layout system. If you have 5 items but set the columns to 
 
 >>**src** (string): File name (including path) of the image. Path should be relative to the *src* folder (e.g., *course/en/images/origami-menu-two.jpg*).
 
->>**alt** (string): This text becomes the image’s `alt` attribute.   
+>>**alt** (string): The alternative text for the item popup image. Assign [alt text](https://github.com/adaptlearning/adapt_framework/wiki/Providing-good-alt-text) to images that convey course content only.
 
 >>**attribution** (string): Optional text to be displayed as an [attribution](https://wiki.creativecommons.org/Best_practices_for_attribution). By default it is displayed below the image. Adjust positioning by modifying CSS. Text can contain HTML tags, e.g., `Copyright © 2015 by <b>Lukasz 'Severiaan' Grela</b>`.
 
