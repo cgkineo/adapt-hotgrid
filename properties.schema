@@ -154,9 +154,10 @@
                 "type": "string",
                 "required": false,
                 "default": "",
-                "title": "Item alt text",
+                "title": "Alternative text",
                 "inputType": "Text",
                 "validators": [],
+                "help": "A description of the image; required when it has meaning that must be conveyed to the learner. For 'decorative' images, leave this blank. By default, the item is labelled by the 'title', if set, otherwise a generic 'Item 1, 2, 3 etc'. Followed by the alternative text.",
                 "translatable": true
               },
               "title": {
@@ -188,9 +189,10 @@
                 "type": "string",
                 "required": false,
                 "default": "",
-                "title": "Item alt text",
+                "title": "Alternative text",
                 "inputType": "Text",
                 "validators": [],
+                "help": "A description of the image; required when it has meaning that must be conveyed to the learner. For 'decorative' images, leave this blank.",
                 "translatable": true
               },
               "attribution": {

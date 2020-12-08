@@ -25,12 +25,12 @@
                     "src": "course/en/images/example.jpg",
                     "srcHover": "",
                     "srcVisited": "",
-                    "alt": "Placeholder graphic",
+                    "alt": "",
                     "title": "Item Title 1"
                 },
                 "_itemGraphic": {
                     "src": "course/en/images/example.jpg",
-                    "alt": "Placeholder graphic",
+                    "alt": "",
                     "attribution": "Copyright © 2019"
                 }
             },
