@@ -12,7 +12,7 @@
         <button class="hotgrid__item-btn{{#all _graphic.srcHover _graphic.srcVisited}} is-image{{else}} is-css{{/all}}{{#if ../_isRound}} is-round{{/if}}{{#if _isVisited}} is-visited{{/if}} item-{{@index}} js-hotgrid-item-click" data-index="{{@index}}">
 
           <span class="aria-label">
-            {{#if _graphic.title}}{{_graphic.title}}{{else}}{{../_globals._accessibility._ariaLabels.item}} {{numbers @index}}{{/if}}.{{#if _graphic.alt}} {{_graphic.alt}}.{{/if}}
+            {{#if _graphic.title}}{{{_graphic.title}}}{{else}}{{../_globals._accessibility._ariaLabels.item}} {{numbers @index}}{{/if}}.{{#if _graphic.alt}} {{{_graphic.alt}}}.{{/if}}
           </span>
 
           <div class="hotgrid__item-btn-inner" aria-hidden="true">
