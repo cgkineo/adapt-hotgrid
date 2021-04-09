@@ -98,7 +98,7 @@
   }
 
   .no-touch &__item-btn:hover &__item-title,
-  .no-touch &__item-btn:hover &__item-icon {
+  .no-touch &__item-btn:not(.is-disabled):not(.is-locked):hover &__item-icon {
     background-color: @item-color-hover;
     color: @item-color-inverted-hover;
     .transition(background-color @duration ease-in, color @duration ease-in;);
