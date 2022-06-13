@@ -56,6 +56,11 @@
     &__item-image-container {
       width: 40%;
       margin-left: @item-padding;
+      
+      .dir-rtl & {
+        margin-left: inherit;
+        margin-right: @item-padding;
+      }
     }
   }
 
