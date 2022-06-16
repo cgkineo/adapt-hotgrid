@@ -15,9 +15,9 @@
             {{#if _graphic.title}}{{{_graphic.title}}}{{else}}{{../_globals._accessibility._ariaLabels.item}} {{numbers @index}}{{/if}}.{{#if _graphic.alt}} {{{_graphic.alt}}}.{{/if}}
           </span>
 
-          <div class="hotgrid__item-btn-inner" aria-hidden="true">
+          <span class="hotgrid__item-btn-inner" aria-hidden="true">
 
-              <div class="hotgrid__item-image-container">
+              <span class="hotgrid__item-image-container">
 
                 <img class="hotgrid__item-image is-default" src="{{_graphic.src}}">
                 {{#all _graphic.srcHover _graphic.srcVisited}}
@@ -25,22 +25,22 @@
                 <img class="hotgrid__item-image is-visited" src="{{_graphic.srcVisited}}">
                 {{/all}}
 
-              </div>
+              </span>
 
               {{#if _graphic.title}}
-              <div class="hotgrid__item-title" aria-hidden="true">
-                <div class="hotgrid__item-title-inner">
+              <span class="hotgrid__item-title" aria-hidden="true">
+                <span class="hotgrid__item-title-inner">
                   {{{_graphic.title}}}
-                </div>
-              </div>
+                </span>
+              </span>
               {{else}}
               {{!-- item has no title - show icon instead --}}
-              <div class="btn-icon hotgrid__item-icon">
-                <div class="icon"></div>
-              </div>
+              <span class="btn-icon hotgrid__item-icon">
+                <span class="icon"></span>
+              </span>
               {{/if}}
 
-          </div>
+          </span>
 
         </button>
 
