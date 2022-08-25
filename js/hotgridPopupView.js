@@ -41,8 +41,8 @@ define([
         .toggleClass('first', !shouldEnableBack)
         .toggleClass('last', !shouldEnableNext);
 
-      Adapt.a11y.toggleAccessibleEnabled($controls.filter('.back'), shouldEnableBack);
-      Adapt.a11y.toggleAccessibleEnabled($controls.filter('.next'), shouldEnableNext);
+      Adapt.a11y.toggleEnabled($controls.filter('.back'), shouldEnableBack);
+      Adapt.a11y.toggleEnabled($controls.filter('.next'), shouldEnableNext);
     },
 
     updatePageCount: function() {
