@@ -3,7 +3,7 @@ define([
 ], function(Adapt) {
   'use strict';
 
-  var HotgridPopupView = Backbone.View.extend({
+  const HotgridPopupView = Backbone.View.extend({
 
     className: 'hotgrid-popup',
 
@@ -30,12 +30,12 @@ define([
     },
 
     applyNavigationClasses: function (index) {
-      var itemCount = this.model.get('_items').length;
-      var canCycleThroughPagination = this.model.get('_canCycleThroughPagination');
+      const itemCount = this.model.get('_items').length;
+      const canCycleThroughPagination = this.model.get('_canCycleThroughPagination');
 
-      var shouldEnableBack = index > 0 || canCycleThroughPagination;
-      var shouldEnableNext = index < itemCount - 1 || canCycleThroughPagination;
-      var $controls = this.$('.hotgrid-popup__controls');
+      const shouldEnableBack = index > 0 || canCycleThroughPagination;
+      const shouldEnableNext = index < itemCount - 1 || canCycleThroughPagination;
+      const $controls = this.$('.hotgrid-popup__controls');
 
       this.$('hotgrid-popup__nav')
         .toggleClass('first', !shouldEnableBack)
@@ -46,10 +46,10 @@ define([
     },
 
     updatePageCount: function() {
-      var template = Adapt.course.get('_globals')._components._hotgrid.popupPagination || '{{itemNumber}} / {{totalItems}}';
-      var labelText = Handlebars.compile(template || '')({
-          itemNumber: this.model.getActiveItem().get('_index') + 1,
-          totalItems: this.model.get('_items').length
+      const template = Adapt.course.get('_globals')._components._hotgrid.popupPagination || '{{itemNumber}} / {{totalItems}}';
+      const labelText = Handlebars.compile(template || '')({
+        itemNumber: this.model.getActiveItem().get('_index') + 1,
+        totalItems: this.model.get('_items').length
       });
       this.$('.hotgrid-popup__count').html(labelText);
     },
@@ -62,7 +62,7 @@ define([
     onItemsActiveChange: function(item, _isActive) {
       if (!_isActive) return;
 
-      var index = item.get('_index');
+      const index = item.get('_index');
       this.updatePageCount();
       this.applyItemClasses(index);
       this.handleTabs();
@@ -71,9 +71,9 @@ define([
 
     applyItemClasses: function(index) {
       this.$('.hotgrid-popup__item[data-index="' + index + '"]').addClass('is-active').removeAttr('aria-hidden');
-      this.$('.hotgrid-popup__item[data-index="' + index + '"] .hotgrid-popup__item-title').attr("id", "notify-heading");
+      this.$('.hotgrid-popup__item[data-index="' + index + '"] .hotgrid-popup__item-title').attr('id', 'notify-heading');
       this.$('.hotgrid-popup__item:not([data-index="' + index + '"])').removeClass('is-active').attr('aria-hidden', 'true');
-      this.$('.hotgrid-popup__item:not([data-index="' + index + '"]) .hotgrid-popup__item-title').removeAttr("id");
+      this.$('.hotgrid-popup__item:not([data-index="' + index + '"]) .hotgrid-popup__item-title').removeAttr('id');
     },
 
     handleFocus: function(index) {
@@ -90,9 +90,9 @@ define([
     },
 
     render: function() {
-      var data = this.model.toJSON();
+      const data = this.model.toJSON();
       data.view = this;
-      var template = Handlebars.templates['hotgridPopup'];
+      const template = Handlebars.templates['hotgridPopup'];
       this.$el.html(template(data));
     },
 
@@ -101,8 +101,8 @@ define([
     },
 
     onControlClick: function(event) {
-      var direction = $(event.currentTarget).hasClass('back') ? 'back' : 'next';
-      var index = this.getNextIndex(direction);
+      const direction = $(event.currentTarget).hasClass('back') ? 'back' : 'next';
+      const index = this.getNextIndex(direction);
 
       if (index !== -1) {
         this.setItemState(index);
@@ -110,8 +110,8 @@ define([
     },
 
     getNextIndex: function(direction) {
-      var index = this.model.getActiveItem().get('_index');
-      var lastIndex = this.model.get('_items').length - 1;
+      let index = this.model.getActiveItem().get('_index');
+      const lastIndex = this.model.get('_items').length - 1;
 
       switch (direction) {
         case 'back':
@@ -128,7 +128,7 @@ define([
     setItemState: function(index) {
       this.model.getActiveItem().toggleActive();
 
-      var nextItem = this.model.getItem(index);
+      const nextItem = this.model.getItem(index);
       nextItem.toggleActive();
       nextItem.toggleVisited(true);
     }

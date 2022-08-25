@@ -4,7 +4,7 @@ define([
   './hotgridPopupView'
 ], function(Adapt, ComponentView, HotgridPopupView) {
 
-  var HotgridView = ComponentView.extend({
+  const HotgridView = ComponentView.extend({
 
     events: {
       'click .js-hotgrid-item-click': 'onItemClicked'
@@ -45,12 +45,12 @@ define([
         this.model.set('_isDesktop', true);
       } else {
         this.$el.addClass('is-mobile').removeClass('is-desktop');
-        this.model.set('_isDesktop', false)
+        this.model.set('_isDesktop', false);
       }
     },
 
     checkIfResetOnRevisit: function() {
-      var isResetOnRevisit = this.model.get('_isResetOnRevisit');
+      const isResetOnRevisit = this.model.get('_isResetOnRevisit');
 
       // If reset is enabled set defaults
       if (isResetOnRevisit) this.model.reset(isResetOnRevisit);
@@ -71,7 +71,7 @@ define([
     },
 
     setUpColumns: function() {
-      var columns = this.model.get('_columns');
+      const columns = this.model.get('_columns');
 
       if (columns && Adapt.device.screenSize === 'large') {
         this.$('.hotgrid__item').css('width', (100 / columns) + '%');
@@ -83,20 +83,20 @@ define([
     },
 
     getItemElement: function(model) {
-      var index = model.get('_index');
+      const index = model.get('_index');
       return this.$('.hotgrid__item-btn').filter('[data-index="' + index + '"]');
     },
 
-    updateVisitedState:function(itemModel) {
-      var itemModels = itemModel ? [itemModel] : this.model.getChildren().models;
+    updateVisitedState: function(itemModel) {
+      const itemModels = itemModel ? [itemModel] : this.model.getChildren().models;
 
       _.each(itemModels, function(model) {
         if (!model.get('_isVisited')) return;
 
-        var $item = this.getItemElement(model);
+        const $item = this.getItemElement(model);
 
         // Append the word 'visited' to the item's aria-label
-        var visitedLabel = this.model.get('_globals')._accessibility._ariaLabels.visited + '.';
+        const visitedLabel = this.model.get('_globals')._accessibility._ariaLabels.visited + '.';
         $item.find('.aria-label').each(function(index, ariaLabel) {
           ariaLabel.innerHTML += ' ' + visitedLabel;
         });
@@ -113,7 +113,7 @@ define([
     onItemClicked: function(event) {
       if (event) event.preventDefault();
 
-      var item = this.model.getItem($(event.currentTarget).data('index'));
+      const item = this.model.getItem($(event.currentTarget).data('index'));
       item.toggleActive(true);
       item.toggleVisited(true);
 
@@ -134,7 +134,7 @@ define([
         _isCancellable: true,
         _showCloseButton: false,
         _classes: 'hotgrid ' + this.model.get('_classes')
-      })
+      });
 
       this.listenToOnce(Adapt, {
         'popup:closed': this.onPopupClosed
