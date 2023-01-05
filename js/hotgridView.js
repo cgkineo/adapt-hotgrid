@@ -5,30 +5,19 @@ import HotgridPopupView from './hotgridPopupView';
 
 class HotgridView extends ComponentView {
 
-  events() {
-    return {
-      'click .js-hotgrid-item-click': 'onItemClicked'
-    };
-  }
+  initialize(...args) {
+    super.initialize(...args);
 
-  initialize() {
-    ComponentView.prototype.initialize.call(this);
+    this.onItemClicked = this.onItemClicked.bind(this);
+
     this.setDeviceSize();
     this.setUpViewData();
-    this.setUpModelData();
     this.setUpEventListeners();
-    this.checkIfResetOnRevisit();
   }
 
   setUpViewData() {
     this.popupView = null;
     this._isPopupOpen = false;
-  }
-
-  setUpModelData() {
-    if (this.model.get('_canCycleThroughPagination') === undefined) {
-      this.model.set('_canCycleThroughPagination', false);
-    }
   }
 
   setUpEventListeners() {
@@ -48,13 +37,6 @@ class HotgridView extends ComponentView {
       this.$el.addClass('is-mobile').removeClass('is-desktop');
       this.model.set('_isDesktop', false);
     }
-  }
-
-  checkIfResetOnRevisit() {
-    const isResetOnRevisit = this.model.get('_isResetOnRevisit');
-
-    // If reset is enabled set defaults
-    if (isResetOnRevisit) this.model.reset(isResetOnRevisit);
   }
 
   postRender() {
@@ -108,13 +90,14 @@ class HotgridView extends ComponentView {
 
   onItemsVisitedChange(model, _isVisited) {
     if (!_isVisited) return;
+
     this.updateVisitedState(model);
   }
 
-  onItemClicked(event) {
-    if (event) event.preventDefault();
+  onItemClicked(e) {
+    e.preventDefault();
 
-    const item = this.model.getItem($(event.currentTarget).data('index'));
+    const item = this.model.getItem($(e.currentTarget).data('index'));
     item.toggleActive(true);
     item.toggleVisited(true);
 
@@ -148,6 +131,6 @@ class HotgridView extends ComponentView {
   }
 };
 
-// HotgridView.template = 'hotgrid.jsx';
+HotgridView.template = 'hotgrid.jsx';
 
 export default HotgridView;

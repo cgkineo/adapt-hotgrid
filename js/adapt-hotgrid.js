@@ -1,8 +1,8 @@
 import components from 'core/js/components';
-import ItemsComponentModel from 'core/js/models/itemsComponentModel';
+import HotgridModel from './HotgridModel';
 import HotgridView from './HotgridView';
 
 export default components.register('hotgrid', {
-  model: ItemsComponentModel.extend({}),
+  model: HotgridModel,
   view: HotgridView
 });
