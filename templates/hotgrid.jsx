@@ -4,7 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { templates, classes, compile } from 'core/js/reactHelpers';
 
 export default function Hotgrid(props) {
-  const ariaLabels = Adapt.course.get('_globals')._components._hotgrid;
+  const hotgridLabels = Adapt.course.get('_globals')._components._hotgrid;
+  const ariaLabels = Adapt.course.get('_globals')._accessibility._ariaLabels;
 
   const {
     onItemClicked
@@ -19,7 +20,7 @@ export default function Hotgrid(props) {
 
         <div className="hotgrid__grid" role="list">
 
-          {props._items.map(({ _graphic, _isRound, _isVisited }, index) =>
+          {props._items.map(({ _graphic, _isRound, _isVisited, _isActive }, index) =>
 
             <div className="hotgrid__item" role="listitem" key={index}>
 
@@ -28,7 +29,8 @@ export default function Hotgrid(props) {
                 `item-${index}`,
                 (_graphic.srcHover && _graphic.srcVisited) ? 'is-image' : 'is-css',
                 _isRound && 'is-round',
-                _isVisited && 'is-visited'
+                _isVisited && 'is-visited',
+                _isActive && 'is-active'
               ])}
               onClick={onItemClicked}
               data-index={index}
@@ -37,11 +39,11 @@ export default function Hotgrid(props) {
                 <span className="aria-label">
                   {_graphic.title && _graphic.title}
 
-                  {!_graphic.title &&
-                    `${ariaLabels.item} ${index}`
-                  }
+                  {!_graphic.title && `${hotgridLabels.item} ${index}`}
 
                   {_graphic.alt && `. ${_graphic.alt}`}
+
+                  {_isVisited && `. ${ariaLabels.visited}`}
                 </span>
 
                 <span className="hotgrid__item-btn-inner" aria-hidden="true">

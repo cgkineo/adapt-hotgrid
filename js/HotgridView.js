@@ -22,11 +22,6 @@ class HotgridView extends ComponentView {
 
   setUpEventListeners() {
     this.listenTo(Adapt, 'device:changed', this.resizeControl);
-
-    this.listenTo(this.model.get('_children'), {
-      'change:_isActive': this.onItemsActiveChange,
-      'change:_isVisited': this.onItemsVisitedChange
-    });
   }
 
   setDeviceSize() {
@@ -50,7 +45,6 @@ class HotgridView extends ComponentView {
   resizeControl() {
     this.setDeviceSize();
     this.render();
-    this.updateVisitedState();
   }
 
   setUpColumns() {
@@ -61,37 +55,9 @@ class HotgridView extends ComponentView {
     }
   }
 
-  onItemsActiveChange(model, _isActive) {
-    this.getItemElement(model).toggleClass('is-active', _isActive);
-  }
-
   getItemElement(model) {
     const index = model.get('_index');
     return this.$('.hotgrid__item-btn').filter('[data-index="' + index + '"]');
-  }
-
-  updateVisitedState(itemModel) {
-    const itemModels = itemModel ? [itemModel] : this.model.getChildren().models;
-
-    _.each(itemModels, function(model) {
-      if (!model.get('_isVisited')) return;
-
-      const $item = this.getItemElement(model);
-
-      // Append the word 'visited' to the item's aria-label
-      const visitedLabel = this.model.get('_globals')._accessibility._ariaLabels.visited + '.';
-      $item.find('.aria-label').each(function(index, ariaLabel) {
-        ariaLabel.innerHTML += ' ' + visitedLabel;
-      });
-
-      $item.addClass('is-visited');
-    }, this);
-  }
-
-  onItemsVisitedChange(model, _isVisited) {
-    if (!_isVisited) return;
-
-    this.updateVisitedState(model);
   }
 
   onItemClicked(e) {
