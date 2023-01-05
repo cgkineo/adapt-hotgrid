@@ -11,6 +11,13 @@
       "inputType": "Text",
       "validators": []
     },
+    "item": {
+      "type": "string",
+      "required": true,
+      "default": "Item",
+      "inputType": "Text",
+      "validators": []
+    },
     "popupPagination": {
       "type": "string",
       "required": true,

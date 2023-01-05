@@ -21,6 +21,11 @@
                   "title": "Aria region",
                   "default": "Selectable image component. Select each item to show more information."
                 },
+                "item": {
+                  "type": "string",
+                  "title": "Item",
+                  "default": "Item"
+                },
                 "popupPagination": {
                   "type": "string",
                   "title": "Popup pagination",
