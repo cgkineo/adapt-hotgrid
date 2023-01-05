@@ -1,0 +1,199 @@
+{
+  "$anchor": "hotgrid-component",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "$merge": {
+    "source": {
+      "$ref": "component"
+    },
+    "with": {
+      "required": [
+        "_items"
+      ],
+      "properties": {
+        "_supportedLayout": {
+          "type": "string",
+          "title": "Supported layout",
+          "default": "full-width",
+          "_adapt": {
+            "editorOnly": true
+          }
+        },
+        "instruction": {
+          "type": "string",
+          "title": "Instruction",
+          "default": "",
+          "_adapt": {
+            "translatable": true
+          }
+        },
+        "_setCompletionOn": {
+          "type": "string",
+          "title": "Set completion on:",
+          "description": "Whether completion is based on the learner having viewed all the items - or just having viewed the component",
+          "default": "allItems",
+          "enum": [
+            "inview",
+            "allItems"
+          ],
+          "_backboneForms": "Select"
+        },
+        "_hidePagination": {
+          "type": "boolean",
+          "title": "Hide pagination",
+          "description": "If enabled, the progress indicator and previous and next links will not be shown on the popup toolbar",
+          "default": false
+        },
+        "_canCycleThroughPagination": {
+          "type": "boolean",
+          "title": "Cycle through item pagination",
+          "description": "If enabled, the popup navigation buttons will cycle continuously through the popup items (i.e. clicking next on the last item will cause the first item to be shown).",
+          "default": false
+        },
+        "_columns": {
+          "type": "number",
+          "title": "Columns",
+          "description": "This value determines the number of columns within the grid. Any number of columns can be set however keep in mind the more columns there are the smaller the items will be.",
+          "default": 3
+        },
+        "_isRound": {
+          "type": "boolean",
+          "title": "Should item image be round?",
+          "description": "If enabled, a 50% border radius will be applied to the item images including the pop up.",
+          "default": false
+        },
+        "_items": {
+          "type": "array",
+          "title": "Items",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "title": "Item Popup Title",
+                "default": "",
+                "_adapt": {
+                  "translatable": true
+                }
+              },
+              "body": {
+                "type": "string",
+                "title": "Item Popup Body",
+                "default": "",
+                "_adapt": {
+                  "translatable": true
+                },
+                "_backboneForms": "TextArea"
+              },
+              "_imageAlignment": {
+                "type": "string",
+                "title": "Image alignment",
+                "description": "Defines the horizontal alignment of the item image in the pop up. Left: Image aligned to the left of the text area. Right: Image aligned to the right of the text area. The default alignment is `right`.",
+                "default": "right",
+                "enum": [
+                  "left",
+                  "right"
+                ],
+                "_backboneForms": "Select"
+              },
+              "_classes": {
+                "type": "string",
+                "title": "Item Popup Classes",
+                "description": "Allows you to specify custom CSS classes to be applied to the popup item. Supported classes are 'align-image-left', 'hide-desktop-image', and 'hide-popup-image' which aligns the item image to the left, hides the pop up image in desktop view, and hides the pop up image for all screen sizes respectively.",
+                "default": ""
+              },
+              "_graphic": {
+                "type": "object",
+                "title": "Item Graphic",
+                "properties": {
+                  "src": {
+                    "type": "string",
+                    "isObjectId": true,
+                    "title": "Src",
+                    "description": "The item image (default state).",
+                    "_backboneForms": {
+                      "type": "Asset",
+                      "media": "image"
+                    }
+                  },
+                  "srcHover": {
+                    "type": "string",
+                    "isObjectId": true,
+                    "title": "Src hover",
+                    "description": "The item image (hover state).",
+                    "_backboneForms": {
+                      "type": "Asset",
+                      "media": "image"
+                    }
+                  },
+                  "srcVisited": {
+                    "type": "string",
+                    "isObjectId": true,
+                    "title": "Src visited",
+                    "description": "The item image (visited state).",
+                    "_backboneForms": {
+                      "type": "Asset",
+                      "media": "image"
+                    }
+                  },
+                  "alt": {
+                    "type": "string",
+                    "title": "Alternative text",
+                    "description": "A description of the image; required when it has meaning that must be conveyed to the learner. For 'decorative' images, leave this blank. By default, the item is labelled by the 'title', if set, otherwise a generic 'Item 1, 2, 3 etc'. Followed by the alternative text.",
+                    "default": "",
+                    "_adapt": {
+                      "translatable": true
+                    }
+                  },
+                  "title": {
+                    "type": "string",
+                    "title": "Item Title",
+                    "description": "Optional image title, displayed under the grid item image.",
+                    "default": "",
+                    "_adapt": {
+                      "translatable": true
+                    }
+                  }
+                }
+              },
+              "_itemGraphic": {
+                "type": "object",
+                "title": "Popup Graphic",
+                "properties": {
+                  "src": {
+                    "type": "string",
+                    "isObjectId": true,
+                    "title": "Src",
+                    "description": "Only needs to be set if you want a different image to be shown. If left blank, the Item Graphic (default state) will be displayed in the popup.",
+                    "_backboneForms": {
+                      "type": "Asset",
+                      "media": "image"
+                    }
+                  },
+                  "alt": {
+                    "type": "string",
+                    "title": "Alternative text",
+                    "description": "A description of the image; required when it has meaning that must be conveyed to the learner. For 'decorative' images, leave this blank.",
+                    "default": "",
+                    "_adapt": {
+                      "translatable": true
+                    }
+                  },
+                  "attribution": {
+                    "type": "string",
+                    "title": "Attribution",
+                    "description": "Text to be displayed as an attribution for the popup image",
+                    "default": "",
+                    "_adapt": {
+                      "translatable": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
