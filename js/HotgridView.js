@@ -37,6 +37,7 @@ class HotgridView extends ComponentView {
   postRender() {
     this.setUpColumns();
     this.$('.hotgrid__widget').imageready(this.setReadyStatus.bind(this));
+
     if (this.model.get('_setCompletionOn') === 'inview') {
       this.setupInviewCompletion('.component__widget');
     }
@@ -53,11 +54,6 @@ class HotgridView extends ComponentView {
     if (columns && device.screenSize === 'large') {
       this.$('.hotgrid__item').css('width', (100 / columns) + '%');
     }
-  }
-
-  getItemElement(model) {
-    const index = model.get('_index');
-    return this.$('.hotgrid__item-btn').filter('[data-index="' + index + '"]');
   }
 
   onItemClicked(e) {

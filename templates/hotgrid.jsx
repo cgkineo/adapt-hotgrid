@@ -1,7 +1,7 @@
 import Adapt from 'core/js/adapt';
 import a11y from 'core/js/a11y';
 import React, { useState, useEffect } from 'react';
-import { templates, classes, compile } from 'core/js/reactHelpers';
+import { templates, classes } from 'core/js/reactHelpers';
 
 export default function Hotgrid(props) {
   const hotgridLabels = Adapt.course.get('_globals')._components._hotgrid;
