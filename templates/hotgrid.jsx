@@ -1,6 +1,5 @@
 import Adapt from 'core/js/adapt';
-import a11y from 'core/js/a11y';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { templates, classes } from 'core/js/reactHelpers';
 
 export default function Hotgrid(props) {
@@ -37,8 +36,8 @@ export default function Hotgrid(props) {
               >
 
                 <span className="aria-label">
+                  {/* Show either graphic title or generic title */}
                   {_graphic.title && _graphic.title}
-
                   {!_graphic.title && `${hotgridLabels.item} ${index}`}
 
                   {_graphic.alt && `. ${_graphic.alt}`}
@@ -63,6 +62,7 @@ export default function Hotgrid(props) {
                   </span>
 
                   {_graphic.title &&
+                  // item has a title
                   <span className="hotgrid__item-title" aria-hidden="true">
                     <span className="hotgrid__item-title-inner">
                       {_graphic.title}

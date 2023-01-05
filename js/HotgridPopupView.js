@@ -1,5 +1,8 @@
 import Adapt from 'core/js/adapt';
 import a11y from 'core/js/a11y.js';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { templates } from 'core/js/reactHelpers';
 
 class HotgridPopupView extends Backbone.View {
 
@@ -92,10 +95,7 @@ class HotgridPopupView extends Backbone.View {
   }
 
   render() {
-    const data = this.model.toJSON();
-    data.view = this;
-    const template = Handlebars.templates['hotgridPopup'];
-    this.$el.html(template(data));
+    ReactDOM.render(<templates.hotgridPopup {...this.model.toJSON()} />, this.el);
   }
 
   closePopup(event) {
