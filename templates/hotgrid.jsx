@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { templates, classes, compile } from 'core/js/reactHelpers';
 
 export default function Hotgrid(props) {
-  // const ariaLabels = Adapt.course.get('_globals')._accessibility._ariaLabels;
+  const ariaLabels = Adapt.course.get('_globals')._accessibility._ariaLabels;
 
   const {
     onItemClicked
@@ -36,8 +36,12 @@ export default function Hotgrid(props) {
 
                 <span className="aria-label">
                   {_graphic.title && _graphic.title}
-                  {!_graphic.title && 'TBD ../_globals._accessibility._ariaLabels.item {{numbers @index}}{{/if}}.'}
-                  {_graphic.alt}
+
+                  {!_graphic.title &&
+                    `${ariaLabels.item} ${index}`
+                  }
+
+                  {_graphic.alt && `. ${_graphic.alt}`}
                 </span>
 
                 <span className="hotgrid__item-btn-inner" aria-hidden="true">
