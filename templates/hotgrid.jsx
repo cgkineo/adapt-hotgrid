@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { templates, classes, compile } from 'core/js/reactHelpers';
 
 export default function Hotgrid(props) {
-  const ariaLabels = Adapt.course.get('_globals')._accessibility._ariaLabels;
+  const ariaLabels = Adapt.course.get('_globals')._components._hotgrid;
 
   const {
     onItemClicked
