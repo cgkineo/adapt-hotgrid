@@ -1,7 +1,7 @@
 import Adapt from 'core/js/adapt';
 import device from 'core/js/device';
 import ComponentView from 'core/js/views/componentView';
-import HotgridPopupView from './hotgridPopupView';
+import HotgridPopupView from './HotgridPopupView';
 
 class HotgridView extends ComponentView {
 
