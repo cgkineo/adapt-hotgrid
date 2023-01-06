@@ -3,6 +3,7 @@ import React from 'react';
 import { classes } from 'core/js/reactHelpers';
 
 export default function HotgridPopupToolbar(props) {
+  const a11yConfig = Adapt.config.get('_accessibility');
   const ariaLabels = Adapt.course.get('_globals')._accessibility._ariaLabels;
 
   const {
@@ -35,8 +36,10 @@ export default function HotgridPopupToolbar(props) {
         <span className="icon" />
       </button>
 
-    </div>
+      {a11yConfig._options._isPopupWrapFocusEnabled &&
+      <a className="a11y-focusguard a11y-ignore a11y-ignore-focus" tabIndex="0" role="presentation">&nbsp;</a>
+      }
 
-    // {{a11y_wrap_focus}}
+    </div>
   );
 }
