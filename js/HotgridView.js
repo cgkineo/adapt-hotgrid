@@ -1,5 +1,6 @@
 import Adapt from 'core/js/adapt';
 import device from 'core/js/device';
+import notify from 'core/js/notify';
 import ComponentView from 'core/js/views/componentView';
 import HotgridPopupView from './HotgridPopupView';
 
@@ -63,7 +64,7 @@ class HotgridView extends ComponentView {
       model: this.model
     });
 
-    Adapt.trigger('notify:popup', {
+    notify.popup({
       _view: this.popupView,
       _isCancellable: true,
       _showCloseButton: false,

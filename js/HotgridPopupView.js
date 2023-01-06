@@ -13,8 +13,8 @@ class HotgridPopupView extends Backbone.View {
   initialize() {
     this.listenToOnce(Adapt, 'notify:opened', this.onOpened);
 
-    // this.listenTo(this.model.get('_children'), 'all', this.onItemsActiveChange);
-    this.listenTo(this.model.get('_children'), {
+    // this.listenTo(this.model.getChildren(), 'all', this.onItemsActiveChange);
+    this.listenTo(this.model.getChildren(), {
       'change:_isActive': this.onItemsActiveChange
     });
 
