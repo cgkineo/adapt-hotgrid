@@ -1,4 +1,5 @@
 import React from 'react';
+import a11y from 'core/js/a11y';
 import { classes, templates } from 'core/js/reactHelpers';
 
 export default function Hotgrid(props) {
@@ -27,7 +28,7 @@ export default function Hotgrid(props) {
               <div
                 id={_isActive ? 'notify-heading' : null}
                 className="hotgrid-popup__item-title"
-                // {{a11y_attrs_heading 'notify'}}
+                aria-level={a11y.ariaLevel({ level: 'notify' })}
               >
                 <div className="hotgrid-popup__item-title-inner">
                   {title}
