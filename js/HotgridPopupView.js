@@ -10,27 +10,27 @@ class HotgridPopupView extends Backbone.View {
     return 'hotgrid-popup';
   }
 
-  events() {
-    return {
-      'click .js-hotgrid-popup-close': 'closePopup',
-      'click .js-hotgrid-control-click': 'onControlClick'
-    };
-  }
-
   initialize() {
-    // Debounce required as a second (bad) click event is dispatched on iOS causing a jump of two items.
-    this.onControlClick = _.debounce(this.onControlClick.bind(this), 100);
     this.listenToOnce(Adapt, 'notify:opened', this.onOpened);
+
+    // this.listenTo(this.model.get('_children'), 'all', this.onItemsActiveChange);
     this.listenTo(this.model.get('_children'), {
-      'change:_isActive': this.onItemsActiveChange,
-      'change:_isVisited': this.onItemsVisitedChange
+      'change:_isActive': this.onItemsActiveChange
     });
+
+    this.model.set('onCloseClick', this.onCloseClick.bind(this));
+
+    // Debounce required as a second (bad) click event is dispatched on iOS causing a jump of two items.
+    // this.onControlClick = _.debounce(this.onControlClick.bind(this), 100);
+    this.model.set('onControlClick', this.onControlClick.bind(this));
+
+    this.updatePageCount();
+
     this.render();
   }
 
   onOpened() {
     this.applyNavigationClasses(this.model.getActiveItem().get('_index'));
-    this.updatePageCount();
     this.handleTabs();
   }
 
@@ -51,12 +51,14 @@ class HotgridPopupView extends Backbone.View {
   }
 
   updatePageCount() {
-    const template = Adapt.course.get('_globals')._components._hotgrid.popupPagination || '{{itemNumber}} / {{totalItems}}';
-    const labelText = Handlebars.compile(template || '')({
+    const paginationTemplate = Adapt.course.get('_globals')._components._hotgrid.popupPagination;
+    const template = paginationTemplate || '{{itemNumber}} / {{totalItems}}';
+    const itemCount = Handlebars.compile(template || '')({
       itemNumber: this.model.getActiveItem().get('_index') + 1,
       totalItems: this.model.get('_items').length
     });
-    this.$('.hotgrid-popup__count').html(labelText);
+
+    this.model.set('itemCount', itemCount);
   }
 
   handleTabs() {
@@ -69,16 +71,9 @@ class HotgridPopupView extends Backbone.View {
 
     const index = item.get('_index');
     this.updatePageCount();
-    this.applyItemClasses(index);
     this.handleTabs();
     this.handleFocus(index);
-  }
-
-  applyItemClasses(index) {
-    this.$('.hotgrid-popup__item[data-index="' + index + '"]').addClass('is-active').removeAttr('aria-hidden');
-    this.$('.hotgrid-popup__item[data-index="' + index + '"] .hotgrid-popup__item-title').attr('id', 'notify-heading');
-    this.$('.hotgrid-popup__item:not([data-index="' + index + '"])').removeClass('is-active').attr('aria-hidden', 'true');
-    this.$('.hotgrid-popup__item:not([data-index="' + index + '"]) .hotgrid-popup__item-title').removeAttr('id');
+    this.render();
   }
 
   handleFocus(index) {
@@ -86,24 +81,16 @@ class HotgridPopupView extends Backbone.View {
     this.applyNavigationClasses(index);
   }
 
-  onItemsVisitedChange(item, _isVisited) {
-    if (!_isVisited) return;
-
-    this.$('.hotgrid-popup__item')
-      .filter('[data-index="' + item.get('_index') + '"]')
-      .addClass('is-visited');
-  }
-
   render() {
     ReactDOM.render(<templates.hotgridPopup {...this.model.toJSON()} />, this.el);
   }
 
-  closePopup(event) {
+  onCloseClick() {
     Adapt.trigger('notify:close');
   }
 
-  onControlClick(event) {
-    const direction = $(event.currentTarget).hasClass('back') ? 'back' : 'next';
+  onControlClick(e) {
+    const direction = $(e.currentTarget).hasClass('back') ? 'back' : 'next';
     const index = this.getNextIndex(direction);
 
     if (index !== -1) {

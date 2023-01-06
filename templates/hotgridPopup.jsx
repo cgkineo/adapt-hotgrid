@@ -2,7 +2,7 @@ import React from 'react';
 import a11y from 'core/js/a11y';
 import { classes, templates } from 'core/js/reactHelpers';
 
-export default function Hotgrid(props) {
+export default function HotgridPopup(props) {
 
   return (
     <div className='hotgrid-popup__inner'>

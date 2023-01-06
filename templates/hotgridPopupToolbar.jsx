@@ -7,6 +7,9 @@ export default function HotgridPopupToolbar(props) {
   const ariaLabels = Adapt.course.get('_globals')._accessibility._ariaLabels;
 
   const {
+    onCloseClick,
+    onControlClick,
+    itemCount,
     _hidePagination
   } = props;
 
@@ -19,20 +22,35 @@ export default function HotgridPopupToolbar(props) {
       {!_hidePagination &&
       <div className="hotgrid-popup__nav">
 
-        <button className="btn-icon hotgrid-popup__controls back js-hotgrid-control-click" aria-label={ariaLabels.previous}>
+        <button
+          className="btn-icon hotgrid-popup__controls back"
+          aria-label={ariaLabels.previous}
+          onClick={onControlClick}
+        >
           <span className="icon" />
         </button>
 
-        <div className="hotgrid-popup__count" />
+        <div
+          className="hotgrid-popup__count"
+          dangerouslySetInnerHTML={{ __html: itemCount }}
+        />
 
-        <button className="btn-icon hotgrid-popup__controls next js-hotgrid-control-click" aria-label={ariaLabels.next}>
+        <button
+          className="btn-icon hotgrid-popup__controls next"
+          aria-label={ariaLabels.next}
+          onClick={onControlClick}
+        >
           <span className="icon" />
         </button>
 
       </div>
       }
 
-      <button className="btn-icon hotgrid-popup__close js-hotgrid-popup-close" aria-label={ariaLabels.closePopup}>
+      <button
+        className="btn-icon hotgrid-popup__close js-hotgrid-popup-close" 
+        aria-label={ariaLabels.onCloseClick}
+        onClick={onCloseClick}
+      >
         <span className="icon" />
       </button>
 
