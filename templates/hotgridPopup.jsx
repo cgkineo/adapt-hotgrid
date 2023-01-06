@@ -1,5 +1,5 @@
 import React from 'react';
-import { classes } from 'core/js/reactHelpers';
+import { classes, templates } from 'core/js/reactHelpers';
 
 export default function Hotgrid(props) {
 
@@ -72,6 +72,9 @@ export default function Hotgrid(props) {
         </div>
       )}
 
+      <templates.hotgridPopupToolbar {...props} />
+
     </div>
+
   );
 }
