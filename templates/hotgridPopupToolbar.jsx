@@ -15,7 +15,7 @@ export default function HotgridPopupToolbar(props) {
       _hidePagination && 'hide-pagination'
     ])}>
 
-      {_hidePagination &&
+      {!_hidePagination &&
       <div className="hotgrid-popup__nav">
 
         <button className="btn-icon hotgrid-popup__controls back js-hotgrid-control-click" aria-label={ariaLabels.previous}>

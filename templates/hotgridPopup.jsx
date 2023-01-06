@@ -9,7 +9,7 @@ export default function Hotgrid(props) {
       {props._items.map(({ title, body, _itemGraphic, _graphic, _classes, _isVisited, _isActive, _isRound, _imageAlignment }, index) =>
         <div className={classes([
           'hotgrid-popup__item',
-          { _classes },
+          _classes,
           _isRound && 'is-round',
           _isVisited && 'is-visited',
           _isActive && 'is-active',
