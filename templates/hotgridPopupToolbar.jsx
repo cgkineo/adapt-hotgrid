@@ -37,6 +37,7 @@ export default function HotgridPopupToolbar(props) {
           aria-label={ariaLabels.previous}
           aria-disabled={!shouldEnableBack}
           onClick={onControlClick}
+          data-direction='back'
         >
           <span className="icon" />
         </button>
@@ -54,6 +55,7 @@ export default function HotgridPopupToolbar(props) {
           aria-label={ariaLabels.next}
           aria-disabled={!shouldEnableNext}
           onClick={onControlClick}
+          data-direction='next'
         >
           <span className="icon" />
         </button>
@@ -62,7 +64,7 @@ export default function HotgridPopupToolbar(props) {
       }
 
       <button
-        className="btn-icon hotgrid-popup__close js-hotgrid-popup-close" 
+        className="btn-icon hotgrid-popup__close"
         aria-label={ariaLabels.onCloseClick}
         onClick={onCloseClick}
       >

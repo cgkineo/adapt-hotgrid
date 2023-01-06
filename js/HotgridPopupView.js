@@ -86,7 +86,7 @@ class HotgridPopupView extends Backbone.View {
   }
 
   onControlClick(e) {
-    const direction = $(e.currentTarget).hasClass('back') ? 'back' : 'next';
+    const direction = $(e.currentTarget).data('direction');
     const index = this.getNextIndex(direction);
 
     if (index !== -1) {
