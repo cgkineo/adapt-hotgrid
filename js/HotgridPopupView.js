@@ -25,29 +25,24 @@ class HotgridPopupView extends Backbone.View {
     this.model.set('onControlClick', this.onControlClick.bind(this));
 
     this.updatePageCount();
+    this.manageBackNextStates();
 
     this.render();
   }
 
   onOpened() {
-    this.applyNavigationClasses(this.model.getActiveItem().get('_index'));
+    this.manageBackNextStates();
     this.handleTabs();
   }
 
-  applyNavigationClasses (index) {
+  manageBackNextStates(index = this.model.getActiveItem().get('_index')) {
     const itemCount = this.model.get('_items').length;
     const canCycleThroughPagination = this.model.get('_canCycleThroughPagination');
-
     const shouldEnableBack = index > 0 || canCycleThroughPagination;
     const shouldEnableNext = index < itemCount - 1 || canCycleThroughPagination;
-    const $controls = this.$('.hotgrid-popup__controls');
 
-    this.$('hotgrid-popup__nav')
-      .toggleClass('first', !shouldEnableBack)
-      .toggleClass('last', !shouldEnableNext);
-
-    a11y.toggleEnabled($controls.filter('.back'), shouldEnableBack);
-    a11y.toggleEnabled($controls.filter('.next'), shouldEnableNext);
+    this.model.set('shouldEnableBack', shouldEnableBack);
+    this.model.set('shouldEnableNext', shouldEnableNext);
   }
 
   updatePageCount() {
@@ -74,7 +69,7 @@ class HotgridPopupView extends Backbone.View {
 
   handleFocus(index) {
     a11y.focusFirst(this.$('.hotgrid-popup__inner .is-active'));
-    this.applyNavigationClasses(index);
+    this.manageBackNextStates(index);
   }
 
   handleTabs() {
