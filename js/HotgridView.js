@@ -10,7 +10,6 @@ class HotgridView extends ComponentView {
 
     this.onItemClicked = this.onItemClicked.bind(this);
 
-    this.setDeviceSize();
     this.setUpViewData();
     this.setUpEventListeners();
   }
@@ -24,16 +23,6 @@ class HotgridView extends ComponentView {
     this.listenTo(Adapt, 'device:changed', this.resizeControl);
   }
 
-  setDeviceSize() {
-    if (device.screenSize === 'large') {
-      this.$el.addClass('is-desktop').removeClass('is-mobile');
-      this.model.set('_isDesktop', true);
-    } else {
-      this.$el.addClass('is-mobile').removeClass('is-desktop');
-      this.model.set('_isDesktop', false);
-    }
-  }
-
   postRender() {
     this.setUpColumns();
     this.$('.hotgrid__widget').imageready(this.setReadyStatus.bind(this));
@@ -44,7 +33,6 @@ class HotgridView extends ComponentView {
   }
 
   resizeControl() {
-    this.setDeviceSize();
     this.render();
   }
 
