@@ -61,15 +61,11 @@ class HotgridPopupView extends Backbone.View {
     this.model.set('itemCount', itemCount);
   }
 
-  handleTabs() {
-    a11y.toggleHidden(this.$('.hotgrid-popup__item:not(.is-active)'), true);
-    a11y.toggleHidden(this.$('.hotgrid-popup__item.is-active'), false);
-  }
-
   onItemsActiveChange(item, _isActive) {
     if (!_isActive) return;
 
     const index = item.get('_index');
+
     this.updatePageCount();
     this.handleTabs();
     this.handleFocus(index);
@@ -79,6 +75,11 @@ class HotgridPopupView extends Backbone.View {
   handleFocus(index) {
     a11y.focusFirst(this.$('.hotgrid-popup__inner .is-active'));
     this.applyNavigationClasses(index);
+  }
+
+  handleTabs() {
+    a11y.toggleHidden(this.$('.hotgrid-popup__item:not(.is-active)'), true);
+    a11y.toggleHidden(this.$('.hotgrid-popup__item.is-active'), false);
   }
 
   render() {

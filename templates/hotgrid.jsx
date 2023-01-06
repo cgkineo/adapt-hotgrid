@@ -7,6 +7,7 @@ export default function Hotgrid(props) {
   const ariaLabels = Adapt.course.get('_globals')._accessibility._ariaLabels;
 
   const {
+    _columnWidth,
     onItemClicked
   } = props;
 
@@ -21,7 +22,7 @@ export default function Hotgrid(props) {
 
           {props._items.map(({ _graphic, _isRound, _isVisited, _isActive }, index) =>
 
-            <div className="hotgrid__item" role="listitem" key={index}>
+            <div className="hotgrid__item" role="listitem" key={index} style={{ width: _columnWidth + '%' }}>
 
               <button className={classes([
                 'hotgrid__item-btn',
