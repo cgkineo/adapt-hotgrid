@@ -73,7 +73,7 @@ export default function HotgridPopup(props) {
             <img
               className="hotgrid-popup__item-image"
               src={_itemGraphic.src || _graphic.src}
-              aria-label={_itemGraphic.alt || _graphic.alt}
+              aria-label={(_itemGraphic.alt || _graphic.alt) ? _itemGraphic.alt || _graphic.alt : null}
               aria-hidden={!_itemGraphic.alt && !_graphic.alt ? true : null}
             />
 
