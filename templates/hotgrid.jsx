@@ -11,6 +11,26 @@ export default function Hotgrid(props) {
     onItemClicked
   } = props;
 
+  const itemAriaLabel = (_index, _graphic, _isVisited) => {
+    const arr = [];
+    const separator = '. ';
+
+    // Show either graphic title or generic title
+    if (_graphic.title) {
+      arr.push(_graphic.title);
+    } else {
+      arr.push(`${hotgridLabels.item} ${_index}`);
+    }
+
+    // Graphic alt text
+    if (_graphic.alt) arr.push(_graphic.alt);
+
+    // Visited state
+    if (_isVisited) arr.push(ariaLabels.visited);
+
+    return { __html: arr.join(separator) };
+  };
+
   return (
     <div className='component__inner hotgrid__inner'>
 
@@ -36,15 +56,7 @@ export default function Hotgrid(props) {
               data-index={_index}
               >
 
-                <span className="aria-label">
-                  {/* Show either graphic title or generic title */}
-                  {_graphic.title && _graphic.title}
-                  {!_graphic.title && `${hotgridLabels.item} ${_index}`}
-
-                  {_graphic.alt && `. ${_graphic.alt}`}
-
-                  {_isVisited && `. ${ariaLabels.visited}`}
-                </span>
+                <span className="aria-label" dangerouslySetInnerHTML={ itemAriaLabel(_index, _graphic, _isVisited) } />
 
                 <span className="hotgrid__item-btn-inner" aria-hidden="true">
 
