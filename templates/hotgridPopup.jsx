@@ -5,7 +5,8 @@ import { classes, templates } from 'core/js/reactHelpers';
 export default function HotgridPopup(props) {
 
   const {
-    _items
+    _items,
+    _isRound
   } = props;
 
   useEffect(() => {
@@ -20,7 +21,7 @@ export default function HotgridPopup(props) {
   return (
     <div className='hotgrid-popup__inner'>
 
-      {_items.map(({ title, body, _itemGraphic, _graphic, _classes, _isVisited, _isActive, _isRound, _imageAlignment }, index) =>
+      {_items.map(({ title, body, _itemGraphic, _graphic, _classes, _isVisited, _isActive, _imageAlignment }, index) =>
         <div className={classes([
           'hotgrid-popup__item',
           _classes,
