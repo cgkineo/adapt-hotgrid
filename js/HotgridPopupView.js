@@ -1,7 +1,7 @@
 import Adapt from 'core/js/adapt';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { templates } from 'core/js/reactHelpers';
+import { templates, compile } from 'core/js/reactHelpers';
 
 class HotgridPopupView extends Backbone.View {
 
@@ -12,7 +12,6 @@ class HotgridPopupView extends Backbone.View {
   initialize() {
     this.listenToOnce(Adapt, 'notify:opened', this.onOpened);
 
-    // this.listenTo(this.model.getChildren(), 'all', this.onItemsActiveChange);
     this.listenTo(this.model.getChildren(), {
       'change:_isActive': this.onItemsActiveChange
     });
@@ -25,7 +24,6 @@ class HotgridPopupView extends Backbone.View {
 
     this.updatePageCount();
     this.manageBackNextStates();
-
     this.render();
   }
 
@@ -33,23 +31,28 @@ class HotgridPopupView extends Backbone.View {
     this.manageBackNextStates();
   }
 
+  /**
+   * Controls whether the back and next buttons should be enabled
+   *
+   * @param {Number} [index] Item's index value. Defaults to the currently active item.
+   */
   manageBackNextStates(index = this.model.getActiveItem().get('_index')) {
-    const itemCount = this.model.get('_items').length;
+    const totalItems = this.model.get('_items').length;
     const canCycleThroughPagination = this.model.get('_canCycleThroughPagination');
     const shouldEnableBack = index > 0 || canCycleThroughPagination;
-    const shouldEnableNext = index < itemCount - 1 || canCycleThroughPagination;
+    const shouldEnableNext = index < totalItems - 1 || canCycleThroughPagination;
 
     this.model.set('shouldEnableBack', shouldEnableBack);
     this.model.set('shouldEnableNext', shouldEnableNext);
   }
 
   updatePageCount() {
-    const paginationTemplate = Adapt.course.get('_globals')._components._hotgrid.popupPagination;
-    const template = paginationTemplate || '{{itemNumber}} / {{totalItems}}';
-    const itemCount = Handlebars.compile(template || '')({
-      itemNumber: this.model.getActiveItem().get('_index') + 1,
-      totalItems: this.model.get('_items').length
-    });
+    const globals = Adapt.course.get('_globals');
+    const pagingTemplate = globals._components._hotgrid.popupPagination;
+    const template = pagingTemplate || '{{itemNumber}} / {{totalItems}}';
+    const itemNumber = this.model.getActiveItem().get('_index') + 1;
+    const totalItems = this.model.get('_items').length;
+    const itemCount = compile(template, { itemNumber, totalItems });
 
     this.model.set('itemCount', itemCount);
   }
