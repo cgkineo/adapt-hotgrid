@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import a11y from 'core/js/a11y';
 import { classes, templates } from 'core/js/reactHelpers';
 
 export default function HotgridPopup(props) {
 
+  const {
+    _items
+  } = props;
+
+  useEffect(() => {
+    const activeItem = _items.filter(item => item._isActive);
+
+    if (!activeItem.length) return;
+
+    const activeItemIndex = activeItem[0]._index;
+    a11y.focusFirst($(`.hotgrid-popup__item[data-index=${activeItemIndex}]`));
+  });
+
   return (
     <div className='hotgrid-popup__inner'>
 
-      {props._items.map(({ title, body, _itemGraphic, _graphic, _classes, _isVisited, _isActive, _isRound, _imageAlignment }, index) =>
+      {_items.map(({ title, body, _itemGraphic, _graphic, _classes, _isVisited, _isActive, _isRound, _imageAlignment }, index) =>
         <div className={classes([
           'hotgrid-popup__item',
           _classes,

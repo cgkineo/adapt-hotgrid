@@ -1,5 +1,4 @@
 import Adapt from 'core/js/adapt';
-import a11y from 'core/js/a11y.js';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { templates } from 'core/js/reactHelpers';
@@ -61,13 +60,8 @@ class HotgridPopupView extends Backbone.View {
     const index = item.get('_index');
 
     this.updatePageCount();
-    this.handleFocus(index);
-    this.render();
-  }
-
-  handleFocus(index) {
-    a11y.focusFirst(this.$('.hotgrid-popup__inner .is-active'));
     this.manageBackNextStates(index);
+    this.render();
   }
 
   render() {
