@@ -3,14 +3,7 @@ import ItemsComponentModel from 'core/js/models/itemsComponentModel';
 export default class HotgridModel extends ItemsComponentModel {
   init() {
     super.init();
-    this.setUpModelData();
     this.checkIfResetOnRevisit();
-  }
-
-  setUpModelData() {
-    if (this.get('_canCycleThroughPagination')) return false;
-
-    this.set('_canCycleThroughPagination', false);
   }
 
   checkIfResetOnRevisit() {

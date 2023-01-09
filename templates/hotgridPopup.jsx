@@ -26,8 +26,10 @@ export default function HotgridPopup(props) {
 
               {title &&
               <div
-                id={_isActive ? 'notify-heading' : null}
-                className="hotgrid-popup__item-title"
+                className={classes([
+                  'hotgrid-popup__item-title',
+                  _isActive && 'notify-heading'
+                ])}
                 aria-level={a11y.ariaLevel({ level: 'notify' })}
               >
                 <div

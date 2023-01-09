@@ -30,7 +30,7 @@ class HotgridView extends ComponentView {
     this.$('.hotgrid__widget').imageready(this.setReadyStatus.bind(this));
 
     if (this.model.get('_setCompletionOn') === 'inview') {
-      this.setupInviewCompletion('.component__widget');
+      this.setupInviewCompletion('.hotgrid__widget');
     }
   }
 

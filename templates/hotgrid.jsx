@@ -20,26 +20,26 @@ export default function Hotgrid(props) {
 
         <div className="hotgrid__grid" role="list">
 
-          {props._items.map(({ _graphic, _isRound, _isVisited, _isActive }, index) =>
+          {props._items.map(({ _index, _graphic, _isRound, _isVisited, _isActive }) =>
 
-            <div className="hotgrid__item" role="listitem" key={index} style={{ width: _columnWidth + '%' }}>
+            <div className="hotgrid__item" role="listitem" key={_index} style={{ width: _columnWidth + '%' }}>
 
               <button className={classes([
                 'hotgrid__item-btn',
-                `item-${index}`,
+                `item-${_index}`,
                 (_graphic.srcHover && _graphic.srcVisited) ? 'is-image' : 'is-css',
                 _isRound && 'is-round',
                 _isVisited && 'is-visited',
                 _isActive && 'is-active'
               ])}
               onClick={onItemClicked}
-              data-index={index}
+              data-index={_index}
               >
 
                 <span className="aria-label">
                   {/* Show either graphic title or generic title */}
                   {_graphic.title && _graphic.title}
-                  {!_graphic.title && `${hotgridLabels.item} ${index}`}
+                  {!_graphic.title && `${hotgridLabels.item} ${_index}`}
 
                   {_graphic.alt && `. ${_graphic.alt}`}
 
