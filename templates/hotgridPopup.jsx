@@ -30,17 +30,19 @@ export default function HotgridPopup(props) {
                 className="hotgrid-popup__item-title"
                 aria-level={a11y.ariaLevel({ level: 'notify' })}
               >
-                <div className="hotgrid-popup__item-title-inner">
-                  {title}
-                </div>
+                <div
+                  className="hotgrid-popup__item-title-inner"
+                  dangerouslySetInnerHTML={{ __html: title }}
+                />
               </div>
               }
 
               {body &&
               <div className="hotgrid-popup__item-body">
-                <div className="hotgrid-popup__item-body-inner">
-                  {body}
-                </div>
+                <div
+                  className="hotgrid-popup__item-body-inner"
+                  dangerouslySetInnerHTML={{ __html: body }}
+                />
               </div>
               }
 
@@ -62,9 +64,10 @@ export default function HotgridPopup(props) {
 
             {_itemGraphic.attribution &&
             <div className="component__attribution hotgrid-popup__attribution">
-              <div className="component__attribution-inner hotgrid-popup__attribution-inner">
-                {_itemGraphic.attribution}
-              </div>
+              <div
+                className="component__attribution-inner hotgrid-popup__attribution-inner"
+                dangerouslySetInnerHTML={{ __html: _itemGraphic.attribution }}
+              />
             </div>
             }
 

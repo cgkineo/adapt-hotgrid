@@ -65,9 +65,10 @@ export default function Hotgrid(props) {
                   {_graphic.title &&
                   // item has a title
                   <span className="hotgrid__item-title" aria-hidden="true">
-                    <span className="hotgrid__item-title-inner">
-                      {_graphic.title}
-                    </span>
+                    <span
+                      className="hotgrid__item-title-inner"
+                      dangerouslySetInnerHTML={{ __html: _graphic.title }}
+                    />
                   </span>
                   }
 
