@@ -37,7 +37,7 @@ export default function HotgridPopupToolbar(props) {
             !shouldEnableBack && 'is-disabled'
           ])}
           aria-label={backLabel}
-          aria-disabled={!shouldEnableBack}
+          aria-disabled={!shouldEnableBack || null}
           onClick={onControlClick}
           data-direction='back'
         >
@@ -55,7 +55,7 @@ export default function HotgridPopupToolbar(props) {
             !shouldEnableNext && 'is-disabled'
           ])}
           aria-label={nextLabel}
-          aria-disabled={!shouldEnableNext}
+          aria-disabled={!shouldEnableNext || null}
           onClick={onControlClick}
           data-direction='next'
         >
