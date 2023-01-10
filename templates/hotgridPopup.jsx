@@ -32,7 +32,7 @@ export default function HotgridPopup(props) {
         ])}
         key={index}
         data-index={index}
-        aria-hidden={!_isActive && null}
+        aria-hidden={!_isActive ? true : null}
         >
 
           <div className="hotgrid-popup__item-content">
