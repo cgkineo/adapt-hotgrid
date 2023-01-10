@@ -21,6 +21,8 @@ export default function HotgridPopup(props) {
   return (
     <div className='hotgrid-popup__inner'>
 
+      <templates.hotgridPopupToolbar {...props} />
+
       {_items.map(({ title, body, _itemGraphic, _graphic, _classes, _isVisited, _isActive, _imageAlignment }, index) =>
         <div className={classes([
           'hotgrid-popup__item',
@@ -91,8 +93,6 @@ export default function HotgridPopup(props) {
 
         </div>
       )}
-
-      <templates.hotgridPopupToolbar {...props} />
 
     </div>
 
