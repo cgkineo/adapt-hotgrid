@@ -56,6 +56,7 @@ export default function Hotgrid(props) {
               ])}
               onClick={onItemClicked}
               data-index={_index}
+              aria-haspopup="dialog"
               >
 
                 <span className="aria-label" dangerouslySetInnerHTML={ itemAriaLabel(_index, _graphic, _isVisited) } />
