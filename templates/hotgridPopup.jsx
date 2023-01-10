@@ -15,6 +15,7 @@ export default function HotgridPopup(props) {
     if (!activeItem.length) return;
 
     const activeItemIndex = activeItem[0]._index;
+
     a11y.focusFirst($(`.hotgrid-popup__item[data-index=${activeItemIndex}]`));
   });
 

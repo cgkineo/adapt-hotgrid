@@ -10,7 +10,13 @@ class HotgridPopupView extends Backbone.View {
   }
 
   initialize() {
-    this.listenToOnce(Adapt, 'notify:opened', this.onOpened);
+    this.setupEventListeners();
+    this.setupNavigation();
+    this.render();
+  }
+
+  setupEventListeners() {
+    this.listenToOnce(Adapt, 'notify:opened', this.setupNavigation);
 
     this.listenTo(this.model.getChildren(), {
       'change:_isActive': this.onItemsActiveChange
@@ -21,14 +27,12 @@ class HotgridPopupView extends Backbone.View {
     // Debounce required as a second (bad) click event is dispatched on iOS causing a jump of two items.
     // this.onControlClick = _.debounce(this.onControlClick.bind(this), 100);
     this.model.set('onControlClick', this.onControlClick.bind(this));
-
-    this.updatePageCount();
-    this.manageBackNextStates();
-    this.render();
   }
 
-  onOpened() {
+  setupNavigation() {
     this.manageBackNextStates();
+    this.updatePageCount();
+    this.setupBackNextLabels();
   }
 
   /**
@@ -37,8 +41,9 @@ class HotgridPopupView extends Backbone.View {
    * @param {Number} [index] Item's index value. Defaults to the currently active item.
    */
   manageBackNextStates(index = this.model.getActiveItem().get('_index')) {
-    const totalItems = this.model.get('_items').length;
+    const totalItems = this.model.getChildren().length;
     const canCycleThroughPagination = this.model.get('_canCycleThroughPagination');
+
     const shouldEnableBack = index > 0 || canCycleThroughPagination;
     const shouldEnableNext = index < totalItems - 1 || canCycleThroughPagination;
 
@@ -46,12 +51,62 @@ class HotgridPopupView extends Backbone.View {
     this.model.set('shouldEnableNext', shouldEnableNext);
   }
 
+  /**
+   * Construct back and next aria labels
+   *
+   * @param {Number} [index] Item's index value.
+   */
+  setupBackNextLabels(index = this.model.getActiveItem().get('_index')) {
+    const totalItems = this.model.getChildren().length;
+    const canCycleThroughPagination = this.model.get('_canCycleThroughPagination');
+
+    const isAtStart = index === 0;
+    const isAtEnd = index === totalItems - 1;
+
+    const globals = Adapt.course.get('_globals');
+    const hotgridGlobals = globals._components._hotgrid;
+
+    let prevTitle = isAtStart ? '' : this.model.getItem(index - 1).get('title');
+    let nextTitle = isAtEnd ? '' : this.model.getItem(index + 1).get('title');
+
+    let backItem = isAtStart ? null : index;
+    let nextItem = isAtEnd ? null : index + 2;
+
+    if (canCycleThroughPagination) {
+      if (isAtStart) {
+        prevTitle = this.model.getItem(totalItems - 1).get('title');
+        backItem = totalItems;
+      }
+      if (isAtEnd) {
+        nextTitle = this.model.getItem(0).get('title');
+        nextItem = 1;
+      }
+    }
+
+    const backLabel = compile(hotgridGlobals.previous, {
+      _globals: globals,
+      title: prevTitle,
+      itemNumber: backItem,
+      totalItems
+    });
+
+    const nextLabel = compile(hotgridGlobals.next, {
+      _globals: globals,
+      title: nextTitle,
+      itemNumber: nextItem,
+      totalItems
+    });
+
+    this.model.set('backLabel', backLabel);
+    this.model.set('nextLabel', nextLabel);
+  }
+
   updatePageCount() {
     const globals = Adapt.course.get('_globals');
     const pagingTemplate = globals._components._hotgrid.popupPagination;
     const template = pagingTemplate || '{{itemNumber}} / {{totalItems}}';
     const itemNumber = this.model.getActiveItem().get('_index') + 1;
-    const totalItems = this.model.get('_items').length;
+    const totalItems = this.model.getChildren().length;
     const itemCount = compile(template, { itemNumber, totalItems });
 
     this.model.set('itemCount', itemCount);
@@ -62,8 +117,8 @@ class HotgridPopupView extends Backbone.View {
 
     const index = item.get('_index');
 
-    this.updatePageCount();
     this.manageBackNextStates(index);
+    this.updatePageCount();
     this.render();
   }
 
@@ -86,7 +141,7 @@ class HotgridPopupView extends Backbone.View {
 
   getNextIndex(direction) {
     let index = this.model.getActiveItem().get('_index');
-    const lastIndex = this.model.get('_items').length - 1;
+    const lastIndex = this.model.getChildren().length - 1;
 
     switch (direction) {
       case 'back':
@@ -104,6 +159,7 @@ class HotgridPopupView extends Backbone.View {
     this.model.getActiveItem().toggleActive();
 
     const nextItem = this.model.getItem(index);
+    this.setupBackNextLabels(index);
     nextItem.toggleActive();
     nextItem.toggleVisited(true);
   }

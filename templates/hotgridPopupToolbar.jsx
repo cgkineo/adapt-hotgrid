@@ -12,6 +12,8 @@ export default function HotgridPopupToolbar(props) {
     shouldEnableBack,
     shouldEnableNext,
     itemCount,
+    backLabel,
+    nextLabel,
     _hidePagination
   } = props;
 
@@ -34,7 +36,7 @@ export default function HotgridPopupToolbar(props) {
             'btn-icon hotgrid-popup__controls back',
             !shouldEnableBack && 'is-disabled'
           ])}
-          aria-label={ariaLabels.previous}
+          aria-label={backLabel}
           aria-disabled={!shouldEnableBack}
           onClick={onControlClick}
           data-direction='back'
@@ -52,7 +54,7 @@ export default function HotgridPopupToolbar(props) {
             'btn-icon hotgrid-popup__controls next',
             !shouldEnableNext && 'is-disabled'
           ])}
-          aria-label={ariaLabels.next}
+          aria-label={nextLabel}
           aria-disabled={!shouldEnableNext}
           onClick={onControlClick}
           data-direction='next'

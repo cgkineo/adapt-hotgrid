@@ -3,7 +3,7 @@ import React from 'react';
 import { templates, classes } from 'core/js/reactHelpers';
 
 export default function Hotgrid(props) {
-  const hotgridLabels = Adapt.course.get('_globals')._components._hotgrid;
+  const hotgridGlobals = Adapt.course.get('_globals')._components._hotgrid;
   const ariaLabels = Adapt.course.get('_globals')._accessibility._ariaLabels;
 
   const {
@@ -24,7 +24,7 @@ export default function Hotgrid(props) {
     if (_graphic.title) {
       arr.push(_graphic.title);
     } else {
-      arr.push(`${hotgridLabels.item} ${_index}`);
+      arr.push(`${hotgridGlobals.item} ${_index}`);
     }
 
     // Graphic alt text
