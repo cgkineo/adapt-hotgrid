@@ -26,6 +26,22 @@
                   "title": "Item",
                   "default": "Item"
                 },
+                "previous": {
+                  "type": "string",
+                  "title": "Previous",
+                  "default": "{{#if title}}Back to {{{title}}} (item {{itemNumber}} of {{totalItems}}){{else}}{{_globals._accessibility._ariaLabels.previous}}{{/if}}",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                },
+                "next": {
+                  "type": "string",
+                  "title": "Next",
+                  "default": "{{#if title}}Forward to {{{title}}} (item {{itemNumber}} of {{totalItems}}){{else}}{{_globals._accessibility._ariaLabels.next}}{{/if}}",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                },
                 "popupPagination": {
                   "type": "string",
                   "title": "Popup pagination",
