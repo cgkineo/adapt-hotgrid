@@ -12,7 +12,6 @@ class HotgridView extends ComponentView {
     this.onItemClicked = this.onItemClicked.bind(this);
 
     this.setUpViewData();
-    this.setUpColumns();
     this.setUpEventListeners();
   }
 
