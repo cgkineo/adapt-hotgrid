@@ -88,7 +88,7 @@ export default function Hotgrid(props) {
 
                   {!_graphic.title &&
                   // item has no title - show icon instead
-                  <span className="btn-icon hotgrid__item-icon">
+                  <span className="btn-icon hotgrid__item-icon" aria-hidden="true">
                     <span className="icon" />
                   </span>
                   }

@@ -39,7 +39,7 @@ export default function HotgridPopupToolbar(props) {
           onClick={onControlClick}
           data-direction='back'
         >
-          <span className="icon" />
+          <span className="icon" aria-hidden="true" />
         </button>
 
         <div
@@ -57,7 +57,7 @@ export default function HotgridPopupToolbar(props) {
           onClick={onControlClick}
           data-direction='next'
         >
-          <span className="icon" />
+          <span className="icon" aria-hidden="true" />
         </button>
 
       </div>
@@ -68,7 +68,7 @@ export default function HotgridPopupToolbar(props) {
         aria-label={ariaLabels.onCloseClick}
         onClick={onCloseClick}
       >
-        <span className="icon" />
+        <span className="icon" aria-hidden="true" />
       </button>
 
       {a11yConfig._options._isPopupWrapFocusEnabled &&
