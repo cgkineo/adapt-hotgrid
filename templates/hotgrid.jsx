@@ -17,6 +17,9 @@ export default function Hotgrid(props) {
     const arr = [];
     const separator = '. ';
 
+    // Visited state
+    if (_isVisited) arr.push(ariaLabels.visited);
+
     // Show either graphic title or generic title
     if (_graphic.title) {
       arr.push(_graphic.title);
@@ -26,9 +29,6 @@ export default function Hotgrid(props) {
 
     // Graphic alt text
     if (_graphic.alt) arr.push(_graphic.alt);
-
-    // Visited state
-    if (_isVisited) arr.push(ariaLabels.visited);
 
     return { __html: arr.join(separator) };
   };
