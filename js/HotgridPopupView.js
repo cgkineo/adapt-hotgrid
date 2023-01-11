@@ -11,8 +11,6 @@ class HotgridPopupView extends Backbone.View {
 
   initialize() {
     this.setupEventListeners();
-    this.setupNavigation();
-    this.render();
   }
 
   setupEventListeners() {
