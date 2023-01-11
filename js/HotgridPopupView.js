@@ -16,7 +16,7 @@ class HotgridPopupView extends Backbone.View {
   }
 
   setupEventListeners() {
-    this.listenToOnce(Adapt, 'notify:opened', this.setupNavigation);
+    this.listenToOnce(Adapt, 'notify:opened', this.onNotifyOpened);
 
     this.listenTo(this.model.getChildren(), {
       'change:_isActive': this.onItemsActiveChange
@@ -27,6 +27,11 @@ class HotgridPopupView extends Backbone.View {
     // Debounce required as a second (bad) click event is dispatched on iOS causing a jump of two items.
     // this.onControlClick = _.debounce(this.onControlClick.bind(this), 100);
     this.model.set('onControlClick', this.onControlClick.bind(this));
+  }
+
+  onNotifyOpened() {
+    this.setupNavigation();
+    this.render();
   }
 
   setupNavigation() {
@@ -122,10 +127,6 @@ class HotgridPopupView extends Backbone.View {
     this.render();
   }
 
-  render() {
-    ReactDOM.render(<templates.hotgridPopup {...this.model.toJSON()} />, this.el);
-  }
-
   onCloseClick() {
     Adapt.trigger('notify:close');
   }
@@ -162,6 +163,10 @@ class HotgridPopupView extends Backbone.View {
     this.setupBackNextLabels(index);
     nextItem.toggleActive();
     nextItem.toggleVisited(true);
+  }
+
+  render() {
+    ReactDOM.render(<templates.hotgridPopup {...this.model.toJSON()} />, this.el);
   }
 
 };
