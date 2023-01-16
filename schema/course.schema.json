@@ -23,12 +23,14 @@
                 },
                 "item": {
                   "type": "string",
-                  "title": "Item",
+                  "title": "Hotgrid item label",
+                  "description": "This is the aria label that indicates the item number.",
                   "default": "Item"
                 },
                 "previous": {
                   "type": "string",
-                  "title": "Previous",
+                  "title": "Hotgrid popup previous label",
+                  "description": "This is the aria label for the previous button in the popup.",
                   "default": "{{#if title}}Back to {{{title}}} (item {{itemNumber}} of {{totalItems}}){{else}}{{_globals._accessibility._ariaLabels.previous}}{{/if}}",
                   "_adapt": {
                     "translatable": true
@@ -36,7 +38,8 @@
                 },
                 "next": {
                   "type": "string",
-                  "title": "Next",
+                  "title": "Hotgrid popup next label",
+                  "description": "This is the aria label for the next button in the popup.",
                   "default": "{{#if title}}Forward to {{{title}}} (item {{itemNumber}} of {{totalItems}}){{else}}{{_globals._accessibility._ariaLabels.next}}{{/if}}",
                   "_adapt": {
                     "translatable": true
@@ -44,7 +47,7 @@
                 },
                 "popupPagination": {
                   "type": "string",
-                  "title": "Popup pagination",
+                  "title": "Hotgrid popup pagination",
                   "description": "This is the aria label for each item. Use {{itemNumber}} and {{totalItems}} in your text to tell the user which item they are viewing and how many items there are in total.",
                   "default": "{{itemNumber}} / {{totalItems}}",
                   "_adapt": {
