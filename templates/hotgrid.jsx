@@ -49,7 +49,7 @@ export default function Hotgrid(props) {
               <button className={classes([
                 'hotgrid__item-btn',
                 `item-${_index}`,
-                (_graphic.srcHover && _graphic.srcVisited) ? 'is-image' : 'is-css',
+                (_graphic.srcHover && _graphic.srcVisited) ? 'is-image' : 'has-css-states',
                 _isRound && 'is-round',
                 _isVisited && 'is-visited',
                 _isActive && 'is-active'
