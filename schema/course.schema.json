@@ -14,6 +14,7 @@
           "properties": {
             "_hotgrid": {
               "type": "object",
+              "title": "Hotgrid",
               "default": {},
               "properties": {
                 "ariaRegion": {
@@ -23,13 +24,13 @@
                 },
                 "item": {
                   "type": "string",
-                  "title": "Hotgrid item label",
+                  "title": "Item label",
                   "description": "This is the aria label that indicates the item number.",
                   "default": "Item"
                 },
                 "previous": {
                   "type": "string",
-                  "title": "Hotgrid popup previous label",
+                  "title": "Popup previous label",
                   "description": "This is the aria label for the previous button in the popup.",
                   "default": "{{#if title}}Back to {{{title}}} (item {{itemNumber}} of {{totalItems}}){{else}}{{_globals._accessibility._ariaLabels.previous}}{{/if}}",
                   "_adapt": {
@@ -38,7 +39,7 @@
                 },
                 "next": {
                   "type": "string",
-                  "title": "Hotgrid popup next label",
+                  "title": "Popup next label",
                   "description": "This is the aria label for the next button in the popup.",
                   "default": "{{#if title}}Forward to {{{title}}} (item {{itemNumber}} of {{totalItems}}){{else}}{{_globals._accessibility._ariaLabels.next}}{{/if}}",
                   "_adapt": {
@@ -47,7 +48,7 @@
                 },
                 "popupPagination": {
                   "type": "string",
-                  "title": "Hotgrid popup pagination",
+                  "title": "Popup pagination",
                   "description": "This is the aria label for each item. Use {{itemNumber}} and {{totalItems}} in your text to tell the user which item they are viewing and how many items there are in total.",
                   "default": "{{itemNumber}} / {{totalItems}}",
                   "_adapt": {
