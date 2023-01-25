@@ -7,7 +7,6 @@
   "component": "hotgrid",
   "targetAttribute": "_hotgrid",
   "displayName": "Hotgrid",
-  "targetAttribute": "_hotgrid",
   "description": "A presentation component that displays selectable images in a grid format.",
   "main": "/js/adapt-hotgrid.js",
   "keywords": [
