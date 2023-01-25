@@ -77,8 +77,8 @@
     }
 }
 
-    // Accessibility supported courses require ARIA instruction
-    // apply to _globals in course.json
+    // Accessibility supported courses require ARIA instruction.
+    // Apply to _globals._components in course.json.
     // --------------------------------------------------
     "_hotgrid": {
         "ariaRegion": "Selectable image component. Select each item to show more information.",
