@@ -77,10 +77,13 @@
     }
 }
 
-// Accessibility supported courses require ARIA instruction
-// apply to _globals._components in course.json
-// --------------------------------------------------
-"_hotgrid": {
-    "ariaRegion": "Selectable image component. Select each item to show more information.",
-    "popupPagination": "{{itemNumber}} / {{totalItems}}"
-}
+    // Accessibility supported courses require ARIA instruction
+    // apply to _globals in course.json
+    // --------------------------------------------------
+    "_hotgrid": {
+        "ariaRegion": "Selectable image component. Select each item to show more information.",
+        "previous": "{{#if title}}Back to {{{title}}} (item {{itemNumber}} of {{totalItems}}){{else}}{{_globals._accessibility._ariaLabels.previous}}{{/if}}",
+        "next": "{{#if title}}Forward to {{{title}}} (item {{itemNumber}} of {{totalItems}}){{else}}{{_globals._accessibility._ariaLabels.next}}{{/if}}",
+        "popupPagination": "{{itemNumber}} / {{totalItems}}",
+        "item": "Item"
+    }

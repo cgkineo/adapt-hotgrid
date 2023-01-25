@@ -5,6 +5,7 @@
   "homepage": "https://github.com/cgkineo/adapt-hotgrid",
   "issues": "https://github.com/cgkineo/adapt-hotgrid/issues/",
   "component": "hotgrid",
+  "targetAttribute": "_hotgrid",
   "displayName": "Hotgrid",
   "targetAttribute": "_hotgrid",
   "description": "A presentation component that displays selectable images in a grid format.",
