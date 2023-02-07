@@ -11,8 +11,32 @@
       "inputType": "Text",
       "validators": []
     },
+    "item": {
+      "type": "string",
+      "title": "Hotgrid item label",
+      "required": true,
+      "default": "Item",
+      "inputType": "Text",
+      "validators": [],
+      "help": "This is the aria label that indicates the item number."
+    },
+    "previous": {
+      "type": "string",
+      "title": "Hotgrid popup previous label",
+      "default": "{{#if title}}Back to {{{title}}} (item {{itemNumber}} of {{totalItems}}){{else}}{{_globals._accessibility._ariaLabels.previous}}{{/if}}",
+      "translatable": true,
+      "help": "This is the aria label for the previous button in the popup."
+    },
+    "next": {
+      "type": "string",
+      "title": "Hotgrid popup next label",
+      "default": "{{#if title}}Forward to {{{title}}} (item {{itemNumber}} of {{totalItems}}){{else}}{{_globals._accessibility._ariaLabels.next}}{{/if}}",
+      "translatable": true,
+      "help": "This is the aria label for the next button in the popup."
+    },
     "popupPagination": {
       "type": "string",
+      "title": "Hotgrid popup pagination",
       "required": true,
       "default": "{{itemNumber}} / {{totalItems}}",
       "inputType": "Text",

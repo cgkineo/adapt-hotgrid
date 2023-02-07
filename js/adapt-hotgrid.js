@@ -1,12 +1,8 @@
-define([
-  'core/js/adapt',
-  'core/js/models/itemsComponentModel',
-  './hotgridView'
-], function(Adapt, ItemsComponentModel, HotgridView) {
+import components from 'core/js/components';
+import HotgridModel from './HotgridModel';
+import HotgridView from './HotgridView';
 
-  return Adapt.register('hotgrid', {
-    model: ItemsComponentModel.extend({}),
-    view: HotgridView
-  });
-
+export default components.register('hotgrid', {
+  model: HotgridModel,
+  view: HotgridView
 });
