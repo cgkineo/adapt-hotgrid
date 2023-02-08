@@ -67,7 +67,7 @@ export default function HotgridPopupToolbar(props) {
 
       <button
         className="btn-icon hotgrid-popup__close"
-        aria-label={ariaLabels.onCloseClick}
+        aria-label={ariaLabels.closePopup}
         onClick={onCloseClick}
       >
         <span className="icon" aria-hidden="true" />
