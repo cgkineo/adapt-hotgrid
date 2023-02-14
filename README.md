@@ -91,11 +91,10 @@ Optional text to be displayed as an [attribution](https://wiki.creativecommons.o
 **Hotgrid** has a label assigned using the [aria-label](https://github.com/adaptlearning/adapt_framework/wiki/Aria-Labels) attribute: **ariaRegion**. These labels are not visible elements. They are utilized by assistive technology such as screen readers. This label is included within the _example.json_ and may need to be added to the \_globals in _course.json_.
 
 ## Limitations
-Hotgrid automatically switches to 2 columns in mobile mode for the best user experience however this can be overridden in the CSS.
+Hotgrid automatically switches to 2 columns in mobile mode for the best user experience. However, this can be overridden in the CSS.
 
 ---
 
-**Version number:** 4.2.0<br>
 **Framework versions:** 5.22.4+<br>
 **Author / maintainer:** CGKineo<br>
 **Accessibility support:** WAI AA<br> 
