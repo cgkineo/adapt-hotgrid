@@ -47,6 +47,7 @@ export default function HotgridPopupToolbar(props) {
         <div
           className="hotgrid-popup__count"
           dangerouslySetInnerHTML={{ __html: itemCount }}
+          aria-hidden="true"
         />
 
         <button
