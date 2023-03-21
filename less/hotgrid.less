@@ -24,12 +24,36 @@
     border-radius: 50%;
   }
 
+  &__item-image-container {
+    position: relative;
+    display: block;
+  }
+
   &__item-title {
     display: block;
   }
 
   &__item-icon .icon {
     .icon-plus;
+  }
+
+  &__item-completion-icon {
+    display: none;
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    border-radius: 50%;
+    padding: 1rem;
+    background-color: @visited;
+    color: @visited-inverted;
+
+    .hotgrid__item-btn.is-visited & {
+      display: block
+    }
+
+    .icon {
+      .icon-tick;
+    }
   }
 
   // Application of item image states

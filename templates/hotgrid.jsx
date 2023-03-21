@@ -75,6 +75,10 @@ export default function Hotgrid(props) {
                       <img className="hotgrid__item-image is-visited" src={_graphic.srcVisited} />
                     }
 
+                    <span className="hotgrid__item-completion-icon">
+                      <span className="icon" aria-hidden="true"></span>
+                    </span>
+
                   </span>
 
                   {_graphic.title &&
