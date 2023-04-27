@@ -33,6 +33,10 @@
     display: block;
   }
 
+  &__item-icon .icon {
+    .icon-plus;
+  }
+
   &__item-completion-icon {
     display: none;
     position: absolute;
@@ -109,20 +113,31 @@
     .item-title;
   }
 
+  &__item-icon {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    .transform(translateX(-50%));
+    border-radius: 50%;
+  }
+
   // Hotgrid item theme
   // --------------------------------------------------
-  &__item-btn &__item-title {
+  &__item-btn &__item-title,
+  &__item-btn &__item-icon {
     background-color: @item-color;
     color: @item-color-inverted;
   }
 
-  .no-touch &__item-btn:hover &__item-title {
+  .no-touch &__item-btn:hover &__item-title,
+  .no-touch &__item-btn:not(.is-disabled):not(.is-locked):hover &__item-icon {
     background-color: @item-color-hover;
     color: @item-color-inverted-hover;
     .transition(background-color @duration ease-in, color @duration ease-in;);
   }
 
-  &__item-btn.is-visited &__item-title {
+  &__item-btn.is-visited &__item-title,
+  &__item-btn.is-visited &__item-icon {
     background-color: @visited;
     color: @visited-inverted;
   }
