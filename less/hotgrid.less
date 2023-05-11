@@ -37,23 +37,8 @@
     .icon-plus;
   }
 
-  &__item-completion-icon {
-    display: none;
-    position: absolute;
-    bottom: 0.5rem;
-    right: 0.5rem;
-    border-radius: 50%;
-    padding: @item-padding / 2;
-    background-color: @visited;
-    color: @visited-inverted;
-
-    .hotgrid__item-btn.is-visited & {
-      display: block
-    }
-
-    .icon {
-      .icon-tick;
-    }
+  &__item-btn.is-visited &__item-icon .icon {
+    .icon-tick;
   }
 
   // Application of item image states
@@ -115,10 +100,11 @@
 
   &__item-icon {
     position: absolute;
-    bottom: 1rem;
+    bottom: 0.5rem;
     left: 50%;
     .transform(translateX(-50%));
     border-radius: 50%;
+    padding: @item-padding / 2;
   }
 
   // Hotgrid item theme

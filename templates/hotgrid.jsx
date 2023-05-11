@@ -75,9 +75,11 @@ export default function Hotgrid(props) {
                       <img className="hotgrid__item-image is-visited" src={_graphic.srcVisited} />
                     }
 
-                    <span className="hotgrid__item-completion-icon">
-                      <span className="icon" aria-hidden="true"></span>
+                    {(!_graphic.title || (_graphic.title && _isVisited)) &&
+                    <span className="btn-icon hotgrid__item-icon" aria-hidden="true">
+                      <span className="icon" />
                     </span>
+                    }
 
                   </span>
 
@@ -88,13 +90,6 @@ export default function Hotgrid(props) {
                       className="hotgrid__item-title-inner"
                       dangerouslySetInnerHTML={{ __html: _graphic.title }}
                     />
-                  </span>
-                  }
-
-                  {!_graphic.title &&
-                  // item has no title - show icon instead
-                  <span className="btn-icon hotgrid__item-icon" aria-hidden="true">
-                    <span className="icon" />
                   </span>
                   }
 
