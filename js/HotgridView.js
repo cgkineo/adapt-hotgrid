@@ -40,7 +40,7 @@ class HotgridView extends ComponentView {
 
   setUpColumns() {
     const columns = this.model.get('_columns');
-    const columnWidth = columns && device.screenSize === 'large' ? 100 / columns : 100;
+    const columnWidth = columns && device.isScreenSizeMin('medium') ? 100 / columns : 100;
 
     this.model.set('_columnWidth', columnWidth);
   }
