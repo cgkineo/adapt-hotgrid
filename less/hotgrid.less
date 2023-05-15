@@ -24,12 +24,21 @@
     border-radius: 50%;
   }
 
+  &__item-image-container {
+    position: relative;
+    display: block;
+  }
+
   &__item-title {
     display: block;
   }
 
   &__item-icon .icon {
     .icon-plus;
+  }
+
+  &__item-btn.is-visited &__item-icon .icon {
+    .icon-tick;
   }
 
   // Application of item image states
@@ -91,10 +100,11 @@
 
   &__item-icon {
     position: absolute;
-    bottom: 1rem;
+    bottom: 0.5rem;
     left: 50%;
     .transform(translateX(-50%));
     border-radius: 50%;
+    padding: @item-padding / 2;
   }
 
   // Hotgrid item theme
