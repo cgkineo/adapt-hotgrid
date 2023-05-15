@@ -1,7 +1,7 @@
 {
   "name": "adapt-hotgrid",
   "version": "4.3.9",
-  "framework": ">=5.22.4",
+  "framework": ">=5.31.2",
   "homepage": "https://github.com/cgkineo/adapt-hotgrid",
   "issues": "https://github.com/cgkineo/adapt-hotgrid/issues/",
   "component": "hotgrid",
