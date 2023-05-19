@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import a11y from 'core/js/a11y';
-import { classes, templates } from 'core/js/reactHelpers';
+import { classes, compile, templates } from 'core/js/reactHelpers';
 
 export default function HotgridPopup(props) {
 
@@ -60,7 +60,7 @@ export default function HotgridPopup(props) {
               <div className="hotgrid-popup__item-body">
                 <div
                   className="hotgrid-popup__item-body-inner"
-                  dangerouslySetInnerHTML={{ __html: body }}
+                  dangerouslySetInnerHTML={{ __html: compile(body) }}
                 />
               </div>
               }
