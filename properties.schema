@@ -58,7 +58,7 @@
     "instruction": {
       "type": "string",
       "required": false,
-      "default": "",
+      "default": "Select the images to find out more.",
       "inputType": "Text",
       "validators": [],
       "translatable": true
