@@ -112,6 +112,15 @@
       "validators": [],
       "help": "If enabled, a 50% border radius will be applied to the item images including the pop up."
     },
+    "_alwaysShowIcon": {
+      "type": "boolean",
+      "required": true,
+      "default": false,
+      "title": "Always show plus icon",
+      "inputType": "Checkbox",
+      "validators": [],
+      "help": "Normally, the plus icon would only be shown when the item lacks a title. The default is 'false'"
+    },
     "_items": {
       "type": "array",
       "required": true,
