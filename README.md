@@ -39,8 +39,8 @@ This value determines the number of columns within the grid. Any number of colum
 ### \_isRound (boolean):
 If enabled, a 50% border radius will be applied to the item images including the pop up.
 
-### \_alwaysShowPlusIcon (boolean):
-Always show the plus icon for an item. Normally, the plus icon would only be shown when the item lacks a title. The default is `false`. Note that the completion icon will be shown regardless of this setting or whether the item has a title.
+### \_showPlusIcon (boolean):
+Show the plus icon for an item. The default is `false`. Note that the completion icon will always be shown.
 
 **Hot Grid** has a dynamic layout system. If you have 5 items but set the columns to 3, **Hot Grid** will put 3 items in the first row and 2 on the second. The second row then will be automatically centred. This works with any amount of items and columns - i.e. that last row will always be centred for you.
 

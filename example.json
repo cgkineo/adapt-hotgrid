@@ -15,7 +15,7 @@
     "_hidePagination": false,
     "_columns": 3,
     "_isRound": false,
-    "_alwaysShowPlusIcon": false,
+    "_showPlusIcon": false,
     "_items": [
         {
             "title": "Grid Item 1",
