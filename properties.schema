@@ -112,7 +112,7 @@
       "validators": [],
       "help": "If enabled, a 50% border radius will be applied to the item images including the pop up."
     },
-    "_alwaysShowIcon": {
+    "_alwaysShowPlusIcon": {
       "type": "boolean",
       "required": true,
       "default": false,

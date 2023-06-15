@@ -10,7 +10,7 @@ export default function Hotgrid(props) {
     _items,
     _columnWidth,
     _isRound,
-    _alwaysShowIcon,
+    _alwaysShowPlusIcon,
     onItemClicked
   } = props;
 
@@ -75,7 +75,7 @@ export default function Hotgrid(props) {
                       <img className="hotgrid__item-image is-visited" src={_graphic.srcVisited} />
                     }
 
-                    {(_alwaysShowIcon || !_graphic.title || (_graphic.title && _isVisited)) &&
+                    {(_alwaysShowPlusIcon || !_graphic.title || (_graphic.title && _isVisited)) &&
                     <span className="btn-icon hotgrid__item-icon" aria-hidden="true">
                       <span className="icon" />
                     </span>
