@@ -17,7 +17,7 @@
     "_isRound": false,
     "_items": [
         {
-            "title": "Grid Item 1",
+            "title": "Item Title 1",
             "body": "This is display text 1. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
             "_imageAlignment": "right",
             "_comment": "Supported classes = 'hide-desktop-image' | 'hide-popup-image'. Additional classes can be used but they must be predefined in one of the Less files",
@@ -27,7 +27,7 @@
                 "srcHover": "",
                 "srcVisited": "",
                 "alt": "",
-                "title": "Item Title 1"
+                "title": "Grid Title 1"
             },
             "_itemGraphic": {
                 "src": "course/en/images/example.jpg",
@@ -36,7 +36,7 @@
             }
         },
         {
-            "title": "Grid Item 2",
+            "title": "Item Title 2",
             "body": "This is display text 2 with a left aligned image.",
             "_imageAlignment": "left",
             "_classes": "",
@@ -45,7 +45,7 @@
                 "srcHover": "",
                 "srcVisited": "",
                 "alt": "",
-                "title": "Item Title 2"
+                "title": "Grid Title 2"
             },
             "_itemGraphic": {
                 "src": "course/en/images/example.jpg",
@@ -54,7 +54,7 @@
             }
         },
         {
-            "title": "Grid Item 3",
+            "title": "Item Title 3",
             "body": "This is display text 3.",
             "_imageAlignment": "right",
             "_classes": "",
@@ -63,7 +63,7 @@
                 "srcHover": "",
                 "srcVisited": "",
                 "alt": "",
-                "title": "Item Title 3"
+                "title": "Grid Title 3"
             },
             "_itemGraphic": {
                 "src": "course/en/images/example.jpg",
