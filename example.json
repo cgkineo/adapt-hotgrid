@@ -8,7 +8,7 @@
     "title": "Hotgrid",
     "displayTitle": "Hotgrid",
     "body": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.",
-    "instruction": "Select the images to reveal the text.",
+    "instruction": "Select the images to find out more.",
     "_comment": "setCompletionOn = inview | allItems",
     "_setCompletionOn": "allItems",
     "_canCycleThroughPagination": false,

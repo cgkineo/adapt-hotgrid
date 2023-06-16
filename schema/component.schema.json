@@ -22,7 +22,7 @@
         "instruction": {
           "type": "string",
           "title": "Instruction",
-          "default": "",
+          "default": "Select the images to find out more.",
           "_adapt": {
             "translatable": true
           }
