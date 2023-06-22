@@ -1,6 +1,6 @@
 import Adapt from 'core/js/adapt';
 import React from 'react';
-import { templates, classes } from 'core/js/reactHelpers';
+import { templates, classes, compile } from 'core/js/reactHelpers';
 
 export default function Hotgrid(props) {
   const hotgridGlobals = Adapt.course.get('_globals')._components._hotgrid;
@@ -87,7 +87,7 @@ export default function Hotgrid(props) {
                   <span className="hotgrid__item-title" aria-hidden="true">
                     <span
                       className="hotgrid__item-title-inner"
-                      dangerouslySetInnerHTML={{ __html: _graphic.title }}
+                      dangerouslySetInnerHTML={{ __html: compile(_graphic.title) }}
                     />
                   </span>
                   }
