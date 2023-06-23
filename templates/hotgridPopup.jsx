@@ -51,7 +51,7 @@ export default function HotgridPopup(props) {
               >
                 <div
                   className="hotgrid-popup__item-title-inner"
-                  dangerouslySetInnerHTML={{ __html: title }}
+                  dangerouslySetInnerHTML={{ __html: compile(title) }}
                 />
               </div>
               }
