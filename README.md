@@ -95,7 +95,6 @@ Hotgrid automatically switches to 2 columns in mobile mode for the best user exp
 
 ---
 
-**Framework versions:** 5.22.4+<br>
 **Author / maintainer:** CGKineo<br>
 **Accessibility support:** WAI AA<br> 
 **RTL support:** Yes<br>
