@@ -25,7 +25,6 @@ class HotgridView extends ComponentView {
   }
 
   postRender() {
-    this.setUpColumns();
     this.$('.hotgrid__widget').imageready(this.setReadyStatus.bind(this));
 
     if (this.model.get('_setCompletionOn') === 'inview') {
@@ -34,15 +33,7 @@ class HotgridView extends ComponentView {
   }
 
   resizeControl() {
-    this.setUpColumns();
     this.render();
-  }
-
-  setUpColumns() {
-    const columns = this.model.get('_columns');
-    const columnWidth = columns && device.isScreenSizeMin('medium') ? 100 / columns : 100;
-
-    this.model.set('_columnWidth', columnWidth);
   }
 
   onItemClicked(e) {
