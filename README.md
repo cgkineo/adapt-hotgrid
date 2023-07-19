@@ -36,6 +36,12 @@ When set to `true`, hides the "previous" and "next" icons and progress indicator
 ### \_columns (number):
 This value determines the number of columns within the grid. Any number of columns can be set however keep in mind the more columns there are the smaller the items will be.
 
+### \_isRound (boolean):
+If enabled, a 50% border radius will be applied to the item images including the pop up.
+
+### \_showPlusIcon (boolean):
+Show the plus icon for an item. The default is `false`. Note that the completion icon will always be shown.
+
 **Hot Grid** has a dynamic layout system. If you have 5 items but set the columns to 3, **Hot Grid** will put 3 items in the first row and 2 on the second. The second row then will be automatically centred. This works with any amount of items and columns - i.e. that last row will always be centred for you.
 
 ### \_items (array):

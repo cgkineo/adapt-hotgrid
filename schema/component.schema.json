@@ -62,6 +62,12 @@
           "description": "If enabled, a 50% border radius will be applied to the item images including the pop up.",
           "default": false
         },
+        "_showPlusIcon": {
+          "type": "boolean",
+          "title": "Show plus icon",
+          "description": "Show a plus icon on each item. The default is 'false'",
+          "default": false
+        },
         "_items": {
           "type": "array",
           "title": "Items",
