@@ -15,6 +15,7 @@
     "_hidePagination": false,
     "_columns": 3,
     "_isRound": false,
+    "_showPlusIcon": false,
     "_items": [
         {
             "title": "Item Title 1",
