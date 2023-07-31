@@ -1,4 +1,5 @@
 import Adapt from 'core/js/adapt';
+import device from 'core/js/device';
 import React from 'react';
 import { templates, classes, compile } from 'core/js/reactHelpers';
 
@@ -8,11 +9,13 @@ export default function Hotgrid(props) {
 
   const {
     _items,
-    _columnWidth,
+    _columns,
     _isRound,
     _showPlusIcon,
     onItemClicked
   } = props;
+
+  const hasColumnLayout = device.isScreenSizeMin('medium');
 
   const itemAriaLabel = (_index, _graphic, _isVisited) => {
     const arr = [];
@@ -39,13 +42,26 @@ export default function Hotgrid(props) {
 
       <templates.header {...props} />
 
-      <div className="component__widget hotgrid__widget">
+      <div
+        className={classes([
+          'component__widget',
+          'hotgrid__widget',
+          _columns && hasColumnLayout && 'has-column-layout'
+        ])}
+      >
 
         <div className="hotgrid__grid" role="list">
 
           {_items.map(({ _index, _graphic, _isVisited, _isActive }) =>
 
-            <div className="hotgrid__item" role="listitem" key={_index} style={{ width: _columnWidth + '%' }}>
+            <div
+              className="hotgrid__item"
+              role="listitem"
+              key={_index}
+              style={(_columns && hasColumnLayout) ?
+                { width: `${100 / _columns}%` } :
+                null}
+            >
 
               <button className={classes([
                 'hotgrid__item-btn',
