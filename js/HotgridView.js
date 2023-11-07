@@ -12,16 +12,11 @@ class HotgridView extends ComponentView {
     this.onItemClicked = this.onItemClicked.bind(this);
 
     this.setUpViewData();
-    this.setUpEventListeners();
   }
 
   setUpViewData() {
     this.popupView = null;
     this._isPopupOpen = false;
-  }
-
-  setUpEventListeners() {
-    this.listenTo(Adapt, 'device:changed', this.resizeControl);
   }
 
   postRender() {
@@ -30,10 +25,6 @@ class HotgridView extends ComponentView {
     if (this.model.get('_setCompletionOn') === 'inview') {
       this.setupInviewCompletion('.hotgrid__widget');
     }
-  }
-
-  resizeControl() {
-    this.render();
   }
 
   onItemClicked(e) {
