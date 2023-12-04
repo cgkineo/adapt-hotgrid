@@ -94,11 +94,13 @@
               "_imageAlignment": {
                 "type": "string",
                 "title": "Image alignment",
-                "description": "Defines the horizontal alignment of the item image in the pop up. Left: Image aligned to the left of the text area. Right: Image aligned to the right of the text area. The default alignment is `right`.",
+                "description": "Defines the alignment of the item image in the pop up. Left: Image aligned to the left of the text area. Top: Image aligned above the text area. Right: Image aligned to the right of the text area. Bottom: Image aligned below the text area.The default alignment is `right`.",
                 "default": "right",
                 "enum": [
                   "left",
-                  "right"
+                  "top",
+                  "right",
+                  "bottom"
                 ],
                 "_backboneForms": "Select"
               },
