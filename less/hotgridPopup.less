@@ -34,29 +34,11 @@
 
   // Pop up item
   // --------------------------------------------------
-  &__item-image-container {
-    width: 60%;
-    margin: auto;
-  }
-
   @media (min-width: @device-width-medium) {
     &__item {
       display: flex;
-      align-items: flex-start;
-    }
-
-    &__item-content {
-      width: 60%;
-    }
-
-    &__item-image-container {
-      width: 40%;
-      margin-left: @item-padding;
-      
-      .dir-rtl & {
-        margin-left: inherit;
-        margin-right: @item-padding;
-      }
+      flex-direction: column;
+      row-gap: 1rem;
     }
   }
 
@@ -86,16 +68,23 @@
     .u-display-none;
   }
 
-  // Align hotgrid pop up image to the left
+  // Hotgrid pop up image alignment
   // --------------------------------------------------
   @media (min-width: @device-width-medium) {
-    &__item.align-image-left {
-      flex-direction: row-reverse;
+    &__item.align-image-left,
+    &__item.align-image-right {
+      flex-direction: row;
+      column-gap: 1rem;
     }
 
-    &__item.align-image-left &__item-image-container {
-      margin-left: inherit;
-      margin-right: @item-padding;
+    &__item.align-image-left &__item-content,
+    &__item.align-image-right &__item-content {
+      width: 60%;
+    }
+
+    &__item.align-image-left &__item-image-container,
+    &__item.align-image-right &__item-image-container {
+      width: 40%;
     }
   }
 
