@@ -37,6 +37,14 @@ export default function HotgridPopup(props) {
         aria-hidden={!_isActive ? true : null}
         >
 
+          {(_imageAlignment === 'left' || _imageAlignment === 'top') &&
+          <templates.image {...(_itemGraphic.src ? _itemGraphic : _graphic)}
+            classNamePrefixSeparator='__item-'
+            classNamePrefixes={['component-item', 'hotgrid-popup']}
+            attributionClassNamePrefixes={['component', 'hotgrid-popup']}
+          />
+          }
+
           <div className="hotgrid-popup__item-content">
             <div className="hotgrid-popup__item-content-inner">
 
@@ -68,29 +76,13 @@ export default function HotgridPopup(props) {
             </div>
           </div>
 
-          <div className={classes([
-            'hotgrid-popup__item-image-container',
-            _itemGraphic.attribution && 'has-attribution'
-          ])}
-          >
-
-            <img
-              className="hotgrid-popup__item-image"
-              src={_itemGraphic.src || _graphic.src}
-              aria-label={(_itemGraphic.alt || _graphic.alt) ? _itemGraphic.alt || _graphic.alt : null}
-              aria-hidden={!_itemGraphic.alt && !_graphic.alt ? true : null}
-            />
-
-            {_itemGraphic.attribution &&
-            <div className="component__attribution hotgrid-popup__attribution">
-              <div
-                className="component__attribution-inner hotgrid-popup__attribution-inner"
-                dangerouslySetInnerHTML={{ __html: _itemGraphic.attribution }}
-              />
-            </div>
-            }
-
-          </div>
+          {(_imageAlignment === 'right' || _imageAlignment === 'bottom') &&
+          <templates.image {...(_itemGraphic.src ? _itemGraphic : _graphic)}
+            classNamePrefixSeparator='__item-'
+            classNamePrefixes={['component-item', 'hotgrid-popup']}
+            attributionClassNamePrefixes={['component', 'hotgrid-popup']}
+          />
+          }
 
         </div>
       )}
