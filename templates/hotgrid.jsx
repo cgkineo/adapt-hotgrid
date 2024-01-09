@@ -55,7 +55,10 @@ export default function Hotgrid(props) {
           {_items.map(({ _index, _graphic, _isVisited, _isActive, _classes }) =>
 
             <div
-              className="hotgrid__item"
+              className={classes([
+                'hotgrid__item',
+                _classes
+              ])}
               role="listitem"
               key={_index}
               style={(_columns && hasColumnLayout) ?
@@ -69,8 +72,7 @@ export default function Hotgrid(props) {
                 (_graphic.srcHover && _graphic.srcVisited) ? 'is-image' : 'has-css-states',
                 _isRound && 'is-round',
                 _isVisited && 'is-visited',
-                _isActive && 'is-active',
-                _classes
+                _isActive && 'is-active'
               ])}
               onClick={onItemClicked}
               data-index={_index}
