@@ -57,7 +57,7 @@ The main text for the popup that is shown when the item is selected by the learn
 Defines the alignment of the item image in the pop up. Left: Image aligned to the left of the text area. Top: Image aligned above the text area. Right: Image aligned to the right of the text area. Bottom: Image aligned below the text area. The default alignment is `right`.
 
 #### \_classes (string):
-CSS class name(s) to be applied to the popup item. Classes available by default are:
+CSS class name(s) to be applied to the item button and popup item. Classes available by default are:
 * `"hide-desktop-image"` (hides the pop up image in desktop view)
 * `"hide-popup-image"` (hides the pop up image for all screen sizes)
 
