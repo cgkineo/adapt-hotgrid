@@ -52,7 +52,7 @@ export default function Hotgrid(props) {
 
         <div className="hotgrid__grid" role="list">
 
-          {_items.map(({ _index, _graphic, _isVisited, _isActive }) =>
+          {_items.map(({ _index, _graphic, _isVisited, _isActive, _classes }) =>
 
             <div
               className="hotgrid__item"
@@ -69,7 +69,8 @@ export default function Hotgrid(props) {
                 (_graphic.srcHover && _graphic.srcVisited) ? 'is-image' : 'has-css-states',
                 _isRound && 'is-round',
                 _isVisited && 'is-visited',
-                _isActive && 'is-active'
+                _isActive && 'is-active',
+                _classes
               ])}
               onClick={onItemClicked}
               data-index={_index}
