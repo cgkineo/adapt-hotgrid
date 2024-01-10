@@ -55,7 +55,10 @@ export default function Hotgrid(props) {
           {_items.map(({ _index, _graphic, _isVisited, _isActive }) =>
 
             <div
-              className="hotgrid__item"
+              className={classes([
+                'hotgrid__item',
+                _graphic._classes
+              ])}
               role="listitem"
               key={_index}
               style={(_columns && hasColumnLayout) ?

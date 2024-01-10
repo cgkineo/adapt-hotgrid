@@ -81,6 +81,9 @@ The 'visited' state of the grid item image. This setting is optional and does no
 ##### alt (string):
 The alternative text for the item image. Assign [alt text](https://github.com/adaptlearning/adapt_framework/wiki/Providing-good-alt-text) to images that convey course content only. By default, the item is labelled by the `title` (if set), otherwise a generic 'Item 1, 2, 3 etc' label is applied, followed by the alternative text (if set).
 
+##### \_classes (string):
+CSS class name(s) to be applied to the grid item.
+
 #### \_itemGraphic (object):
 The itemGraphic object defines the image displayed in the popup that is shown when the item is selected by the learner. You only need to include this object if you want to display a different image in the popup. It contains the following settings:
 
