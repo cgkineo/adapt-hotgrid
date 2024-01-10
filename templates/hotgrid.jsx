@@ -52,12 +52,12 @@ export default function Hotgrid(props) {
 
         <div className="hotgrid__grid" role="list">
 
-          {_items.map(({ _index, _graphic, _isVisited, _isActive, _classes }) =>
+          {_items.map(({ _index, _graphic, _isVisited, _isActive }) =>
 
             <div
               className={classes([
                 'hotgrid__item',
-                _classes
+                _graphic._classes
               ])}
               role="listitem"
               key={_index}

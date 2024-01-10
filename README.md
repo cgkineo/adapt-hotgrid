@@ -57,7 +57,7 @@ The main text for the popup that is shown when the item is selected by the learn
 Defines the alignment of the item image in the pop up. Left: Image aligned to the left of the text area. Top: Image aligned above the text area. Right: Image aligned to the right of the text area. Bottom: Image aligned below the text area. The default alignment is `right`.
 
 #### \_classes (string):
-CSS class name(s) to be applied to the item and item popup. Classes available by default are:
+CSS class name(s) to be applied to the popup item. Classes available by default are:
 * `"hide-desktop-image"` (hides the pop up image in desktop view)
 * `"hide-popup-image"` (hides the pop up image for all screen sizes)
 
@@ -80,6 +80,9 @@ The 'visited' state of the grid item image. This setting is optional and does no
 
 ##### alt (string):
 The alternative text for the item image. Assign [alt text](https://github.com/adaptlearning/adapt_framework/wiki/Providing-good-alt-text) to images that convey course content only. By default, the item is labelled by the `title` (if set), otherwise a generic 'Item 1, 2, 3 etc' label is applied, followed by the alternative text (if set).
+
+##### \_classes (string):
+CSS class name(s) to be applied to the grid item.
 
 #### \_itemGraphic (object):
 The itemGraphic object defines the image displayed in the popup that is shown when the item is selected by the learner. You only need to include this object if you want to display a different image in the popup. It contains the following settings:

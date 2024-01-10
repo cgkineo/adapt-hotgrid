@@ -28,7 +28,8 @@
                 "srcHover": "",
                 "srcVisited": "",
                 "alt": "",
-                "title": "Grid Title 1"
+                "title": "Grid Title 1",
+                "_classes": ""
             },
             "_itemGraphic": {
                 "src": "course/en/images/example.jpg",
@@ -46,7 +47,8 @@
                 "srcHover": "",
                 "srcVisited": "",
                 "alt": "",
-                "title": "Grid Title 2"
+                "title": "Grid Title 2",
+                "_classes": ""
             },
             "_itemGraphic": {
                 "src": "course/en/images/example.jpg",
@@ -64,7 +66,8 @@
                 "srcHover": "",
                 "srcVisited": "",
                 "alt": "",
-                "title": "Grid Title 3"
+                "title": "Grid Title 3",
+                "_classes": ""
             },
             "_itemGraphic": {
                 "src": "course/en/images/example.jpg",
