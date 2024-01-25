@@ -111,21 +111,22 @@
   // --------------------------------------------------
   &__item-btn &__item-title,
   &__item-btn &__item-icon {
-    background-color: @item-color;
-    color: @item-color-inverted;
+    .item-color;
   }
 
   .no-touch &__item-btn:hover &__item-title,
-  .no-touch &__item-btn:not(.is-disabled):not(.is-locked):hover &__item-icon {
-    background-color: @item-color-hover;
-    color: @item-color-inverted-hover;
-    .transition(background-color @duration ease-in, color @duration ease-in;);
+  .no-touch &__item-btn:hover &__item-icon {
+    .item-color-hover;
+  }
+
+  html:not(.a11y-disable-focusoutline) &__item-btn:focus-visible &__item-title,
+  html:not(.a11y-disable-focusoutline) &__item-btn:focus-visible &__item-icon {
+    .item-color-focus;
   }
 
   &__item-btn.is-visited &__item-title,
   &__item-btn.is-visited &__item-icon {
-    background-color: @visited;
-    color: @visited-inverted;
+    .item-color-visited;
   }
 
   // Hotgrid CSS border states
