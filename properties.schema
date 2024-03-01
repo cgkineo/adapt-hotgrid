@@ -131,11 +131,11 @@
         "properties": {
           "title": {
             "type": "string",
-            "required": false,
+            "required": true,
             "default": "",
             "title": "Item Popup Title",
             "inputType": "Text",
-            "validators": [],
+            "validators": ["required"],
             "translatable": true
           },
           "body": {
