@@ -30,7 +30,7 @@ export default function HotgridPopup(props) {
           _isRound && 'is-round',
           _isVisited && 'is-visited',
           _isActive && 'is-active',
-          _imageAlignment ? `align-image-${_imageAlignment}` : 'align-image-right'
+          _graphic?.src && `align-image-${_imageAlignment || 'right'}`
         ])}
         key={index}
         data-index={index}
