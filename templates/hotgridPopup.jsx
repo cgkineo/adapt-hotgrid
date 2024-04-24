@@ -30,7 +30,7 @@ export default function HotgridPopup(props) {
           _isRound && 'is-round',
           _isVisited && 'is-visited',
           _isActive && 'is-active',
-          _imageAlignment && `align-image-${_imageAlignment}`
+          _imageAlignment ? `align-image-${_imageAlignment}` : 'align-image-right'
         ])}
         key={index}
         data-index={index}
@@ -76,7 +76,7 @@ export default function HotgridPopup(props) {
             </div>
           </div>
 
-          {(_imageAlignment === 'right' || _imageAlignment === 'bottom') &&
+          {(_imageAlignment !== 'left' && _imageAlignment !== 'top') &&
           <templates.image {...(_itemGraphic.src ? _itemGraphic : _graphic)}
             classNamePrefixSeparator='__item-'
             classNamePrefixes={['component-item', 'hotgrid-popup']}
