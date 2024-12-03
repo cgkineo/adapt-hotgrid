@@ -111,7 +111,7 @@
               "_classes": {
                 "type": "string",
                 "title": "Item Popup Classes",
-                "description": "Allows you to specify custom CSS classes to be applied to the popup item. Supported classes are 'hide-desktop-image' and 'hide-popup-image' which hides the pop up image in desktop view and hides the pop up image for all screen sizes respectively.",
+                "description": "Allows you to specify custom CSS classes to be applied to the popup item. 'hide-desktop-image' hides the pop up image in desktop view. 'hide-popup-image' hides the pop up image for all screen sizes.",
                 "default": ""
               },
               "_graphic": {
