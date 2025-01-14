@@ -26,11 +26,12 @@ class HotgridView extends ComponentView {
   }
 
   setItemWidth() {
-    const _columns = this.model.get('_columns');
-    this.el.style.setProperty('--adapt-hotgrid-item-width', 50 + '%');
-    if (!_columns || !device.isScreenSizeMin('medium')) return;
+    const item = this.el.style;
+    item.setProperty('--adapt-hotgrid-item-width', 50 + '%');
 
-    this.el.style.setProperty('--adapt-hotgrid-item-width', `${100 / _columns}%`);
+    const _columns = this.model.get('_columns');
+    if (!_columns || !device.isScreenSizeMin('medium')) return;
+    item.setProperty('--adapt-hotgrid-item-width', `${100 / _columns}%`);
   }
 
   postRender() {
