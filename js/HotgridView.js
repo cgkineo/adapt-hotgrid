@@ -27,10 +27,15 @@ class HotgridView extends ComponentView {
 
   setItemWidth() {
     const columns = this.model.get('_columns');
-    const shouldCalculateColumns = (columns && device.isScreenSizeMin('medium'));
-    const width = shouldCalculateColumns
-      ? `${100 / columns}%`
-      : '50%';
+    const fallbackColumns = 2;
+    const shouldCalculateColumns = Boolean(columns && device.isScreenSizeMin('medium'));
+    this.$el
+      .toggleClass(`has-${columns}-columns`, shouldCalculateColumns)
+      .toggleClass(`has-${fallbackColumns}-columns`, !shouldCalculateColumns);
+    const calculatedColumns = shouldCalculateColumns
+      ? columns 
+      : fallbackColumns;
+    const width = `${100 / calculatedColumns}%`;
     this.el.style.setProperty('--adapt-hotgrid-item-width', width);
   }
 
