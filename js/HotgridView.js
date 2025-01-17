@@ -45,7 +45,7 @@ class HotgridView extends ComponentView {
       model: this.model
     });
 
-    notify.popup({
+    this.notifyView = notify.popup({
       _view: this.popupView,
       _isCancellable: true,
       _showCloseButton: false,
@@ -57,7 +57,8 @@ class HotgridView extends ComponentView {
     });
   }
 
-  onPopupClosed() {
+  onPopupClosed(view) {
+    if (view !== this.notifyView) return;
     this.model.getActiveItem().toggleActive();
     this._isPopupOpen = false;
   }
