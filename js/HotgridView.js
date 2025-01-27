@@ -14,6 +14,15 @@ class HotgridView extends ComponentView {
     this.setUpViewData();
   }
 
+  remove() {
+    this.removePopupClosedListener();
+    super.remove();
+  }
+
+  removePopupClosedListener() {
+    this.stopListening(Adapt, 'notify:closed', this.onPopupClosed);
+  }
+
   setUpViewData() {
     this.popupView = null;
     this._isPopupOpen = false;
@@ -52,13 +61,14 @@ class HotgridView extends ComponentView {
       _classes: 'hotgrid ' + this.model.get('_classes')
     });
 
-    this.listenToOnce(Adapt, {
-      'popup:closed': this.onPopupClosed
+    this.listenTo(Adapt, {
+      'notify:closed': this.onPopupClosed
     });
   }
 
   onPopupClosed(view) {
     if (view !== this.notifyView) return;
+    this.removePopupClosedListener();
     this.model.getActiveItem().toggleActive();
     this._isPopupOpen = false;
   }
