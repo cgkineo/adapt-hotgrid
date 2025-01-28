@@ -33,7 +33,7 @@ class HotgridView extends ComponentView {
       .toggleClass(`has-${columns}-columns`, shouldCalculateColumns)
       .toggleClass(`has-${fallbackColumns}-columns`, !shouldCalculateColumns);
     const calculatedColumns = shouldCalculateColumns
-      ? columns 
+      ? columns
       : fallbackColumns;
     const width = `${100 / calculatedColumns}%`;
     this.el.style.setProperty('--adapt-hotgrid-item-width', width);
