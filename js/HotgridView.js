@@ -12,6 +12,8 @@ class HotgridView extends ComponentView {
     this.onItemClicked = this.onItemClicked.bind(this);
 
     this.setUpViewData();
+    this.setUpEventListeners();
+    this.setItemWidth();
   }
 
   remove() {
@@ -26,6 +28,24 @@ class HotgridView extends ComponentView {
   setUpViewData() {
     this.popupView = null;
     this._isPopupOpen = false;
+  }
+
+  setUpEventListeners() {
+    this.listenTo(Adapt, 'device:changed', this.setItemWidth);
+  }
+
+  setItemWidth() {
+    const columns = this.model.get('_columns');
+    const fallbackColumns = 2;
+    const shouldCalculateColumns = Boolean(columns && device.isScreenSizeMin('medium'));
+    this.$el
+      .toggleClass(`has-${columns}-columns`, shouldCalculateColumns)
+      .toggleClass(`has-${fallbackColumns}-columns`, !shouldCalculateColumns);
+    const calculatedColumns = shouldCalculateColumns
+      ? columns
+      : fallbackColumns;
+    const width = `${100 / calculatedColumns}%`;
+    this.el.style.setProperty('--adapt-hotgrid-item-width', width);
   }
 
   postRender() {
