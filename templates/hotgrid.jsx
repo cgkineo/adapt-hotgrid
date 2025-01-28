@@ -61,9 +61,6 @@ export default function Hotgrid(props) {
               ])}
               role="listitem"
               key={_index}
-              style={(_columns && hasColumnLayout) ?
-                { width: `${100 / _columns}%` } :
-                null}
             >
 
               <button className={classes([
