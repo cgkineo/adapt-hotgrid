@@ -109,23 +109,46 @@
 
   // Hotgrid item theme
   // --------------------------------------------------
-  &__item-btn &__item-title,
-  &__item-btn &__item-icon {
-    background-color: @item-color;
-    color: @item-color-inverted;
+  & when (@item-color-style = filled) {
+    &__item-btn &__item-title,
+    &__item-btn &__item-icon {
+      .item-color;
+    }
+  
+    .no-touch &__item-btn:hover &__item-title,
+    .no-touch &__item-btn:not(.is-disabled):not(.is-locked):hover &__item-icon {
+      .item-color-hover;
+    }
+
+    html:not(.a11y-disable-focusoutline) &:focus-visible {
+      .item-color-focus;
+    }
+  
+    &__item-btn.is-visited &__item-title,
+    &__item-btn.is-visited &__item-icon {
+      .item-color-visited;
+    }
   }
 
-  .no-touch &__item-btn:hover &__item-title,
-  .no-touch &__item-btn:not(.is-disabled):not(.is-locked):hover &__item-icon {
-    background-color: @item-color-hover;
-    color: @item-color-inverted-hover;
-    .transition(background-color @duration ease-in, color @duration ease-in;);
-  }
+  & when (@item-color-style = outline) {
+    &__item-btn &__item-title,
+    &__item-btn &__item-icon {
+      .item-color-outline;
+    }
+  
+    .no-touch &__item-btn:hover &__item-title,
+    .no-touch &__item-btn:not(.is-disabled):not(.is-locked):hover &__item-icon {
+      .item-color-outline-hover;
+    }
 
-  &__item-btn.is-visited &__item-title,
-  &__item-btn.is-visited &__item-icon {
-    background-color: @visited;
-    color: @visited-inverted;
+    html:not(.a11y-disable-focusoutline) &:focus-visible {
+      .item-color-outline-focus;
+    }
+  
+    &__item-btn.is-visited &__item-title,
+    &__item-btn.is-visited &__item-icon {
+      .item-color-outline-visited;
+    }
   }
 
   // Hotgrid CSS border states
