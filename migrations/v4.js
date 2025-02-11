@@ -1,5 +1,4 @@
 import { describe, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin } from 'adapt-migrations';
-// import _ from 'lodash';
 
 describe('Hot Grid - v3.2.0 to v4.0.0', async () => {
   let hotgrids;
