@@ -87,35 +87,42 @@ describe('Hot Grid - v4.3.0 to v4.3.2', async () => {
   updatePlugin('Hot Grid - update to v4.3.2', { name: 'adapt-contrib-hotgrid', version: '4.3.2', framework: '>=5.22.4' });
 });
 
-// describe('Hot Grid - v4.3.2 to v4.3.4', async () => {
-//   let hotgrids;
-//   whereFromPlugin('Hot Grid - from v4.3.2', { name: 'adapt-hotgrid', version: '<4.3.4' });
-//   whereContent('Hot Grid - where hotgrid', async content => {
-//     hotgrids = content.filter(({ _component }) => _component === 'hotgrid');
-//     return hotgrids.length;
-//   });
+describe('Hot Grid - v4.3.2 to v4.3.14', async () => {
+  let hotgrids;
+  whereFromPlugin('Hot Grid - from v4.3.2', { name: 'adapt-hotgrid', version: '<4.3.14' });
+  whereContent('Hot Grid - where hotgrid', async content => {
+    hotgrids = content.filter(({ _component }) => _component === 'hotgrid');
+    return hotgrids.length;
+  });
+  mutateContent('Hot Grid - update instruction attribute', async (content) => {
+    hotgrids.forEach(hotgrid => {
+      if (hotgrid.instruction === '') hotgrid.instruction = 'Select the images to find out more.';
+    });
+    return true;
+  });
+  checkContent('Hot Grid - check instruction attribute', async content => {
+    const isValid = hotgrids.every(hotgrid => hotgrid.instruction === 'Select the images to find out more.');
+    if (!isValid) throw new Error('Hot Grid - instruction attribute invalid');
+    return true;
+  });
+  updatePlugin('Hot Grid - update to v4.3.14', { name: 'adapt-contrib-hotgrid', version: '4.3.14', framework: '>=5.31.2' });
+});
 
-//   updatePlugin('Hot Grid - update to v4.3.4', { name: 'adapt-contrib-hotgrid', version: '4.3.4', framework: '>=5.22.4' });
-// });
-
-// describe('Hot Grid - v4.3.4 to v4.3.14', async () => {
-//   let hotgrids;
-//   whereFromPlugin('Hot Grid - from v4.3.4', { name: 'adapt-hotgrid', version: '<4.3.14' });
-//   whereContent('Hot Grid - where hotgrid', async content => {
-//     hotgrids = content.filter(({ _component }) => _component === 'hotgrid');
-//     return hotgrids.length;
-//   });
-
-//   updatePlugin('Hot Grid - update to v4.3.14', { name: 'adapt-contrib-hotgrid', version: '4.3.14', framework: '>=5.31.2' });
-// });
-
-// describe('Hot Grid - v4.3.14 to v4.4.2', async () => {
-//   let hotgrids;
-//   whereFromPlugin('Hot Grid - from v4.3.14', { name: 'adapt-hotgrid', version: '<4.4.2' });
-//   whereContent('Hot Grid - where hotgrid', async content => {
-//     hotgrids = content.filter(({ _component }) => _component === 'hotgrid');
-//     return hotgrids.length;
-//   });
-
-//   updatePlugin('Hot Grid - update to v4.4.2', { name: 'adapt-contrib-hotgrid', version: '4.4.2', framework: '>=5.31.2' });
-// });
+describe('Hot Grid - v4.3.14 to v4.4.2', async () => {
+  let hotgrids;
+  whereFromPlugin('Hot Grid - from v4.3.14', { name: 'adapt-hotgrid', version: '<4.4.2' });
+  whereContent('Hot Grid - where hotgrid', async content => {
+    hotgrids = content.filter(({ _component }) => _component === 'hotgrid');
+    return hotgrids.length;
+  });
+  mutateContent('Hot Grid - add _showPlusIcon attribute', async (content) => {
+    hotgrids.forEach(hotgrid => (hotgrid._showPlusIcon = true));
+    return true;
+  });
+  checkContent('Hot Grid - check _showPlusIcon attribute', async content => {
+    const isValid = hotgrids.every(hotgrid => (hotgrid._showPlusIcon === true));
+    if (!isValid) throw new Error('Hot Grid - _showPlusIcon invalid');
+    return true;
+  });
+  updatePlugin('Hot Grid - update to v4.4.2', { name: 'adapt-contrib-hotgrid', version: '4.4.2', framework: '>=5.31.2' });
+});
