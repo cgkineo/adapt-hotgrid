@@ -85,7 +85,7 @@ describe('Hot Grid - v3.0.0 to v3.1.0', async () => {
   });
   checkContent('Hot Grid - check _itemGraphic attribution', async content => {
     const isValid = hotgrids.every(({ _items }) => {
-      return _items.every((item) => item?._itemGraphic?.attribution !== undefined);
+      return _items.every(item => item._itemGraphic?.attribution !== undefined);
     });
     if (!isValid) throw new Error('Hot Grid - _itemGraphic attribution invalid');
     return true;
