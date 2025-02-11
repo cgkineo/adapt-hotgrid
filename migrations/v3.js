@@ -92,3 +92,22 @@ describe('Hot Grid - v3.0.0 to v3.1.0', async () => {
   });
   updatePlugin('Hot Grid - update to v3.1.0', { name: 'adapt-contrib-hotgrid', version: '3.1.0', framework: '>=3.2.0' });
 });
+
+describe('Hot Grid - v3.1.0 to v3.2.0', async () => {
+  let hotgrids;
+  whereFromPlugin('Hot Grid - from v3.1.0', { name: 'adapt-hotgrid', version: '<3.2.0' });
+  whereContent('Hot Grid - where hotgrid', async content => {
+    hotgrids = content.filter(({ _component }) => _component === 'hotgrid');
+    return hotgrids.length;
+  });
+  mutateContent('Hot Grid - add _setCompletionOn', async (content) => {
+    hotgrids.forEach(hotgrid => (hotgrid._setCompletionOn = 'allItems'));
+    return true;
+  });
+  checkContent('Hot Grid - check _setCompletionOn attribute', async content => {
+    const isValid = hotgrids.every(hotgrid => (hotgrid._setCompletionOn === 'allItems'));
+    if (!isValid) throw new Error('Hot Grid - _setCompletionOn invalid');
+    return true;
+  });
+  updatePlugin('Hot Grid - update to v3.2.0', { name: 'adapt-contrib-hotgrid', version: '3.2.0', framework: '>=3.3.0' });
+});
