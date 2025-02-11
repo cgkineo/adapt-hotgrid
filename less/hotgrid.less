@@ -1,3 +1,6 @@
+// fallback if Vanilla button styles aren't supported
+@item-color-style: none;
+
 .hotgrid {
   &__grid {
     display: flex;
@@ -109,6 +112,28 @@
 
   // Hotgrid item theme
   // --------------------------------------------------
+  // apply legacy styles if Vanilla button styles aren't supported
+  & when (@item-color-style = none) {
+    &__item-btn &__item-title,
+    &__item-btn &__item-icon {
+      background-color: @item-color;
+      color: @item-color-inverted;
+    }
+  
+    .no-touch &__item-btn:hover &__item-title,
+    .no-touch &__item-btn:not(.is-disabled):not(.is-locked):hover &__item-icon {
+      background-color: @item-color-hover;
+      color: @item-color-inverted-hover;
+      .transition(background-color @duration ease-in, color @duration ease-in;);
+    }
+  
+    &__item-btn.is-visited &__item-title,
+    &__item-btn.is-visited &__item-icon {
+      background-color: @visited;
+      color: @visited-inverted;
+    }
+  }
+
   & when (@item-color-style = filled) {
     &__item-btn &__item-title,
     &__item-btn &__item-icon {
@@ -150,6 +175,7 @@
       .item-color-outline-visited;
     }
   }
+
 
   // Hotgrid CSS border states
   // --------------------------------------------------
