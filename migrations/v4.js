@@ -28,3 +28,22 @@ describe('Hot Grid - v3.2.0 to v4.0.0', async () => {
   });
   updatePlugin('Hot Grid - update to v4.0.0', { name: 'adapt-contrib-hotgrid', version: '4.0.0', framework: '>=5.0.0' });
 });
+
+describe('Hot Grid - v4.0.0 to v4.3.0', async () => {
+  let hotgrids;
+  whereFromPlugin('Hot Grid - from v4.0.0', { name: 'adapt-hotgrid', version: '<4.3.0' });
+  whereContent('Hot Grid - where hotgrid', async content => {
+    hotgrids = content.filter(({ _component }) => _component === 'hotgrid');
+    return hotgrids.length;
+  });
+  mutateContent('Hot Grid - add item _imageAlignment attribute', async (content) => {
+    hotgrids.forEach(({ _items }) => (_items.forEach(item => (item._imageAlignment = 'right'))));
+    return true;
+  });
+  checkContent('Hot Grid - check item _imageAlignment', async content => {
+    const isValid = hotgrids.every(({ _items }) => _items.every(item => item._imageAlignment === 'right'));
+    if (!isValid) throw new Error('Hot Grid - item _imageAlignment invalid');
+    return true;
+  });
+  updatePlugin('Hot Grid - update to v4.3.0', { name: 'adapt-contrib-hotgrid', version: '4.3.0', framework: '>=5.22.4' });
+});
