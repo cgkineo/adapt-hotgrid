@@ -1,11 +1,11 @@
 import { describe, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin } from 'adapt-migrations';
 import _ from 'lodash';
 
-describe('Hot Grid - vx.x.x to v3.0.0', async () => {
+describe('Hot Grid - v2.1.3 to v3.0.0', async () => {
   let hotgrids, course, courseHotgridGlobals;
   const previousAriaRegion = 'This component contains selectable grid items. Select an item to trigger a popup that includes an image with display text. Select the close button to close the popup.';
   const newAriaRegion = 'Selectable image component. Select each item to show more information.';
-  whereFromPlugin('Hot Grid - from vx.x.x', { name: 'adapt-hotgrid', version: '<3.0.0' });
+  whereFromPlugin('Hot Grid - from v2.1.3', { name: 'adapt-hotgrid', version: '<3.0.0' });
   whereContent('Hot Grid - where hotgrid', async content => {
     hotgrids = content.filter(({ _component }) => _component === 'hotgrid');
     return hotgrids.length;
@@ -57,4 +57,38 @@ describe('Hot Grid - vx.x.x to v3.0.0', async () => {
     return true;
   });
   updatePlugin('Hot Grid - update to v3.0.0', { name: 'adapt-contrib-hotgrid', version: '3.0.0', framework: '>=3.2.0' });
+});
+
+describe('Hot Grid - v3.0.0 to v3.1.0', async () => {
+  let hotgrids;
+  whereFromPlugin('Hot Grid - from v3.0.0', { name: 'adapt-hotgrid', version: '<3.1.0' });
+  whereContent('Hot Grid - where hotgrid', async content => {
+    hotgrids = content.filter(({ _component }) => _component === 'hotgrid');
+    return hotgrids.length;
+  });
+  mutateContent('Hot Grid - update _supportedLayout', async (content) => {
+    hotgrids.forEach(hotgrid => {
+      if (hotgrid._supportedLayout === 'half-width') hotgrid._supportedLayout = 'full-width';
+    });
+    return true;
+  });
+  mutateContent('Hot Grid - add attribution to _itemGraphic', async (content) => {
+    hotgrids.forEach(({ _items }) => {
+      _items.forEach(({ _itemGraphic }) => { _.set(_itemGraphic, 'attribution', ''); });
+    });
+    return true;
+  });
+  checkContent('Hot Grid - check _supportedLayout attribute', async content => {
+    const isValid = hotgrids.every(hotgrid => (hotgrid._supportedLayout !== 'half-width'));
+    if (!isValid) throw new Error('Hot Grid - _supportedLayout invalid');
+    return true;
+  });
+  checkContent('Hot Grid - check _itemGraphic attribution', async content => {
+    const isValid = hotgrids.every(({ _items }) => {
+      return _items.every((item) => item?._itemGraphic?.attribution !== undefined);
+    });
+    if (!isValid) throw new Error('Hot Grid - _itemGraphic attribution invalid');
+    return true;
+  });
+  updatePlugin('Hot Grid - update to v3.1.0', { name: 'adapt-contrib-hotgrid', version: '3.1.0', framework: '>=3.2.0' });
 });
