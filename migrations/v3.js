@@ -1,32 +1,42 @@
 import { describe, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin } from 'adapt-migrations';
 import _ from 'lodash';
 
-describe('Hot Grid - vx.x.x to vx.x.x', async () => {
+describe('Hot Grid - vx.x.x to v3.0.0', async () => {
   let hotgrids, course, courseHotgridGlobals;
-  whereFromPlugin('Hot Grid - from vx.x.x', { name: 'adapt-hotgrid', version: '<x.x.x' });
+  const previousAriaRegion = 'This component contains selectable grid items. Select an item to trigger a popup that includes an image with display text. Select the close button to close the popup.';
+  const newAriaRegion = 'Selectable image component. Select each item to show more information.';
+  whereFromPlugin('Hot Grid - from vx.x.x', { name: 'adapt-hotgrid', version: '<3.0.0' });
   whereContent('Hot Grid - where hotgrid', async content => {
     hotgrids = content.filter(({ _component }) => _component === 'hotgrid');
     return hotgrids.length;
   });
-  // mutateContent('Hot Grid - add globals if missing', async (content) => {
-  //   course = content.find(({ _type }) => _type === 'course');
-  //   if (!_.has(course, '_globals._components._hotgrid')) _.set(course, '_globals._components._hotgrid', {});
-  //   courseHotgridGlobals = course._globals._components._hotgrid;
-  //   return true;
-  // });
-  // mutateContent('Hot Grid - add globals popupPagination attribute', async content => {
-  //   courseHotgridGlobals.popupPagination = '{{itemNumber}} / {{totalItems}}';
-  //   return true;
-  // });
-  // checkContent('Hot Grid - check globals _hotgrid attribute', async content => {
-  //   if (courseHotgridGlobals === undefined) throw new Error('Hot Grid - globals _hotgrid invalid');
-  //   return true;
-  // });
-  // checkContent('Hot Grid - check globals popupPagination attribute', async content => {
-  //   if (courseHotgridGlobals?.popupPagination !== '{{itemNumber}} / {{totalItems}}') {
-  //     throw new Error('Hot Grid - globals popupPagination invalid');
-  //   }
-  //   return true;
-  // });
-  updatePlugin('Hot Grid - update to vx.x.x', { name: 'adapt-contrib-hotgrid', version: 'x.x.x', framework: '>=x.x.x' });
+  mutateContent('Hot Grid - add globals if missing', async (content) => {
+    course = content.find(({ _type }) => _type === 'course');
+    if (!_.has(course, '_globals._components._hotgrid')) _.set(course, '_globals._components._hotgrid', {});
+    courseHotgridGlobals = course._globals._components._hotgrid;
+    return true;
+  });
+  mutateContent('Hot Grid - add globals popupPagination attribute', async content => {
+    courseHotgridGlobals.popupPagination = '{{itemNumber}} / {{totalItems}}';
+    return true;
+  });
+  mutateContent('Hot Grid - update globals ariaRegion', async content => {
+    if (courseHotgridGlobals.ariaRegion === previousAriaRegion) courseHotgridGlobals.ariaRegion = newAriaRegion;
+    return true;
+  });
+  checkContent('Hot Grid - check globals _hotgrid attribute', async content => {
+    if (courseHotgridGlobals === undefined) throw new Error('Hot Grid - globals _hotgrid invalid');
+    return true;
+  });
+  checkContent('Hot Grid - check globals popupPagination attribute', async content => {
+    const isValid = courseHotgridGlobals?.popupPagination === '{{itemNumber}} / {{totalItems}}';
+    if (!isValid) throw new Error('Hot Grid - globals popupPagination invalid');
+    return true;
+  });
+  checkContent('Hot Grid - check globals ariaRegion attribute', async content => {
+    const isValid = courseHotgridGlobals?.ariaRegion === newAriaRegion;
+    if (!isValid) throw new Error('Hot Grid - globals ariaRegion invalid');
+    return true;
+  });
+  updatePlugin('Hot Grid - update to v3.0.0', { name: 'adapt-contrib-hotgrid', version: '3.0.0', framework: '>=3.2.0' });
 });
