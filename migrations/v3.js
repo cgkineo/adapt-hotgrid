@@ -1,4 +1,4 @@
-import { describe, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin } from 'adapt-migrations';
+import { describe, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin, getCourse } from 'adapt-migrations';
 import _ from 'lodash';
 
 describe('Hot Grid - v2.1.3 to v3.0.0', async () => {
@@ -11,7 +11,7 @@ describe('Hot Grid - v2.1.3 to v3.0.0', async () => {
     return hotgrids.length;
   });
   mutateContent('Hot Grid - add globals if missing', async (content) => {
-    course = content.find(({ _type }) => _type === 'course');
+    course = getCourse();
     if (!_.has(course, '_globals._components._hotgrid')) _.set(course, '_globals._components._hotgrid', {});
     courseHotgridGlobals = course._globals._components._hotgrid;
     return true;

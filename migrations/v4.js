@@ -1,4 +1,4 @@
-import { describe, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin } from 'adapt-migrations';
+import { describe, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin, getCourse } from 'adapt-migrations';
 
 describe('Hot Grid - v3.2.0 to v4.0.0', async () => {
   let hotgrids;
@@ -55,7 +55,7 @@ describe('Hot Grid - v4.3.0 to v4.3.2', async () => {
     return hotgrids.length;
   });
   mutateContent('Hot Grid - add globals item attribute', async content => {
-    course = content.find(({ _type }) => _type === 'course');
+    course = getCourse();
     courseHotgridGlobals = course._globals._components._hotgrid;
     courseHotgridGlobals.item = 'Item';
     return true;
