@@ -28,9 +28,9 @@ describe('Hot Grid - v3.2.0 to v4.0.0', async () => {
   updatePlugin('Hot Grid - update to v4.0.0', { name: 'adapt-contrib-hotgrid', version: '4.0.0', framework: '>=5.0.0' });
 });
 
-describe('Hot Grid - v4.0.0 to v4.3.0', async () => {
+describe('Hot Grid - v4.2.0 to v4.3.0', async () => {
   let hotgrids;
-  whereFromPlugin('Hot Grid - from v4.0.0', { name: 'adapt-hotgrid', version: '<4.3.0' });
+  whereFromPlugin('Hot Grid - from v4.2.0', { name: 'adapt-hotgrid', version: '<4.3.0' });
   whereContent('Hot Grid - where hotgrid', async content => {
     hotgrids = content.filter(({ _component }) => _component === 'hotgrid');
     return hotgrids.length;
@@ -47,9 +47,9 @@ describe('Hot Grid - v4.0.0 to v4.3.0', async () => {
   updatePlugin('Hot Grid - update to v4.3.0', { name: 'adapt-contrib-hotgrid', version: '4.3.0', framework: '>=5.22.4' });
 });
 
-describe('Hot Grid - v4.3.0 to v4.3.2', async () => {
+describe('Hot Grid - v4.3.1 to v4.3.2', async () => {
   let hotgrids, course, courseHotgridGlobals;
-  whereFromPlugin('Hot Grid - from v4.3.0', { name: 'adapt-hotgrid', version: '<4.3.2' });
+  whereFromPlugin('Hot Grid - from v4.3.1', { name: 'adapt-hotgrid', version: '<4.3.2' });
   whereContent('Hot Grid - where hotgrid', async content => {
     hotgrids = content.filter(({ _component }) => _component === 'hotgrid');
     return hotgrids.length;
@@ -86,9 +86,9 @@ describe('Hot Grid - v4.3.0 to v4.3.2', async () => {
   updatePlugin('Hot Grid - update to v4.3.2', { name: 'adapt-contrib-hotgrid', version: '4.3.2', framework: '>=5.22.4' });
 });
 
-describe('Hot Grid - v4.3.2 to v4.3.14', async () => {
+describe('Hot Grid - v4.3.13 to v4.3.14', async () => {
   let hotgrids;
-  whereFromPlugin('Hot Grid - from v4.3.2', { name: 'adapt-hotgrid', version: '<4.3.14' });
+  whereFromPlugin('Hot Grid - from v4.3.13', { name: 'adapt-hotgrid', version: '<4.3.14' });
   whereContent('Hot Grid - where hotgrid', async content => {
     hotgrids = content.filter(({ _component }) => _component === 'hotgrid');
     return hotgrids.length;
@@ -107,9 +107,9 @@ describe('Hot Grid - v4.3.2 to v4.3.14', async () => {
   updatePlugin('Hot Grid - update to v4.3.14', { name: 'adapt-contrib-hotgrid', version: '4.3.14', framework: '>=5.31.2' });
 });
 
-describe('Hot Grid - v4.3.14 to v4.4.2', async () => {
+describe('Hot Grid - v4.4.1 to v4.4.2', async () => {
   let hotgrids;
-  whereFromPlugin('Hot Grid - from v4.3.14', { name: 'adapt-hotgrid', version: '<4.4.2' });
+  whereFromPlugin('Hot Grid - from v4.4.1', { name: 'adapt-hotgrid', version: '<4.4.2' });
   whereContent('Hot Grid - where hotgrid', async content => {
     hotgrids = content.filter(({ _component }) => _component === 'hotgrid');
     return hotgrids.length;
