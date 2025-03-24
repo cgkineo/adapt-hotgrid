@@ -145,10 +145,11 @@
       .item-color-hover;
     }
 
-    html:not(.a11y-disable-focusoutline) &:focus-visible {
+    html:not(.a11y-disable-focusoutline) &__item-btn:focus-visible &__item-title,
+    html:not(.a11y-disable-focusoutline) &__item-btn:focus-visible &__item-icon {
       .item-color-focus;
     }
-  
+
     &__item-btn.is-visited &__item-title,
     &__item-btn.is-visited &__item-icon {
       .item-color-visited;
@@ -166,10 +167,11 @@
       .item-color-outline-hover;
     }
 
-    html:not(.a11y-disable-focusoutline) &:focus-visible {
+    html:not(.a11y-disable-focusoutline) &__item-btn:focus-visible &__item-title,
+    html:not(.a11y-disable-focusoutline) &__item-btn:focus-visible &__item-icon {
       .item-color-outline-focus;
     }
-  
+
     &__item-btn.is-visited &__item-title,
     &__item-btn.is-visited &__item-icon {
       .item-color-outline-visited;
@@ -185,6 +187,10 @@
   .no-touch &__item-btn.has-css-states:hover &__item-image {
     border-color: @item-color-hover;
     .transition(border-color @duration ease-in);
+  }
+
+  html:not(.a11y-disable-focusoutline) &__item-btn.has-css-states:focus-visible &__item-image {
+    border-color: @item-color-focus;
   }
 
   &__item-btn.is-visited.has-css-states &__item-image {
