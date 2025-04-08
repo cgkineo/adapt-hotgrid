@@ -1,4 +1,4 @@
-import { describe, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin, getCourse } from 'adapt-migrations';
+import { describe, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin, getCourse, testStopWhere, testSuccessWhere } from 'adapt-migrations';
 
 describe('Hot Grid - v3.2.0 to v4.0.0', async () => {
   let hotgrids;
@@ -26,6 +26,23 @@ describe('Hot Grid - v3.2.0 to v4.0.0', async () => {
     return true;
   });
   updatePlugin('Hot Grid - update to v4.0.0', { name: 'adapt-contrib-hotgrid', version: '4.0.0', framework: '>=5.0.0' });
+
+  testSuccessWhere('correct version with hotgrid components', {
+    fromPlugins: [{ name: 'adapt-contrib-hotgrid', version: '3.2.0' }],
+    content: [
+      { _id: 'c-100', _component: 'hotgrid' },
+      { _id: 'c-105', _component: 'hotgrid' }
+    ]
+  });
+
+  testStopWhere('incorrect version', {
+    fromPlugins: [{ name: 'adapt-contrib-hotgrid', version: '4.0.0' }]
+  });
+
+  testStopWhere('no hotgrid components', {
+    fromPlugins: [{ name: 'adapt-contrib-hotgrid', version: '3.2.0' }],
+    content: [{ _component: 'other' }]
+  });
 });
 
 describe('Hot Grid - v4.2.0 to v4.3.0', async () => {
@@ -45,6 +62,23 @@ describe('Hot Grid - v4.2.0 to v4.3.0', async () => {
     return true;
   });
   updatePlugin('Hot Grid - update to v4.3.0', { name: 'adapt-contrib-hotgrid', version: '4.3.0', framework: '>=5.22.4' });
+
+  testSuccessWhere('correct version with hotgrid components', {
+    fromPlugins: [{ name: 'adapt-contrib-hotgrid', version: '4.2.0' }],
+    content: [
+      { _id: 'c-100', _component: 'hotgrid' },
+      { _id: 'c-105', _component: 'hotgrid' }
+    ]
+  });
+
+  testStopWhere('incorrect version', {
+    fromPlugins: [{ name: 'adapt-contrib-hotgrid', version: '4.3.0' }]
+  });
+
+  testStopWhere('no hotgrid components', {
+    fromPlugins: [{ name: 'adapt-contrib-hotgrid', version: '4.2.0' }],
+    content: [{ _component: 'other' }]
+  });
 });
 
 describe('Hot Grid - v4.3.1 to v4.3.2', async () => {
@@ -84,6 +118,23 @@ describe('Hot Grid - v4.3.1 to v4.3.2', async () => {
     return true;
   });
   updatePlugin('Hot Grid - update to v4.3.2', { name: 'adapt-contrib-hotgrid', version: '4.3.2', framework: '>=5.22.4' });
+
+  testSuccessWhere('correct version with hotgrid components', {
+    fromPlugins: [{ name: 'adapt-contrib-hotgrid', version: '4.3.1' }],
+    content: [
+      { _id: 'c-100', _component: 'hotgrid' },
+      { _id: 'c-105', _component: 'hotgrid' }
+    ]
+  });
+
+  testStopWhere('incorrect version', {
+    fromPlugins: [{ name: 'adapt-contrib-hotgrid', version: '4.3.2' }]
+  });
+
+  testStopWhere('no hotgrid components', {
+    fromPlugins: [{ name: 'adapt-contrib-hotgrid', version: '4.3.1' }],
+    content: [{ _component: 'other' }]
+  });
 });
 
 describe('Hot Grid - v4.3.13 to v4.3.14', async () => {
@@ -105,6 +156,23 @@ describe('Hot Grid - v4.3.13 to v4.3.14', async () => {
     return true;
   });
   updatePlugin('Hot Grid - update to v4.3.14', { name: 'adapt-contrib-hotgrid', version: '4.3.14', framework: '>=5.31.2' });
+
+  testSuccessWhere('correct version with hotgrid components', {
+    fromPlugins: [{ name: 'adapt-contrib-hotgrid', version: '4.3.13' }],
+    content: [
+      { _id: 'c-100', _component: 'hotgrid' },
+      { _id: 'c-105', _component: 'hotgrid' }
+    ]
+  });
+
+  testStopWhere('incorrect version', {
+    fromPlugins: [{ name: 'adapt-contrib-hotgrid', version: '4.3.14' }]
+  });
+
+  testStopWhere('no hotgrid components', {
+    fromPlugins: [{ name: 'adapt-contrib-hotgrid', version: '4.3.13' }],
+    content: [{ _component: 'other' }]
+  });
 });
 
 describe('Hot Grid - v4.4.1 to v4.4.2', async () => {
@@ -124,4 +192,21 @@ describe('Hot Grid - v4.4.1 to v4.4.2', async () => {
     return true;
   });
   updatePlugin('Hot Grid - update to v4.4.2', { name: 'adapt-contrib-hotgrid', version: '4.4.2', framework: '>=5.31.2' });
+
+  testSuccessWhere('correct version with hotgrid components', {
+    fromPlugins: [{ name: 'adapt-contrib-hotgrid', version: '4.4.1' }],
+    content: [
+      { _id: 'c-100', _component: 'hotgrid' },
+      { _id: 'c-105', _component: 'hotgrid' }
+    ]
+  });
+
+  testStopWhere('incorrect version', {
+    fromPlugins: [{ name: 'adapt-contrib-hotgrid', version: '4.4.2' }]
+  });
+
+  testStopWhere('no hotgrid components', {
+    fromPlugins: [{ name: 'adapt-contrib-hotgrid', version: '4.4.1' }],
+    content: [{ _component: 'other' }]
+  });
 });
