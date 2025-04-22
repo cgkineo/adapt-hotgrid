@@ -37,22 +37,22 @@ describe('Hot Grid - v2.1.3 to v3.0.0', async () => {
     return true;
   });
   checkContent('Hot Grid - check globals popupPagination attribute', async content => {
-    const isValid = courseHotgridGlobals?.popupPagination === '{{itemNumber}} / {{totalItems}}';
+    const isValid = courseHotgridGlobals.popupPagination === '{{itemNumber}} / {{totalItems}}';
     if (!isValid) throw new Error('Hot Grid - globals popupPagination invalid');
     return true;
   });
   checkContent('Hot Grid - check globals ariaRegion attribute', async content => {
-    const isValid = courseHotgridGlobals?.ariaRegion === newAriaRegion;
+    const isValid = courseHotgridGlobals.ariaRegion === newAriaRegion;
     if (!isValid) throw new Error('Hot Grid - globals ariaRegion invalid');
     return true;
   });
   checkContent('Hot Grid - check _hidePagination attribute', async content => {
-    const isValid = hotgrids.every(hotgrid => (hotgrid._hidePagination === false));
+    const isValid = hotgrids.every(hotgrid => hotgrid._hidePagination === false);
     if (!isValid) throw new Error('Hot Grid - _hidePagination invalid');
     return true;
   });
   checkContent('Hot Grid - check _canCycleThroughPagination attribute', async content => {
-    const isValid = hotgrids.every(hotgrid => (hotgrid._canCycleThroughPagination === false));
+    const isValid = hotgrids.every(hotgrid => hotgrid._canCycleThroughPagination === false);
     if (!isValid) throw new Error('Hot Grid - _canCycleThroughPagination invalid');
     return true;
   });
@@ -91,19 +91,23 @@ describe('Hot Grid - v3.0.0 to v3.1.0', async () => {
   });
   mutateContent('Hot Grid - add attribution to _itemGraphic', async (content) => {
     hotgrids.forEach(({ _items }) => {
-      _items.forEach(({ _itemGraphic }) => { _.set(_itemGraphic, 'attribution', ''); });
+      _items.forEach(({ _itemGraphic }) =>
+        _.set(_itemGraphic, 'attribution', '')
+      );
     });
     return true;
   });
   checkContent('Hot Grid - check _supportedLayout attribute', async content => {
-    const isValid = hotgrids.every(hotgrid => (hotgrid._supportedLayout !== 'half-width'));
+    const isValid = hotgrids.every(hotgrid => hotgrid._supportedLayout !== 'half-width');
     if (!isValid) throw new Error('Hot Grid - _supportedLayout invalid');
     return true;
   });
   checkContent('Hot Grid - check _itemGraphic attribution', async content => {
-    const isValid = hotgrids.every(({ _items }) => {
-      return _items.every(item => item._itemGraphic?.attribution !== undefined);
-    });
+    const isValid = hotgrids.every(({ _items }) =>
+      _items.every(item =>
+        item._itemGraphic?.attribution !== undefined
+      )
+    );
     if (!isValid) throw new Error('Hot Grid - _itemGraphic attribution invalid');
     return true;
   });
@@ -139,7 +143,7 @@ describe('Hot Grid - v3.1.0 to v3.2.0', async () => {
     return true;
   });
   checkContent('Hot Grid - check _setCompletionOn attribute', async content => {
-    const isValid = hotgrids.every(hotgrid => (hotgrid._setCompletionOn === 'allItems'));
+    const isValid = hotgrids.every(hotgrid => hotgrid._setCompletionOn === 'allItems');
     if (!isValid) throw new Error('Hot Grid - _setCompletionOn invalid');
     return true;
   });

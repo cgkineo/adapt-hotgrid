@@ -12,16 +12,20 @@ describe('Hot Grid - v3.2.0 to v4.0.0', async () => {
     return true;
   });
   mutateContent('Hot Grid - add item _classes attribute', async (content) => {
-    hotgrids.forEach(({ _items }) => (_items.forEach(item => (item._classes = ''))));
+    hotgrids.forEach(({ _items }) => {
+      _items.forEach(item => (item._classes = ''));
+    });
     return true;
   });
   checkContent('Hot Grid - check _isRound attribute', async content => {
-    const isValid = hotgrids.every(hotgrid => (hotgrid._isRound === false));
+    const isValid = hotgrids.every(hotgrid => hotgrid._isRound === false);
     if (!isValid) throw new Error('Hot Grid - _isRound invalid');
     return true;
   });
   checkContent('Hot Grid - check item _classes', async content => {
-    const isValid = hotgrids.every(({ _items }) => _items.every(item => item._classes !== undefined));
+    const isValid = hotgrids.every(({ _items }) =>
+      _items.every(item => item._classes !== undefined)
+    );
     if (!isValid) throw new Error('Hot Grid - item _classes invalid');
     return true;
   });
@@ -53,11 +57,17 @@ describe('Hot Grid - v4.2.0 to v4.3.0', async () => {
     return hotgrids.length;
   });
   mutateContent('Hot Grid - add item _imageAlignment attribute', async (content) => {
-    hotgrids.forEach(({ _items }) => (_items.forEach(item => (item._imageAlignment = 'right'))));
+    hotgrids.forEach(({ _items }) => {
+      _items.forEach(item => {
+        item._imageAlignment = 'right';
+      });
+    });
     return true;
   });
   checkContent('Hot Grid - check item _imageAlignment', async content => {
-    const isValid = hotgrids.every(({ _items }) => _items.every(item => item._imageAlignment === 'right'));
+    const isValid = hotgrids.every(({ _items }) =>
+      _items.every(item => item._imageAlignment === 'right')
+    );
     if (!isValid) throw new Error('Hot Grid - item _imageAlignment invalid');
     return true;
   });
@@ -151,7 +161,9 @@ describe('Hot Grid - v4.3.13 to v4.3.14', async () => {
     return true;
   });
   checkContent('Hot Grid - check instruction attribute', async content => {
-    const isValid = hotgrids.every(hotgrid => hotgrid.instruction === 'Select the images to find out more.');
+    const isValid = hotgrids.every(hotgrid =>
+      hotgrid.instruction === 'Select the images to find out more.'
+    );
     if (!isValid) throw new Error('Hot Grid - instruction attribute invalid');
     return true;
   });
@@ -187,7 +199,9 @@ describe('Hot Grid - v4.4.1 to v4.4.2', async () => {
     return true;
   });
   checkContent('Hot Grid - check _showPlusIcon attribute', async content => {
-    const isValid = hotgrids.every(hotgrid => (hotgrid._showPlusIcon === true));
+    const isValid = hotgrids.every(hotgrid =>
+      hotgrid._showPlusIcon === true
+    );
     if (!isValid) throw new Error('Hot Grid - _showPlusIcon invalid');
     return true;
   });
