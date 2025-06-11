@@ -7,7 +7,7 @@
     "_layout": "full",
     "title": "Hotgrid",
     "displayTitle": "Hotgrid",
-    "body": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.",
+    "body": "<b>Hotgrid</b> is a presentation component which displays a set of images in a grid layout. When a learner selects an image, a pop-up is displayed that consists of text with an image.",
     "instruction": "Select the images to find out more.",
     "_comment": "setCompletionOn = inview | allItems",
     "_setCompletionOn": "allItems",
@@ -39,7 +39,7 @@
         },
         {
             "title": "Item Title 2",
-            "body": "This is display text 2 with a left aligned image.",
+            "body": "This is display text 2 with a left aligned image. Excepteur ex incididunt occaecat irure elit ex ullamco veniam do amet laboris cupidatat. Dolore eiusmod ut commodo deserunt velit. Cupidatat velit officia amet et et qui fugiat non. Duis nulla voluptate laborum dolore.",
             "_imageAlignment": "left",
             "_classes": "",
             "_graphic": {
@@ -58,7 +58,7 @@
         },
         {
             "title": "Item Title 3",
-            "body": "This is display text 3.",
+            "body": "This is display text 3. Occaecat elit id consequat magna minim proident proident amet adipisicing adipisicing pariatur. Culpa Lorem cupidatat ipsum exercitation do adipisicing exercitation commodo aliquip Lorem mollit. Occaecat nostrud sunt enim eiusmod ut eiusmod aliqua irure id.",
             "_imageAlignment": "right",
             "_classes": "",
             "_graphic": {
