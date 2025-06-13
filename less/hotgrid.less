@@ -80,6 +80,9 @@
 // --------------------------------------------------
 // THEME
 // --------------------------------------------------
+// @item-color-style fallback if Vanilla button styles aren't supported
+@item-color-style: none;
+
 .hotgrid {
   &__item-btn {
     position: relative;
@@ -109,23 +112,70 @@
 
   // Hotgrid item theme
   // --------------------------------------------------
-  &__item-btn &__item-title,
-  &__item-btn &__item-icon {
-    background-color: @item-color;
-    color: @item-color-inverted;
+  // apply legacy styles if Vanilla button styles aren't supported
+  & when (@item-color-style = none) {
+    &__item-btn &__item-title,
+    &__item-btn &__item-icon {
+      background-color: @item-color;
+      color: @item-color-inverted;
+    }
+  
+    .no-touch &__item-btn:hover &__item-title,
+    .no-touch &__item-btn:not(.is-disabled):not(.is-locked):hover &__item-icon {
+      background-color: @item-color-hover;
+      color: @item-color-inverted-hover;
+      .transition(background-color @duration ease-in, color @duration ease-in;);
+    }
+  
+    &__item-btn.is-visited &__item-title,
+    &__item-btn.is-visited &__item-icon {
+      background-color: @visited;
+      color: @visited-inverted;
+    }
   }
 
-  .no-touch &__item-btn:hover &__item-title,
-  .no-touch &__item-btn:not(.is-disabled):not(.is-locked):hover &__item-icon {
-    background-color: @item-color-hover;
-    color: @item-color-inverted-hover;
-    .transition(background-color @duration ease-in, color @duration ease-in;);
+  & when (@item-color-style = filled) {
+    &__item-btn &__item-title,
+    &__item-btn &__item-icon {
+      .item-color;
+    }
+  
+    .no-touch &__item-btn:hover &__item-title,
+    .no-touch &__item-btn:not(.is-disabled):not(.is-locked):hover &__item-icon {
+      .item-color-hover;
+    }
+
+    html:not(.a11y-disable-focusoutline) &__item-btn:focus-visible &__item-title,
+    html:not(.a11y-disable-focusoutline) &__item-btn:focus-visible &__item-icon {
+      .item-color-focus;
+    }
+
+    &__item-btn.is-visited &__item-title,
+    &__item-btn.is-visited &__item-icon {
+      .item-color-visited;
+    }
   }
 
-  &__item-btn.is-visited &__item-title,
-  &__item-btn.is-visited &__item-icon {
-    background-color: @visited;
-    color: @visited-inverted;
+  & when (@item-color-style = outline) {
+    &__item-btn &__item-title,
+    &__item-btn &__item-icon {
+      .item-color-outline;
+    }
+  
+    .no-touch &__item-btn:hover &__item-title,
+    .no-touch &__item-btn:not(.is-disabled):not(.is-locked):hover &__item-icon {
+      .item-color-outline-hover;
+    }
+
+    html:not(.a11y-disable-focusoutline) &__item-btn:focus-visible &__item-title,
+    html:not(.a11y-disable-focusoutline) &__item-btn:focus-visible &__item-icon {
+      .item-color-outline-focus;
+    }
+
+    &__item-btn.is-visited &__item-title,
+    &__item-btn.is-visited &__item-icon {
+      .item-color-outline-visited;
+    }
   }
 
   // Hotgrid CSS border states
@@ -137,6 +187,10 @@
   .no-touch &__item-btn.has-css-states:hover &__item-image {
     border-color: @item-color-hover;
     .transition(border-color @duration ease-in);
+  }
+
+  html:not(.a11y-disable-focusoutline) &__item-btn.has-css-states:focus-visible &__item-image {
+    border-color: @item-color-focus;
   }
 
   &__item-btn.is-visited.has-css-states &__item-image {
