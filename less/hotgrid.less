@@ -80,8 +80,10 @@
 // --------------------------------------------------
 // THEME
 // --------------------------------------------------
-// @item-color-style fallback if Vanilla button styles aren't supported
+// fallback variables if Vanilla button styles aren't supported
 @item-color-style: none;
+@item-ui-color-style: none;
+@item-color-focus: @item-color-hover;
 
 .hotgrid {
   &__item-btn {
@@ -135,46 +137,74 @@
   }
 
   & when (@item-color-style = filled) {
-    &__item-btn &__item-title,
-    &__item-btn &__item-icon {
+    &__item-btn &__item-title {
       .item-color;
     }
   
-    .no-touch &__item-btn:hover &__item-title,
-    .no-touch &__item-btn:not(.is-disabled):not(.is-locked):hover &__item-icon {
+    .no-touch &__item-btn:hover &__item-title {
       .item-color-hover;
     }
 
-    html:not(.a11y-disable-focusoutline) &__item-btn:focus-visible &__item-title,
-    html:not(.a11y-disable-focusoutline) &__item-btn:focus-visible &__item-icon {
+    html:not(.a11y-disable-focusoutline) &__item-btn:focus-visible &__item-title {
       .item-color-focus;
     }
 
-    &__item-btn.is-visited &__item-title,
-    &__item-btn.is-visited &__item-icon {
+    &__item-btn.is-visited &__item-title {
       .item-color-visited;
     }
   }
 
-  & when (@item-color-style = outline) {
-    &__item-btn &__item-title,
+  & when (@item-ui-color-style = filled) {
     &__item-btn &__item-icon {
+      .item-ui-color;
+    }
+  
+    .no-touch &__item-btn:not(.is-disabled):not(.is-locked):hover &__item-icon {
+      .item-ui-color-hover;
+    }
+
+    html:not(.a11y-disable-focusoutline) &__item-btn:focus-visible &__item-icon {
+      .item-ui-color-focus;
+    }
+
+    &__item-btn.is-visited &__item-icon {
+      .item-ui-color-visited;
+    }
+  }
+
+  & when (@item-color-style = outline) {
+    &__item-btn &__item-title {
       .item-color-outline;
     }
   
-    .no-touch &__item-btn:hover &__item-title,
-    .no-touch &__item-btn:not(.is-disabled):not(.is-locked):hover &__item-icon {
+    .no-touch &__item-btn:hover &__item-title {
       .item-color-outline-hover;
     }
 
-    html:not(.a11y-disable-focusoutline) &__item-btn:focus-visible &__item-title,
-    html:not(.a11y-disable-focusoutline) &__item-btn:focus-visible &__item-icon {
+    html:not(.a11y-disable-focusoutline) &__item-btn:focus-visible &__item-title {
       .item-color-outline-focus;
     }
 
-    &__item-btn.is-visited &__item-title,
-    &__item-btn.is-visited &__item-icon {
+    &__item-btn.is-visited &__item-title {
       .item-color-outline-visited;
+    }
+  }
+
+  & when (@item-ui-color-style = outline) {
+    &__item-btn &__item-icon {
+      .item-ui-color-outline;
+    }
+  
+    .no-touch &__item-btn:not(.is-disabled):not(.is-locked):hover &__item-icon {
+      .item-ui-color-outline-hover;
+    }
+
+    html:not(.a11y-disable-focusoutline) &__item-btn:focus-visible &__item-icon {
+      .item-ui-color-outline-focus;
+    }
+
+    &__item-btn.is-visited &__item-icon {
+      .item-ui-color-outline-visited;
     }
   }
 
@@ -190,8 +220,6 @@
   }
 
   html:not(.a11y-disable-focusoutline) &__item-btn.has-css-states:focus-visible &__item-image {
-    // @item-color-focus fallback if Vanilla button styles aren't supported
-    @item-color-focus: @item-color-hover;
     border-color: @item-color-focus;
   }
 
