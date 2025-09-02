@@ -190,6 +190,8 @@
   }
 
   html:not(.a11y-disable-focusoutline) &__item-btn.has-css-states:focus-visible &__item-image {
+    // @item-color-focus fallback if Vanilla button styles aren't supported
+    @item-color-focus: @item-color-hover;
     border-color: @item-color-focus;
   }
 
