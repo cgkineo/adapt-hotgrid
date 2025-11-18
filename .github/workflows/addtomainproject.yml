@@ -10,10 +10,5 @@ on:
 
 jobs:
   add-to-project:
-    name: Add to main project
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/add-to-project@v0.1.0
-        with:
-          project-url: https://github.com/orgs/cgkineo/projects/3/views/1
-          github-token: ${{ secrets.ADDTOPROJECT_TOKEN }}
+    uses: cgkineo/cgkineo/.github/workflows/addtomainproject.yml@main
+    secrets: inherit
