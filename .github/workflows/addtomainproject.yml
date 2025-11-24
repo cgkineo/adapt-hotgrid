@@ -1,5 +1,4 @@
 name: Add to main project
-
 on:
   issues:
     types:
@@ -7,7 +6,6 @@ on:
   pull_request:
     types:
       - opened
-
 jobs:
   add-to-project:
     uses: cgkineo/.github/.github/workflows/addtomainproject.yml@master
