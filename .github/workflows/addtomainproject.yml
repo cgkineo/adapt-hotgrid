@@ -10,5 +10,5 @@ on:
 
 jobs:
   add-to-project:
-    uses: cgkineo/.github/.github/workflows/addtomainproject.yml@main
+    uses: cgkineo/.github/.github/workflows/addtomainproject.yml@master
     secrets: inherit
