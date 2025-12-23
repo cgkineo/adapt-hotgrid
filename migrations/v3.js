@@ -8,7 +8,7 @@ describe('Hot Grid - v2.1.3 to v3.0.0', async () => {
   whereFromPlugin('Hot Grid - from v2.1.3', { name: 'adapt-hotgrid', version: '<3.0.0' });
   whereContent('Hot Grid - where hotgrid', async content => {
     hotgrids = content.filter(({ _component }) => _component === 'hotgrid');
-    return hotgrids.length;
+    return hotgrids.length > 0;
   });
   mutateContent('Hot Grid - add globals if missing', async (content) => {
     course = getCourse();
@@ -21,7 +21,12 @@ describe('Hot Grid - v2.1.3 to v3.0.0', async () => {
     return true;
   });
   mutateContent('Hot Grid - update globals ariaRegion', async content => {
-    if (courseHotgridGlobals.ariaRegion === previousAriaRegion) courseHotgridGlobals.ariaRegion = newAriaRegion;
+    if (courseHotgridGlobals.ariaRegion === previousAriaRegion) {
+      courseHotgridGlobals.ariaRegion = newAriaRegion;
+    }
+    if (!courseHotgridGlobals.ariaRegion) {
+      courseHotgridGlobals.ariaRegion = newAriaRegion;
+    }
     return true;
   });
   mutateContent('Hot Grid - add _hidePagination', async (content) => {
@@ -33,45 +38,46 @@ describe('Hot Grid - v2.1.3 to v3.0.0', async () => {
     return true;
   });
   checkContent('Hot Grid - check globals _hotgrid attribute', async content => {
-    if (courseHotgridGlobals === undefined) throw new Error('Hot Grid - globals _hotgrid invalid');
+    if (courseHotgridGlobals === undefined) throw new Error('Hot Grid - course globals _hotgrid not added');
     return true;
   });
   checkContent('Hot Grid - check globals popupPagination attribute', async content => {
     const isValid = courseHotgridGlobals.popupPagination === '{{itemNumber}} / {{totalItems}}';
-    if (!isValid) throw new Error('Hot Grid - globals popupPagination invalid');
+    if (!isValid) throw new Error('Hot Grid - course globals popupPagination not added or incorrect template');
     return true;
   });
   checkContent('Hot Grid - check globals ariaRegion attribute', async content => {
     const isValid = courseHotgridGlobals.ariaRegion === newAriaRegion;
-    if (!isValid) throw new Error('Hot Grid - globals ariaRegion invalid');
+    if (!isValid) throw new Error('Hot Grid - course globals ariaRegion not updated');
     return true;
   });
   checkContent('Hot Grid - check _hidePagination attribute', async content => {
     const isValid = hotgrids.every(hotgrid => hotgrid._hidePagination === false);
-    if (!isValid) throw new Error('Hot Grid - _hidePagination invalid');
+    if (!isValid) throw new Error('Hot Grid - _hidePagination not added to every instance of hotgrid');
     return true;
   });
   checkContent('Hot Grid - check _canCycleThroughPagination attribute', async content => {
     const isValid = hotgrids.every(hotgrid => hotgrid._canCycleThroughPagination === false);
-    if (!isValid) throw new Error('Hot Grid - _canCycleThroughPagination invalid');
+    if (!isValid) throw new Error('Hot Grid - _canCycleThroughPagination not added to every instance of hotgrid');
     return true;
   });
-  updatePlugin('Hot Grid - update to v3.0.0', { name: 'adapt-contrib-hotgrid', version: '3.0.0', framework: '>=3.2.0' });
+  updatePlugin('Hot Grid - update to v3.0.0', { name: 'adapt-hotgrid', version: '3.0.0', framework: '>=3.2.0' });
 
   testSuccessWhere('correct version with hotgrid components', {
-    fromPlugins: [{ name: 'adapt-contrib-hotgrid', version: '2.1.3' }],
+    fromPlugins: [{ name: 'adapt-hotgrid', version: '2.1.3' }],
     content: [
+      { _type: 'course', _globals: { _components: {} } },
       { _id: 'c-100', _component: 'hotgrid' },
       { _id: 'c-105', _component: 'hotgrid' }
     ]
   });
 
-  testStopWhere('incorrect version', {
-    fromPlugins: [{ name: 'adapt-contrib-hotgrid', version: '3.0.0' }]
+  testStopWhere('already at v3.0.0', {
+    fromPlugins: [{ name: 'adapt-hotgrid', version: '3.0.0' }]
   });
 
   testStopWhere('no hotgrid components', {
-    fromPlugins: [{ name: 'adapt-contrib-hotgrid', version: '2.1.3' }],
+    fromPlugins: [{ name: 'adapt-hotgrid', version: '2.1.3' }],
     content: [{ _component: 'other' }]
   });
 });
@@ -81,7 +87,7 @@ describe('Hot Grid - v3.0.0 to v3.1.0', async () => {
   whereFromPlugin('Hot Grid - from v3.0.0', { name: 'adapt-hotgrid', version: '<3.1.0' });
   whereContent('Hot Grid - where hotgrid', async content => {
     hotgrids = content.filter(({ _component }) => _component === 'hotgrid');
-    return hotgrids.length;
+    return hotgrids.length > 0;
   });
   mutateContent('Hot Grid - update _supportedLayout', async (content) => {
     hotgrids.forEach(hotgrid => {
@@ -99,7 +105,7 @@ describe('Hot Grid - v3.0.0 to v3.1.0', async () => {
   });
   checkContent('Hot Grid - check _supportedLayout attribute', async content => {
     const isValid = hotgrids.every(hotgrid => hotgrid._supportedLayout !== 'half-width');
-    if (!isValid) throw new Error('Hot Grid - _supportedLayout invalid');
+    if (!isValid) throw new Error('Hot Grid - _supportedLayout not updated from half-width to full-width');
     return true;
   });
   checkContent('Hot Grid - check _itemGraphic attribution', async content => {
@@ -108,25 +114,25 @@ describe('Hot Grid - v3.0.0 to v3.1.0', async () => {
         item._itemGraphic?.attribution !== undefined
       )
     );
-    if (!isValid) throw new Error('Hot Grid - _itemGraphic attribution invalid');
+    if (!isValid) throw new Error('Hot Grid - attribution not added to _itemGraphic in every item');
     return true;
   });
-  updatePlugin('Hot Grid - update to v3.1.0', { name: 'adapt-contrib-hotgrid', version: '3.1.0', framework: '>=3.2.0' });
+  updatePlugin('Hot Grid - update to v3.1.0', { name: 'adapt-hotgrid', version: '3.1.0', framework: '>=3.2.0' });
 
-  testSuccessWhere('correct version with hotgrid components', {
-    fromPlugins: [{ name: 'adapt-contrib-hotgrid', version: '3.0.0' }],
+  testSuccessWhere('correct version with hotgrid components and items', {
+    fromPlugins: [{ name: 'adapt-hotgrid', version: '3.0.0' }],
     content: [
-      { _id: 'c-100', _component: 'hotgrid' },
-      { _id: 'c-105', _component: 'hotgrid' }
+      { _id: 'c-100', _component: 'hotgrid', _items: [{ _itemGraphic: {} }] },
+      { _id: 'c-105', _component: 'hotgrid', _items: [{ _itemGraphic: {} }] }
     ]
   });
 
-  testStopWhere('incorrect version', {
-    fromPlugins: [{ name: 'adapt-contrib-hotgrid', version: '3.1.0' }]
+  testStopWhere('already at v3.1.0', {
+    fromPlugins: [{ name: 'adapt-hotgrid', version: '3.1.0' }]
   });
 
   testStopWhere('no hotgrid components', {
-    fromPlugins: [{ name: 'adapt-contrib-hotgrid', version: '3.0.0' }],
+    fromPlugins: [{ name: 'adapt-hotgrid', version: '3.0.0' }],
     content: [{ _component: 'other' }]
   });
 });
@@ -136,7 +142,7 @@ describe('Hot Grid - v3.1.0 to v3.2.0', async () => {
   whereFromPlugin('Hot Grid - from v3.1.0', { name: 'adapt-hotgrid', version: '<3.2.0' });
   whereContent('Hot Grid - where hotgrid', async content => {
     hotgrids = content.filter(({ _component }) => _component === 'hotgrid');
-    return hotgrids.length;
+    return hotgrids.length > 0;
   });
   mutateContent('Hot Grid - add _setCompletionOn', async (content) => {
     hotgrids.forEach(hotgrid => (hotgrid._setCompletionOn = 'allItems'));
@@ -144,25 +150,25 @@ describe('Hot Grid - v3.1.0 to v3.2.0', async () => {
   });
   checkContent('Hot Grid - check _setCompletionOn attribute', async content => {
     const isValid = hotgrids.every(hotgrid => hotgrid._setCompletionOn === 'allItems');
-    if (!isValid) throw new Error('Hot Grid - _setCompletionOn invalid');
+    if (!isValid) throw new Error('Hot Grid - _setCompletionOn not added to every instance of hotgrid');
     return true;
   });
-  updatePlugin('Hot Grid - update to v3.2.0', { name: 'adapt-contrib-hotgrid', version: '3.2.0', framework: '>=3.3.0' });
+  updatePlugin('Hot Grid - update to v3.2.0', { name: 'adapt-hotgrid', version: '3.2.0', framework: '>=3.3.0' });
 
-  testSuccessWhere('correct version with hotgrid components', {
-    fromPlugins: [{ name: 'adapt-contrib-hotgrid', version: '3.1.0' }],
+  testSuccessWhere('correct version with hotgrid components without _setCompletionOn', {
+    fromPlugins: [{ name: 'adapt-hotgrid', version: '3.1.0' }],
     content: [
       { _id: 'c-100', _component: 'hotgrid' },
       { _id: 'c-105', _component: 'hotgrid' }
     ]
   });
 
-  testStopWhere('incorrect version', {
-    fromPlugins: [{ name: 'adapt-contrib-hotgrid', version: '3.2.0' }]
+  testStopWhere('already at v3.2.0', {
+    fromPlugins: [{ name: 'adapt-hotgrid', version: '3.2.0' }]
   });
 
   testStopWhere('no hotgrid components', {
-    fromPlugins: [{ name: 'adapt-contrib-hotgrid', version: '3.1.0' }],
+    fromPlugins: [{ name: 'adapt-hotgrid', version: '3.1.0' }],
     content: [{ _component: 'other' }]
   });
 });
