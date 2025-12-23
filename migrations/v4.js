@@ -86,7 +86,7 @@ describe('Hot Grid - v4.1.0 to v4.2.0', async () => {
     if (!isValid) throw new Error('Hot Grid - _columns not added to every instance of hotgrid with valid value');
     return true;
   });
-  updatePlugin('Hot Grid - update to v4.2.0', { name: 'adapt-hotgrid', version: '4.2.0', framework: '>=5.0.0' });
+  updatePlugin('Hot Grid - update to v4.2.0', { name: 'adapt-hotgrid', version: '4.2.0', framework: '>=5.22.4' });
 
   testSuccessWhere('correct version with hotgrid components without _columns', {
     fromPlugins: [{ name: 'adapt-hotgrid', version: '4.1.0' }],
@@ -187,7 +187,7 @@ describe('Hot Grid - v4.3.1 to v4.3.2', async () => {
     if (!isValid) throw new Error('Hot Grid - course globals next not added or incorrect template');
     return true;
   });
-  updatePlugin('Hot Grid - update to v4.3.2', { name: 'adapt-hotgrid', version: '4.3.2', framework: '>=5.22.4' });
+  updatePlugin('Hot Grid - update to v4.3.2', { name: 'adapt-hotgrid', version: '4.3.2', framework: '>=5.25.1' });
 
   testSuccessWhere('correct version with course and hotgrid components', {
     fromPlugins: [{ name: 'adapt-hotgrid', version: '4.3.1' }],
@@ -228,7 +228,7 @@ describe('Hot Grid - v4.3.13 to v4.3.14', async () => {
     if (!isValid) throw new Error('Hot Grid - instruction attribute not set to default value');
     return true;
   });
-  updatePlugin('Hot Grid - update to v4.3.14', { name: 'adapt-hotgrid', version: '4.3.14', framework: '>=5.31.2' });
+  updatePlugin('Hot Grid - update to v4.3.14', { name: 'adapt-hotgrid', version: '4.3.14', framework: '>=5.31.11' });
 
   testSuccessWhere('correct version with hotgrid components with empty instruction', {
     fromPlugins: [{ name: 'adapt-hotgrid', version: '4.3.13' }],
@@ -266,7 +266,7 @@ describe('Hot Grid - v4.4.1 to v4.4.2', async () => {
     if (!isValid) throw new Error('Hot Grid - _showPlusIcon not added to every instance of hotgrid');
     return true;
   });
-  updatePlugin('Hot Grid - update to v4.4.2', { name: 'adapt-hotgrid', version: '4.4.2', framework: '>=5.31.2' });
+  updatePlugin('Hot Grid - update to v4.4.2', { name: 'adapt-hotgrid', version: '4.4.2', framework: '>=5.31.16' });
 
   testSuccessWhere('correct version with hotgrid components without _showPlusIcon', {
     fromPlugins: [{ name: 'adapt-hotgrid', version: '4.4.1' }],
