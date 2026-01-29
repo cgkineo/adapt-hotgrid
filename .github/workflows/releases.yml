@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
 jobs:
   release:
     uses: cgkineo/.github/.github/workflows/releases.yml@master
