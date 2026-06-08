@@ -36,7 +36,7 @@
                       "type": "string",
                       "title": "Popup previous label",
                       "description": "This is the aria label for the previous button in the popup.",
-                      "default": "{{#if title}}Back to {{{title}}} (item {{itemNumber}} of {{totalItems}}){{else}}{{_globals._accessibility._ariaLabels.previous}}{{/if}}",
+                      "default": "{{#if isAtStart}}{{_globals._accessibility._ariaLabels.previous}}{{else}}{{#if title}}Back to {{{title}}}{{else}}{{_globals._accessibility._ariaLabels.previous}}{{/if}} (item {{itemNumber}} of {{totalItems}}){{/if}}",
                       "_adapt": {
                         "translatable": true
                       }
@@ -45,7 +45,7 @@
                       "type": "string",
                       "title": "Popup next label",
                       "description": "This is the aria label for the next button in the popup.",
-                      "default": "{{#if title}}Forward to {{{title}}} (item {{itemNumber}} of {{totalItems}}){{else}}{{_globals._accessibility._ariaLabels.next}}{{/if}}",
+                      "default": "{{#if isAtEnd}}{{_globals._accessibility._ariaLabels.next}}{{else}}{{#if title}}Forward to {{{title}}}{{else}}{{_globals._accessibility._ariaLabels.next}}{{/if}} (item {{itemNumber}} of {{totalItems}}){{/if}}",
                       "_adapt": {
                         "translatable": true
                       }

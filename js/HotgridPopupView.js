@@ -63,41 +63,37 @@ class HotgridPopupView extends Backbone.View {
     const totalItems = this.model.getChildren().length;
     const canCycleThroughPagination = this.model.get('_canCycleThroughPagination');
 
-    const isAtStart = index === 0;
-    const isAtEnd = index === totalItems - 1;
+    // When looping is enabled the buttons never disable and always wrap,
+    // so the active item is never treated as the start or end.
+    const isAtStart = !canCycleThroughPagination && index === 0;
+    const isAtEnd = !canCycleThroughPagination && index === totalItems - 1;
 
     const globals = Adapt.course.get('_globals');
     const hotgridGlobals = globals._components._hotgrid;
 
-    let prevTitle = isAtStart ? '' : this.model.getItem(index - 1).get('title');
-    let nextTitle = isAtEnd ? '' : this.model.getItem(index + 1).get('title');
+    const prevIndex = (index - 1 + totalItems) % totalItems;
+    const nextIndex = (index + 1) % totalItems;
 
-    let backItem = isAtStart ? null : index;
-    let nextItem = isAtEnd ? null : index + 2;
+    const prevTitle = isAtStart ? '' : this.model.getItem(prevIndex).get('title');
+    const nextTitle = isAtEnd ? '' : this.model.getItem(nextIndex).get('title');
 
-    if (canCycleThroughPagination) {
-      if (isAtStart) {
-        prevTitle = this.model.getItem(totalItems - 1).get('title');
-        backItem = totalItems;
-      }
-      if (isAtEnd) {
-        nextTitle = this.model.getItem(0).get('title');
-        nextItem = 1;
-      }
-    }
+    const backItem = isAtStart ? null : prevIndex + 1;
+    const nextItem = isAtEnd ? null : nextIndex + 1;
 
     const backLabel = compile(hotgridGlobals.previous, {
       _globals: globals,
       title: prevTitle,
       itemNumber: backItem,
-      totalItems
+      totalItems,
+      isAtStart
     });
 
     const nextLabel = compile(hotgridGlobals.next, {
       _globals: globals,
       title: nextTitle,
       itemNumber: nextItem,
-      totalItems
+      totalItems,
+      isAtEnd
     });
 
     this.model.set('backLabel', backLabel);
@@ -110,9 +106,9 @@ class HotgridPopupView extends Backbone.View {
     const template = pagingTemplate || '{{itemNumber}} / {{totalItems}}';
     const itemNumber = this.model.getActiveItem().get('_index') + 1;
     const totalItems = this.model.getChildren().length;
-    const itemCount = compile(template, { itemNumber, totalItems });
+    const popupCount = compile(template, { itemNumber, totalItems });
 
-    this.model.set('itemCount', itemCount);
+    this.model.set('popupCount', popupCount);
   }
 
   onItemsActiveChange(item, _isActive) {

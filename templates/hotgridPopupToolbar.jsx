@@ -11,7 +11,7 @@ export default function HotgridPopupToolbar(props) {
     onControlClick,
     shouldEnableBack,
     shouldEnableNext,
-    itemCount,
+    popupCount,
     backLabel,
     nextLabel,
     _hidePagination
@@ -46,7 +46,7 @@ export default function HotgridPopupToolbar(props) {
 
         <div
           className="hotgrid-popup__count"
-          dangerouslySetInnerHTML={{ __html: itemCount }}
+          dangerouslySetInnerHTML={{ __html: popupCount }}
           aria-hidden="true"
         />
 
