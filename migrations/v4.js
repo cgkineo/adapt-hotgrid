@@ -286,3 +286,66 @@ describe('Hot Grid - v4.4.1 to v4.4.2', async () => {
   });
 });
 
+describe('Hot Grid - @@CURRENT_VERSION to @@RELEASE_VERSION', async () => {
+  let course, courseHotgridGlobals;
+  const originalPrevious = '{{#if title}}Back to {{{title}}} (item {{itemNumber}} of {{totalItems}}){{else}}{{_globals._accessibility._ariaLabels.previous}}{{/if}}';
+  const updatedPrevious = '{{#if isAtStart}}{{_globals._accessibility._ariaLabels.previous}}{{else}}{{#if title}}Back to {{{title}}}{{else}}{{_globals._accessibility._ariaLabels.previous}}{{/if}} (item {{itemNumber}} of {{totalItems}}){{/if}}';
+  const originalNext = '{{#if title}}Forward to {{{title}}} (item {{itemNumber}} of {{totalItems}}){{else}}{{_globals._accessibility._ariaLabels.next}}{{/if}}';
+  const updatedNext = '{{#if isAtEnd}}{{_globals._accessibility._ariaLabels.next}}{{else}}{{#if title}}Forward to {{{title}}}{{else}}{{_globals._accessibility._ariaLabels.next}}{{/if}} (item {{itemNumber}} of {{totalItems}}){{/if}}';
+
+  whereFromPlugin('Hot Grid - from @@CURRENT_VERSION', { name: 'adapt-hotgrid', version: '<@@RELEASE_VERSION' });
+
+  whereContent('Hot Grid - where hotgrid', async content => {
+    return content.some(({ _component }) => _component === 'hotgrid');
+  });
+
+  mutateContent('Hot Grid - update globals previous attribute', async content => {
+    course = getCourse();
+    courseHotgridGlobals = _.get(course, '_globals._components._hotgrid');
+    if (courseHotgridGlobals?.previous === originalPrevious) courseHotgridGlobals.previous = updatedPrevious;
+    return true;
+  });
+
+  mutateContent('Hot Grid - update globals next attribute', async content => {
+    if (courseHotgridGlobals?.next === originalNext) courseHotgridGlobals.next = updatedNext;
+    return true;
+  });
+
+  checkContent('Hot Grid - check globals previous attribute', async content => {
+    if (courseHotgridGlobals?.previous === originalPrevious) throw new Error('Hot Grid - globals previous not updated');
+    return true;
+  });
+
+  checkContent('Hot Grid - check globals next attribute', async content => {
+    if (courseHotgridGlobals?.next === originalNext) throw new Error('Hot Grid - globals next not updated');
+    return true;
+  });
+
+  updatePlugin('Hot Grid - update to @@RELEASE_VERSION', { name: 'adapt-hotgrid', version: '@@RELEASE_VERSION', framework: '>=5.46.4' });
+
+  testSuccessWhere('hotgrid components with original globals', {
+    fromPlugins: [{ name: 'adapt-hotgrid', version: '@@CURRENT_VERSION' }],
+    content: [
+      { _type: 'course', _globals: { _components: { _hotgrid: { previous: originalPrevious, next: originalNext } } } },
+      { _id: 'c-100', _component: 'hotgrid' }
+    ]
+  });
+
+  testSuccessWhere('hotgrid components with empty globals', {
+    fromPlugins: [{ name: 'adapt-hotgrid', version: '@@CURRENT_VERSION' }],
+    content: [
+      { _type: 'course' },
+      { _id: 'c-100', _component: 'hotgrid' }
+    ]
+  });
+
+  testStopWhere('already at @@RELEASE_VERSION', {
+    fromPlugins: [{ name: 'adapt-hotgrid', version: '@@RELEASE_VERSION' }]
+  });
+
+  testStopWhere('no hotgrid components', {
+    fromPlugins: [{ name: 'adapt-hotgrid', version: '@@CURRENT_VERSION' }],
+    content: [{ _component: 'other' }]
+  });
+});
+
