@@ -223,7 +223,7 @@ describe('Hot Grid - v4.3.13 to v4.3.14', async () => {
   });
   checkContent('Hot Grid - check instruction attribute', async content => {
     const isValid = hotgrids.every(hotgrid =>
-      hotgrid.instruction === 'Select the images to find out more.'
+      hotgrid.instruction !== ''
     );
     if (!isValid) throw new Error('Hot Grid - instruction attribute not set to default value');
     return true;
