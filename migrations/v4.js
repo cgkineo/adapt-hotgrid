@@ -223,18 +223,19 @@ describe('Hot Grid - v4.3.13 to v4.3.14', async () => {
   });
   checkContent('Hot Grid - check instruction attribute', async content => {
     const isValid = hotgrids.every(hotgrid =>
-      hotgrid.instruction === 'Select the images to find out more.'
+      hotgrid.instruction !== ''
     );
     if (!isValid) throw new Error('Hot Grid - instruction attribute not set to default value');
     return true;
   });
   updatePlugin('Hot Grid - update to v4.3.14', { name: 'adapt-hotgrid', version: '4.3.14', framework: '>=5.31.11' });
 
-  testSuccessWhere('correct version with hotgrid components with empty instruction', {
+  testSuccessWhere('correct version with hotgrid components with empty/custom instruction', {
     fromPlugins: [{ name: 'adapt-hotgrid', version: '4.3.13' }],
     content: [
       { _id: 'c-100', _component: 'hotgrid', instruction: '' },
-      { _id: 'c-105', _component: 'hotgrid', instruction: '' }
+      { _id: 'c-105', _component: 'hotgrid', instruction: '' },
+      { _id: 'c-110', _component: 'hotgrid', instruction: 'Click each image for more information' }
     ]
   });
 
