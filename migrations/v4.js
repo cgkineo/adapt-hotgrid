@@ -287,14 +287,14 @@ describe('Hot Grid - v4.4.1 to v4.4.2', async () => {
   });
 });
 
-describe('Hot Grid - @@CURRENT_VERSION to @@RELEASE_VERSION', async () => {
+describe('Hot Grid - 4.10.2 to 4.11.0', async () => {
   let course, courseHotgridGlobals;
   const originalPrevious = '{{#if title}}Back to {{{title}}} (item {{itemNumber}} of {{totalItems}}){{else}}{{_globals._accessibility._ariaLabels.previous}}{{/if}}';
   const updatedPrevious = '{{#if isAtStart}}{{_globals._accessibility._ariaLabels.previous}}{{else}}{{#if title}}Back to {{{title}}}{{else}}{{_globals._accessibility._ariaLabels.previous}}{{/if}} (item {{itemNumber}} of {{totalItems}}){{/if}}';
   const originalNext = '{{#if title}}Forward to {{{title}}} (item {{itemNumber}} of {{totalItems}}){{else}}{{_globals._accessibility._ariaLabels.next}}{{/if}}';
   const updatedNext = '{{#if isAtEnd}}{{_globals._accessibility._ariaLabels.next}}{{else}}{{#if title}}Forward to {{{title}}}{{else}}{{_globals._accessibility._ariaLabels.next}}{{/if}} (item {{itemNumber}} of {{totalItems}}){{/if}}';
 
-  whereFromPlugin('Hot Grid - from @@CURRENT_VERSION', { name: 'adapt-hotgrid', version: '<@@RELEASE_VERSION' });
+  whereFromPlugin('Hot Grid - from 4.10.2', { name: 'adapt-hotgrid', version: '<4.11.0' });
 
   whereContent('Hot Grid - where hotgrid', async content => {
     return content.some(({ _component }) => _component === 'hotgrid');
@@ -322,10 +322,10 @@ describe('Hot Grid - @@CURRENT_VERSION to @@RELEASE_VERSION', async () => {
     return true;
   });
 
-  updatePlugin('Hot Grid - update to @@RELEASE_VERSION', { name: 'adapt-hotgrid', version: '@@RELEASE_VERSION', framework: '>=5.46.4' });
+  updatePlugin('Hot Grid - update to 4.11.0', { name: 'adapt-hotgrid', version: '4.11.0', framework: '>=5.46.4' });
 
   testSuccessWhere('hotgrid components with original globals', {
-    fromPlugins: [{ name: 'adapt-hotgrid', version: '@@CURRENT_VERSION' }],
+    fromPlugins: [{ name: 'adapt-hotgrid', version: '4.10.2' }],
     content: [
       { _type: 'course', _globals: { _components: { _hotgrid: { previous: originalPrevious, next: originalNext } } } },
       { _id: 'c-100', _component: 'hotgrid' }
@@ -333,19 +333,19 @@ describe('Hot Grid - @@CURRENT_VERSION to @@RELEASE_VERSION', async () => {
   });
 
   testSuccessWhere('hotgrid components with empty globals', {
-    fromPlugins: [{ name: 'adapt-hotgrid', version: '@@CURRENT_VERSION' }],
+    fromPlugins: [{ name: 'adapt-hotgrid', version: '4.10.2' }],
     content: [
       { _type: 'course' },
       { _id: 'c-100', _component: 'hotgrid' }
     ]
   });
 
-  testStopWhere('already at @@RELEASE_VERSION', {
-    fromPlugins: [{ name: 'adapt-hotgrid', version: '@@RELEASE_VERSION' }]
+  testStopWhere('already at 4.11.0', {
+    fromPlugins: [{ name: 'adapt-hotgrid', version: '4.11.0' }]
   });
 
   testStopWhere('no hotgrid components', {
-    fromPlugins: [{ name: 'adapt-hotgrid', version: '@@CURRENT_VERSION' }],
+    fromPlugins: [{ name: 'adapt-hotgrid', version: '4.10.2' }],
     content: [{ _component: 'other' }]
   });
 });
