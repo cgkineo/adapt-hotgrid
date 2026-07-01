@@ -23,7 +23,7 @@
     "previous": {
       "type": "string",
       "title": "Hotgrid popup previous label",
-      "default": "{{#if title}}Back to {{{title}}} (item {{itemNumber}} of {{totalItems}}){{else}}{{_globals._accessibility._ariaLabels.previous}}{{/if}}",
+      "default": "{{#if isAtStart}}{{_globals._accessibility._ariaLabels.previous}}{{else}}{{#if title}}Back to {{{title}}}{{else}}{{_globals._accessibility._ariaLabels.previous}}{{/if}} (item {{itemNumber}} of {{totalItems}}){{/if}}",
       "inputType": "Text",
       "translatable": true,
       "help": "This is the aria label for the previous button in the popup."
@@ -31,7 +31,7 @@
     "next": {
       "type": "string",
       "title": "Hotgrid popup next label",
-      "default": "{{#if title}}Forward to {{{title}}} (item {{itemNumber}} of {{totalItems}}){{else}}{{_globals._accessibility._ariaLabels.next}}{{/if}}",
+      "default": "{{#if isAtEnd}}{{_globals._accessibility._ariaLabels.next}}{{else}}{{#if title}}Forward to {{{title}}}{{else}}{{_globals._accessibility._ariaLabels.next}}{{/if}} (item {{itemNumber}} of {{totalItems}}){{/if}}",
       "inputType": "Text",
       "translatable": true,
       "help": "This is the aria label for the next button in the popup."
